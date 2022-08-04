@@ -1,61 +1,24 @@
-import { useEffect, useState } from "react";
-import Web3Modal from "web3modal";
-import { Contract, providers, utils } from "ethers";
+import { useState } from "react";
+import Select from "react-select";
+import { Contract, utils } from "ethers";
 import { WrapperBuilder } from "redstone-evm-connector";
 import { abi } from "../config/ExampleRedstoneShowroomDetails.json";
 import { chains } from "../config/chains";
+import { useWeb3Modal } from "../hooks/useWeb3Modal";
 
-type ChainsConfig = keyof typeof chains;
+const chainsArray = Object.values(chains).map((chain) => ({
+  value: chain,
+  label: chain.chainName,
+}));
 
-const Showroom = () => {
-  const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
-  const [network, setNetwork] = useState<providers.Network | null>(null);
-  const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
+export const Showroom = () => {
   const [price, setPrice] = useState("");
-
-  useEffect(() => {
-    const web3Modal = new Web3Modal({
-      cacheProvider: true,
-    });
-    setWeb3Modal(web3Modal);
-  }, []);
-
-  useEffect(() => {
-    if (web3Modal && web3Modal.cachedProvider) {
-      connectWallet();
-    }
-  }, [web3Modal]);
-
-  const connectWallet = async () => {
-    if (web3Modal) {
-      try {
-        const instance = await web3Modal.connect();
-        addListeners(instance);
-        const provider = new providers.Web3Provider(instance);
-        setNetwork(await provider.getNetwork());
-        setSigner(provider.getSigner());
-      } catch (error: any) {
-        console.error(error);
-      }
-    }
-  };
-
-  const addListeners = (web3ModalProvider: any) => {
-    web3ModalProvider.on("accountsChanged", () => {
-      window.location.reload();
-    });
-
-    web3ModalProvider.on("chainChanged", () => {
-      window.location.reload();
-    });
-  };
+  const { network, setNetwork, signer, connectWallet } = useWeb3Modal();
 
   const getPriceFromContract = async () => {
     if (network && signer) {
       try {
-        const { chainId } = network;
-        const contractAddress =
-          chains[chainId as ChainsConfig].exampleContractAddress;
+        const contractAddress = network.value.exampleContractAddress;
         if (contractAddress) {
           const contract = new Contract(contractAddress, abi, signer);
           const wrappedContract = WrapperBuilder.wrapLite(
@@ -72,26 +35,24 @@ const Showroom = () => {
     }
   };
 
-  const networkFromConfig = chains[network?.chainId as ChainsConfig];
-
   return (
-    <div className="flex justify-center items-center mt-16 flex-col">
-      {!signer && (
+    <div className="flex justify-center items-center flex-col mt-16 ">
+      {!signer ? (
         <button
           onClick={connectWallet}
           className="bg-redstone hover:opacity-75 text-white py-3 px-8 rounded-full"
         >
           Connect wallet
         </button>
-      )}
-      {signer && !networkFromConfig && (
-        <p className="text-xl font-bold">Unsupported network</p>
-      )}
-      {networkFromConfig && (
-        <div className="flex justify-center items-center mt-16 flex-col">
-          <p className="text-xl mb-4">
-            Network: <span className="font-bold">{networkFromConfig.name}</span>
-          </p>
+      ) : (
+        <div className="flex w-full justify-center items-center mt-16 flex-col">
+          <Select
+            className="w-1/4 mb-8"
+            value={network}
+            onChange={setNetwork}
+            options={chainsArray}
+            defaultValue={network}
+          />
           {price ? (
             <p className="text-xl">
               ETH price: <span className="font-bold">{price}</span>
@@ -109,5 +70,3 @@ const Showroom = () => {
     </div>
   );
 };
-
-export default Showroom;

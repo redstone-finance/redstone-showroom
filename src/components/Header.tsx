@@ -1,6 +1,6 @@
 import RedstoneLogo from "../assets/redstone-logo.svg";
 
-const Header = () => (
+export const Header = () => (
   <nav className="flex items-center justify-between gap-16 p-3">
     <div className="flex items-center align-center gap-16">
       <a href="/">
@@ -16,5 +16,3 @@ const Header = () => (
     </a>
   </nav>
 );
-
-export default Header;

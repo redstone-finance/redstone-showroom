@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
-import Showroom from "./pages/Showroom";
+import { Header } from "./components/Header";
+import { SideBar } from "./components/SideBar";
+import { Showroom } from "./pages/Showroom";
 
 const App = () => {
   return (

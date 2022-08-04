@@ -7,12 +7,20 @@ export const SideBar = () => {
   return (
     <div className="flex flex-col px-4 text-center w-40 self-center fixed mb-0 mt-[75vh]">
       <div>
-        <a className="text-[12px] text-redstone" href="https://redstone.finance/" target="_blank">
+        <a
+          className="text-[12px] text-redstone"
+          href="https://redstone.finance/"
+          target="_blank"
+        >
           Our website
         </a>
       </div>
       <div>
-        <a className="text-[12px] text-redstone" href="https://app.redstone.finance/" target="_blank">
+        <a
+          className="text-[12px] text-redstone"
+          href="https://app.redstone.finance/"
+          target="_blank"
+        >
           Our application
         </a>
       </div>
@@ -34,5 +42,3 @@ export const SideBar = () => {
     </div>
   );
 };
-
-export default SideBar;
