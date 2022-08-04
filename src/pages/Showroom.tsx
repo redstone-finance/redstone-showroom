@@ -53,7 +53,7 @@ export const Showroom = () => {
     <div className="flex justify-center items-center flex-col">
       {!network && (
         <p className="mt-10 mb-0 text-lg font-bold">
-          Please select a chain to see sample of Redstone Oracle data
+          Please pick the chain to see sample of Redstone Oracle data
         </p>
       )}
       <div className="w-3/4 flex flex-wrap justify-center gap-3 mt-10">

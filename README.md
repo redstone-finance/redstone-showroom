@@ -1,3 +1,3 @@
-# RedStone Showroom
+# Canto Showroom
 
-Simple app which demonstrate redstone integration with EVM chains.
+Simple app which demonstrate RedStone integration with Canto.
