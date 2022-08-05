@@ -86,14 +86,18 @@ export const useWeb3Modal = () => {
 
     web3ModalProvider.on("chainChanged", async (chainId: BigNumber) => {
       const chainIdAsNumber = Number(chainId.toString());
-      const { chainName, ...restNetworkParams } =
-        chains[chainIdAsNumber as keyof typeof chains];
-      const newNetwork = {
-        label: chainName,
-        value: restNetworkParams,
-      };
-      setNetwork(newNetwork ?? null);
-      connectWallet();
+      const chainFromConfig = chains[chainIdAsNumber as keyof typeof chains];
+      if (!chainFromConfig) {
+        setNetwork(null);
+      } else {
+        const { chainName, ...restNetworkParams } = chainFromConfig;
+        const newNetwork = {
+          label: chainName,
+          value: restNetworkParams,
+        };
+        setNetwork(newNetwork);
+        connectWallet();
+      }
     });
   };
 
