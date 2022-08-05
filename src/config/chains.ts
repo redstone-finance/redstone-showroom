@@ -40,4 +40,16 @@ export const chains = {
     blockExplorerUrls: ["https://polygonscan.com/"],
     exampleContractAddress: "0xD661c4D3bb516f62cD13DB90B205cff19e78F09d",
   },
+  [3]: {
+    chainId: ethers.utils.hexValue(3),
+    rpcUrls: ["https://ropsten.infura.io/v3/"],
+    chainName: "Ropsten Test Network",
+    nativeCurrency: {
+      name: "RopstenETH",
+      symbol: "RopstenETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://ropsten.etherscan.io/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+  },
 };
