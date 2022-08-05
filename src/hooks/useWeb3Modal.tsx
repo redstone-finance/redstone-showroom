@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { providers } from "ethers";
+import { BigNumber, providers } from "ethers";
 import Web3Modal from "web3modal";
-import { ChainDetails } from "../config/chains";
+import { ChainDetails, chains } from "../config/chains";
 
 interface SelectOption<T> {
   label: string;
@@ -11,6 +11,7 @@ interface SelectOption<T> {
 type NetworkSelectValue = SelectOption<Omit<ChainDetails, "chainName">>;
 
 export const useWeb3Modal = () => {
+  const [price, setPrice] = useState("");
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
   const [network, setNetwork] = useState<NetworkSelectValue | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
@@ -29,14 +30,39 @@ export const useWeb3Modal = () => {
   }, [web3Modal]);
 
   useEffect(() => {
-    if (network) {
-      const { exampleContractAddress, ...restNetwork } = network.value;
-      window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [restNetwork],
-      });
-    }
+    changeNetwork().catch(() => {
+      handleError();
+    });
   }, [network]);
+
+  const changeNetwork = async () => {
+    if (network) {
+      const { exampleContractAddress, ...restNetworkParams } = network.value;
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: restNetworkParams.chainId }],
+        });
+      } catch (switchError: any) {
+        if (switchError.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [restNetworkParams],
+            });
+          } catch (addError) {
+            handleError();
+          }
+        }
+        handleError();
+      }
+    }
+  };
+
+  const handleError = () => {
+    setPrice("");
+    setNetwork(null);
+  };
 
   const connectWallet = async () => {
     if (web3Modal) {
@@ -47,6 +73,8 @@ export const useWeb3Modal = () => {
         setSigner(provider.getSigner());
       } catch (error: any) {
         console.error(error);
+      } finally {
+        setPrice("");
       }
     }
   };
@@ -56,10 +84,18 @@ export const useWeb3Modal = () => {
       window.location.reload();
     });
 
-    web3ModalProvider.on("chainChanged", () => {
-      window.location.reload();
+    web3ModalProvider.on("chainChanged", async (chainId: BigNumber) => {
+      const chainIdAsNumber = Number(chainId.toString());
+      const { chainName, ...restNetworkParams } =
+        chains[chainIdAsNumber as keyof typeof chains];
+      const newNetwork = {
+        label: chainName,
+        value: restNetworkParams,
+      };
+      setNetwork(newNetwork ?? null);
+      connectWallet();
     });
   };
 
-  return { network, setNetwork, signer, connectWallet };
+  return { price, setPrice, network, setNetwork, signer, connectWallet };
 };

@@ -17,11 +17,12 @@ const chainsArray = Object.values(chains).map((chain) => ({
 }));
 
 export const Showroom = () => {
-  const [price, setPrice] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { text, isMockLoading, startMockLoader } = useMockLoader();
-  const { network, setNetwork, signer, connectWallet } = useWeb3Modal();
+  const { text, isMockLoading, setIsMockLoading, startMockLoader } =
+    useMockLoader();
+  const { price, setPrice, network, setNetwork, signer, connectWallet } =
+    useWeb3Modal();
 
   const getPriceFromContract = async () => {
     if (network && signer) {
@@ -59,6 +60,8 @@ export const Showroom = () => {
 
   const handleError = () => {
     setIsLoading(false);
+    setPrice("");
+    setIsMockLoading(false);
     setErrorMessage(
       "There was problem with fetching data from smart contract. Please try again or contact RedStone team"
     );
@@ -76,6 +79,7 @@ export const Showroom = () => {
             onChange={setNetwork}
             options={chainsArray}
             defaultValue={network}
+            placeholder="Select network..."
           />
           {isMockLoading || isLoading ? (
             <GetPriceLoader text={isMockLoading ? text : ""} />
@@ -84,7 +88,9 @@ export const Showroom = () => {
               ETH price: <span className="font-bold">{price}</span>
             </p>
           ) : (
-            <GetPriceButton getPriceFromContract={getPriceFromContract} />
+            network && (
+              <GetPriceButton getPriceFromContract={getPriceFromContract} />
+            )
           )}
         </div>
       )}
