@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Select from "react-select";
-import { Contract, utils } from "ethers";
+import { Contract, utils, providers } from "ethers";
 import { WrapperBuilder } from "redstone-evm-connector";
-import { abi } from "../config/ExampleRedstoneShowroomDetails.json";
-import { chains } from "../config/chains";
 import { useWeb3Modal } from "../hooks/useWeb3Modal";
+import { useMockLoader } from "../hooks/useMockLoader";
+import { GetPriceLoader } from "../components/GetPriceLoader";
+import { ConnectButton } from "../components/ConnectButton";
+import { chains } from "../config/chains";
+import { abi } from "../config/ExampleRedstoneShowroomDetails.json";
+import { GetPriceButton } from "../components/GetPriceButton";
+import Modal from "../components/Modal";
 
 const chainsArray = Object.values(chains).map((chain) => ({
   value: chain,
@@ -13,59 +18,82 @@ const chainsArray = Object.values(chains).map((chain) => ({
 
 export const Showroom = () => {
   const [price, setPrice] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { text, isMockLoading, startMockLoader } = useMockLoader();
   const { network, setNetwork, signer, connectWallet } = useWeb3Modal();
 
   const getPriceFromContract = async () => {
     if (network && signer) {
       try {
+        startMockLoader();
+        setIsLoading(true);
         const contractAddress = network.value.exampleContractAddress;
         if (contractAddress) {
-          const contract = new Contract(contractAddress, abi, signer);
-          const wrappedContract = WrapperBuilder.wrapLite(
-            contract
-          ).usingPriceFeed("redstone", {
-            asset: "ETH",
-          });
-          const price = await wrappedContract.getPrice();
+          const price = await fetchPrice(contractAddress, signer);
           setPrice(utils.formatUnits(price, 8));
+          setIsLoading(false);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
+        handleError();
       }
+    } else {
+      handleError();
     }
   };
 
+  const fetchPrice = async (
+    contractAddress: string,
+    signer: providers.JsonRpcSigner
+  ) => {
+    const contract = new Contract(contractAddress, abi, signer);
+    const wrappedContract = WrapperBuilder.wrapLite(contract).usingPriceFeed(
+      "redstone",
+      {
+        asset: "ETH",
+      }
+    );
+    return await wrappedContract.getPrice();
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setErrorMessage(
+      "There was problem with fetching data from smart contract. Please try again or contact RedStone team"
+    );
+  };
+
   return (
-    <div className="flex justify-center items-center flex-col mt-16 ">
+    <div className="flex justify-center items-center flex-col ">
       {!signer ? (
-        <button
-          onClick={connectWallet}
-          className="bg-redstone hover:opacity-75 text-white py-3 px-8 rounded-full"
-        >
-          Connect wallet
-        </button>
+        <ConnectButton connectWallet={connectWallet} />
       ) : (
         <div className="flex w-full justify-center items-center mt-16 flex-col">
           <Select
-            className="w-1/4 mb-8"
+            className="w-1/4 mb-12"
             value={network}
             onChange={setNetwork}
             options={chainsArray}
             defaultValue={network}
           />
-          {price ? (
+          {isMockLoading || isLoading ? (
+            <GetPriceLoader text={isMockLoading ? text : ""} />
+          ) : price ? (
             <p className="text-xl">
               ETH price: <span className="font-bold">{price}</span>
             </p>
           ) : (
-            <button
-              className="bg-redstone hover:opacity-75 text-white py-3 px-8 rounded-full"
-              onClick={getPriceFromContract}
-            >
-              Get price
-            </button>
+            <GetPriceButton getPriceFromContract={getPriceFromContract} />
           )}
         </div>
+      )}
+      {!!errorMessage && (
+        <Modal
+          closeModal={() => setErrorMessage("")}
+          title="Problem with contract interaction"
+          text={errorMessage}
+        />
       )}
     </div>
   );

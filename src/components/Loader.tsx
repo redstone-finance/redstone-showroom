@@ -23,7 +23,7 @@ export const Spinner = ({ size = 10 }: Props) => (
 
 export const Loader = () => {
   return (
-    <div className="flex items-center justify-center pt-60 mt-3">
+    <div className="flex items-center justify-center">
       <div className="w-[45px]">
         <Spinner />
       </div>
