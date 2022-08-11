@@ -1,95 +1,79 @@
-import { useState } from "react";
-import Select from "react-select";
-import { Contract, utils, providers } from "ethers";
-import { WrapperBuilder } from "redstone-evm-connector";
 import { useWeb3Modal } from "../hooks/useWeb3Modal";
 import { useMockLoader } from "../hooks/useMockLoader";
+import { usePricesFromContract } from "../hooks/usePricesFromContract";
 import { GetPriceLoader } from "../components/GetPriceLoader";
-import { ConnectButton } from "../components/ConnectButton";
-import { chains } from "../config/chains";
-import { abi } from "../config/ExampleRedstoneShowroomDetails.json";
 import { GetPriceButton } from "../components/GetPriceButton";
 import Modal from "../components/Modal";
+import { ChainButton } from "../components/ChainButton";
+import { ChainDataTable } from "../components/ChainDataTable";
+import { PricesTable } from "../components/PricesTable";
+import { ChainDetails, chains } from "../config/chains";
 
-const chainsArray = Object.values(chains).map((chain) => ({
-  value: chain,
-  label: chain.chainName,
-}));
+const chainsArray = Object.values(chains);
 
 export const Showroom = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
-  const { price, setPrice, network, setNetwork, signer, connectWallet } =
-    useWeb3Modal();
+  const {
+    prices,
+    setPrices,
+    network,
+    setNetwork,
+    signer,
+    connectWallet,
+    walletAddress,
+  } = useWeb3Modal();
+  const {
+    blockNumber,
+    timestamp,
+    isLoading,
+    errorMessage,
+    setErrorMessage,
+    getPricesFromContract,
+  } = usePricesFromContract(
+    network,
+    signer,
+    startMockLoader,
+    setPrices,
+    setIsMockLoading
+  );
 
-  const getPriceFromContract = async () => {
-    if (network && signer) {
-      try {
-        startMockLoader();
-        setIsLoading(true);
-        const contractAddress = network.value.exampleContractAddress;
-        if (contractAddress) {
-          const price = await fetchPrice(contractAddress, signer);
-          setPrice(utils.formatUnits(price, 8));
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error(error);
-        handleError();
-      }
-    } else {
-      handleError();
+  const onChainClick = async (chain: ChainDetails) => {
+    if (!signer) {
+      await connectWallet();
     }
+    setNetwork(chain);
   };
 
-  const fetchPrice = async (
-    contractAddress: string,
-    signer: providers.JsonRpcSigner
-  ) => {
-    const contract = new Contract(contractAddress, abi, signer);
-    const wrappedContract = WrapperBuilder.wrapLite(contract).usingPriceFeed(
-      "redstone",
-      {
-        asset: "ETH",
-      }
-    );
-    return await wrappedContract.getPrice();
-  };
-
-  const handleError = () => {
-    setIsLoading(false);
-    setPrice("");
-    setIsMockLoading(false);
-    setErrorMessage(
-      "There was problem with fetching data from smart contract. Please try again or contact RedStone team"
-    );
-  };
+  const arePrices = Object.values(prices).every((price) => !!price);
 
   return (
     <div className="flex justify-center items-center flex-col ">
-      {!signer ? (
-        <ConnectButton connectWallet={connectWallet} />
-      ) : (
-        <div className="flex w-full justify-center items-center mt-16 flex-col">
-          <Select
-            className="w-1/4 mb-12"
-            value={network}
-            onChange={setNetwork}
-            options={chainsArray}
-            defaultValue={network}
-            placeholder="Select network..."
+      <div className="w-full flex justify-evenly px-10 mt-10">
+        {chainsArray.map((chain) => (
+          <ChainButton
+            key={chain.chainId}
+            chain={chain}
+            onChainClick={onChainClick}
           />
+        ))}
+      </div>
+      {!!signer && (
+        <div className="flex w-full justify-center items-center mt-8 flex-col">
+          {network && (
+            <ChainDataTable walletAddress={walletAddress} network={network} />
+          )}
           {isMockLoading || isLoading ? (
             <GetPriceLoader text={isMockLoading ? text : ""} />
-          ) : price ? (
-            <p className="text-xl">
-              ETH price: <span className="font-bold">{price}</span>
-            </p>
+          ) : arePrices ? (
+            <PricesTable
+              blockNumber={blockNumber}
+              timestamp={timestamp}
+              prices={prices}
+            />
           ) : (
             network && (
-              <GetPriceButton getPriceFromContract={getPriceFromContract} />
+              <GetPriceButton getPriceFromContract={getPricesFromContract} />
             )
           )}
         </div>

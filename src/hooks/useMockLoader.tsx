@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { timeout } from "../utils/utils";
+import { useState } from "react";
+import { timeout } from "../utils";
 
 const loaderTexts = [
   "Fetching price data",

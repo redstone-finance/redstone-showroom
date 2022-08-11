@@ -7,6 +7,6 @@ interface Props {
 export const GetPriceLoader = ({ text }: Props) => (
   <div className="flex justify-center items-center flex-col">
     <Loader />
-    <p className="text-lg font-semibold mt-4">{text}</p>
+    <p className="text-md font-semibold mt-4">{text}</p>
   </div>
 );
