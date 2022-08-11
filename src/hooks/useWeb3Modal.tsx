@@ -2,19 +2,14 @@ import { useState, useEffect } from "react";
 import { BigNumber, providers } from "ethers";
 import Web3Modal from "web3modal";
 import { ChainDetails, chains } from "../config/chains";
-
-interface SelectOption<T> {
-  label: string;
-  value: T;
-}
-
-type NetworkSelectValue = SelectOption<Omit<ChainDetails, "chainName">>;
+import { emptyPrices } from "../utils";
 
 export const useWeb3Modal = () => {
-  const [price, setPrice] = useState("");
+  const [prices, setPrices] = useState(emptyPrices);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
-  const [network, setNetwork] = useState<NetworkSelectValue | null>(null);
+  const [network, setNetwork] = useState<ChainDetails | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
+  const [walletAddress, setWalletAddress] = useState("");
 
   useEffect(() => {
     const web3Modal = new Web3Modal({
@@ -24,12 +19,6 @@ export const useWeb3Modal = () => {
   }, []);
 
   useEffect(() => {
-    if (web3Modal && web3Modal.cachedProvider) {
-      connectWallet();
-    }
-  }, [web3Modal]);
-
-  useEffect(() => {
     changeNetwork().catch(() => {
       handleError();
     });
@@ -37,7 +26,7 @@ export const useWeb3Modal = () => {
 
   const changeNetwork = async () => {
     if (network) {
-      const { exampleContractAddress, ...restNetworkParams } = network.value;
+      const { exampleContractAddress, ...restNetworkParams } = network;
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
@@ -60,7 +49,7 @@ export const useWeb3Modal = () => {
   };
 
   const handleError = () => {
-    setPrice("");
+    setPrices(emptyPrices);
     setNetwork(null);
   };
 
@@ -70,11 +59,14 @@ export const useWeb3Modal = () => {
         const instance = await web3Modal.connect();
         addListeners(instance);
         const provider = new providers.Web3Provider(instance);
-        setSigner(provider.getSigner());
+        const signer = provider.getSigner();
+        setSigner(signer);
+        const walletAddress = await signer.getAddress();
+        setWalletAddress(walletAddress);
       } catch (error: any) {
         console.error(error);
       } finally {
-        setPrice("");
+        setPrices(emptyPrices);
       }
     }
   };
@@ -90,16 +82,19 @@ export const useWeb3Modal = () => {
       if (!chainFromConfig) {
         setNetwork(null);
       } else {
-        const { chainName, ...restNetworkParams } = chainFromConfig;
-        const newNetwork = {
-          label: chainName,
-          value: restNetworkParams,
-        };
-        setNetwork(newNetwork);
+        setNetwork(chainFromConfig);
         connectWallet();
       }
     });
   };
 
-  return { price, setPrice, network, setNetwork, signer, connectWallet };
+  return {
+    prices,
+    setPrices,
+    network,
+    setNetwork,
+    signer,
+    connectWallet,
+    walletAddress,
+  };
 };

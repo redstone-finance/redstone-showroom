@@ -1,6 +1,9 @@
 import { ethers } from "ethers";
+import PolygonLogo from "../assets/chains/polygon.png";
+import EthereumLogo from "../assets/chains/ethereum.png";
+import EvmosLogo from "../assets/chains/evmos.png";
 
-export type Chains = typeof chains;
+export type Chains = { [chainId in number]: ChainDetails };
 
 export interface ChainDetails {
   chainId: string;
@@ -13,9 +16,11 @@ export interface ChainDetails {
   };
   blockExplorerUrls: string[];
   exampleContractAddress: string;
+  contractExplorerUrl: string;
+  logo?: any;
 }
 
-export const chains = {
+export const chains: Chains = {
   [9001]: {
     chainId: ethers.utils.hexValue(9001),
     rpcUrls: ["https://eth.bd.evmos.org:8545"],
@@ -26,7 +31,10 @@ export const chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://evm.evmos.org"],
-    exampleContractAddress: "0xDdc3819d5eb83aF1267115a518A354BAdb0B90dF",
+    exampleContractAddress: "0x7A8e56c69Cae266D915FC37892Bd959CF844d53f",
+    contractExplorerUrl:
+      "https://evm.evmos.org/address/0x7A8e56c69Cae266D915FC37892Bd959CF844d53f",
+    logo: EvmosLogo,
   },
   [137]: {
     chainId: ethers.utils.hexValue(137),
@@ -38,7 +46,10 @@ export const chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://polygonscan.com/"],
-    exampleContractAddress: "0xD661c4D3bb516f62cD13DB90B205cff19e78F09d",
+    exampleContractAddress: "0x5Bf1cd8CC736096aF9b01400F836FC16A7E490C9",
+    contractExplorerUrl:
+      "https://polygonscan.com/address/0x5Bf1cd8CC736096aF9b01400F836FC16A7E490C9",
+    logo: PolygonLogo,
   },
   [3]: {
     chainId: ethers.utils.hexValue(3),
@@ -50,6 +61,9 @@ export const chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://ropsten.etherscan.io/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0xcB494d8dB930cD8aCcA4434197AACb9db44Af478",
+    contractExplorerUrl:
+      "https://ropsten.etherscan.io/address/0xcB494d8dB930cD8aCcA4434197AACb9db44Af478",
+    logo: EthereumLogo,
   },
 };
