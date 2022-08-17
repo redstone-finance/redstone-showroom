@@ -48,12 +48,18 @@ export const Showroom = () => {
   const arePrices = Object.values(prices).every((price) => !!price);
 
   return (
-    <div className="flex justify-center items-center flex-col ">
+    <div className="flex justify-center items-center flex-col">
+      {!network && (
+        <p className="mt-10 mb-0 text-lg font-bold">
+          Please select a chain to see sample of Redstone Oracle data
+        </p>
+      )}
       <div className="w-full flex justify-evenly px-10 mt-10">
         {chainsArray.map((chain) => (
           <ChainButton
             key={chain.chainId}
             chain={chain}
+            network={network}
             onChainClick={onChainClick}
           />
         ))}
