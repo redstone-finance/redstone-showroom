@@ -1,15 +1,15 @@
 import { Header } from "./components/Header";
-import { SideBar } from "./components/SideBar";
+import { Footer } from "./components/Footer";
 import { Showroom } from "./pages/Showroom";
 
 const App = () => {
   return (
-    <div className="h-full bg-neutral-100 overflow-auto">
+    <div className="flex flex-col h-full bg-neutral-100 overflow-auto">
       <Header />
-      <SideBar />
-      <div className="relative left-[160px] w-[calc(100%-160px)] xl:block xl:left-0 xl:w-full">
+      <div className="mb-5">
         <Showroom />
       </div>
+      <Footer />
     </div>
   );
 };
