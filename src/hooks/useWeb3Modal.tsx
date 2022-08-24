@@ -26,7 +26,12 @@ export const useWeb3Modal = () => {
 
   const changeNetwork = async () => {
     if (network) {
-      const { exampleContractAddress, ...restNetworkParams } = network;
+      const {
+        exampleContractAddress,
+        contractExplorerUrl,
+        logo,
+        ...restNetworkParams
+      } = network;
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",

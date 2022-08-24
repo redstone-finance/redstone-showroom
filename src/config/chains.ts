@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { utils } from "ethers";
 import PolygonLogo from "../assets/chains/polygon.png";
 import EthereumLogo from "../assets/chains/ethereum.png";
 import EvmosLogo from "../assets/chains/evmos.png";
@@ -22,7 +22,7 @@ export interface ChainDetails {
 
 export const chains: Chains = {
   [9001]: {
-    chainId: ethers.utils.hexValue(9001),
+    chainId: utils.hexValue(9001),
     rpcUrls: ["https://eth.bd.evmos.org:8545"],
     chainName: "Evmos Mainnet",
     nativeCurrency: {
@@ -37,7 +37,7 @@ export const chains: Chains = {
     logo: EvmosLogo,
   },
   [137]: {
-    chainId: ethers.utils.hexValue(137),
+    chainId: utils.hexValue(137),
     rpcUrls: ["https://polygon-rpc.com"],
     chainName: "Polygon",
     nativeCurrency: {
@@ -52,7 +52,7 @@ export const chains: Chains = {
     logo: PolygonLogo,
   },
   [3]: {
-    chainId: ethers.utils.hexValue(3),
+    chainId: utils.hexValue(3),
     rpcUrls: ["https://ropsten.infura.io/v3/"],
     chainName: "Ropsten Test Network",
     nativeCurrency: {
