@@ -4,12 +4,19 @@ import Web3Modal from "web3modal";
 import { ChainDetails, chains } from "../config/chains";
 import { emptyPrices } from "../utils";
 
+type NetworkToAdd = Omit<
+  ChainDetails,
+  "exampleContractAddress" | "contractExplorerUrl" | "logo"
+>;
+
 export const useWeb3Modal = () => {
   const [prices, setPrices] = useState(emptyPrices);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
   const [network, setNetwork] = useState<ChainDetails | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
   const [walletAddress, setWalletAddress] = useState("");
+  const [isChangingNetwork, setIsChangingNetwork] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
 
   useEffect(() => {
     const web3Modal = new Web3Modal({
@@ -19,13 +26,12 @@ export const useWeb3Modal = () => {
   }, []);
 
   useEffect(() => {
-    changeNetwork().catch(() => {
-      handleError();
-    });
+    changeNetwork();
   }, [network]);
 
   const changeNetwork = async () => {
     if (network) {
+      setIsChangingNetwork(true);
       const {
         exampleContractAddress,
         contractExplorerUrl,
@@ -37,30 +43,32 @@ export const useWeb3Modal = () => {
           method: "wallet_switchEthereumChain",
           params: [{ chainId: restNetworkParams.chainId }],
         });
+        setIsChangingNetwork(false);
       } catch (switchError: any) {
         if (switchError.code === 4902) {
-          try {
-            await window.ethereum.request({
-              method: "wallet_addEthereumChain",
-              params: [restNetworkParams],
-            });
-          } catch (addError) {
-            handleError();
-          }
+          await addNewNetwork(restNetworkParams);
+          setIsChangingNetwork(false);
         }
-        handleError();
+        setPrices(emptyPrices);
       }
     }
   };
 
-  const handleError = () => {
-    setPrices(emptyPrices);
-    setNetwork(null);
+  const addNewNetwork = async (networkParams: NetworkToAdd) => {
+    try {
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [networkParams],
+      });
+    } catch {
+      setPrices(emptyPrices);
+    }
   };
 
   const connectWallet = async () => {
     if (web3Modal) {
       try {
+        setIsConnecting(true);
         const instance = await web3Modal.connect();
         addListeners(instance);
         const provider = new providers.Web3Provider(instance);
@@ -71,6 +79,7 @@ export const useWeb3Modal = () => {
       } catch (error: any) {
         console.error(error);
       } finally {
+        setIsConnecting(false);
         setPrices(emptyPrices);
       }
     }
@@ -88,7 +97,6 @@ export const useWeb3Modal = () => {
         setNetwork(null);
       } else {
         setNetwork(chainFromConfig);
-        connectWallet();
       }
     });
   };
@@ -101,5 +109,7 @@ export const useWeb3Modal = () => {
     signer,
     connectWallet,
     walletAddress,
+    isChangingNetwork,
+    isConnecting,
   };
 };
