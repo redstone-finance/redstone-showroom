@@ -22,6 +22,8 @@ export const Showroom = () => {
     signer,
     connectWallet,
     walletAddress,
+    isChangingNetwork,
+    isConnecting,
   } = useWeb3Modal();
   const {
     blockNumber,
@@ -39,10 +41,10 @@ export const Showroom = () => {
   );
 
   const onChainClick = async (chain: ChainDetails) => {
+    setNetwork(chain);
     if (!signer) {
       await connectWallet();
     }
-    setNetwork(chain);
   };
 
   const arePrices = Object.values(prices).every((price) => !!price);
@@ -61,10 +63,19 @@ export const Showroom = () => {
             chain={chain}
             network={network}
             onChainClick={onChainClick}
+            disabled={isConnecting}
           />
         ))}
       </div>
-      {!!signer && (
+      {isChangingNetwork && signer && (
+        <p className="mt-10 mb-0 text-lg font-bold">
+          Please change network in MetaMask
+        </p>
+      )}
+      {isConnecting && (
+        <p className="mt-10 mb-0 text-lg font-bold">Please login to MetaMask</p>
+      )}
+      {signer && !isChangingNetwork && (
         <div className="flex w-full justify-center items-center mt-8 flex-col">
           {network && (
             <ChainDataTable walletAddress={walletAddress} network={network} />
