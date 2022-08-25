@@ -49,6 +49,7 @@ export const useWeb3Modal = () => {
           await addNewNetwork(restNetworkParams);
           setIsChangingNetwork(false);
         }
+      } finally {
         setPrices(emptyPrices);
       }
     }
@@ -85,6 +86,17 @@ export const useWeb3Modal = () => {
     }
   };
 
+  const reconnectWallet = async () => {
+    if (web3Modal) {
+      const instance = await web3Modal.connect();
+      const provider = new providers.Web3Provider(instance);
+      const signer = provider.getSigner();
+      setSigner(signer);
+      const walletAddress = await signer.getAddress();
+      setWalletAddress(walletAddress);
+    }
+  };
+
   const addListeners = (web3ModalProvider: any) => {
     web3ModalProvider.on("accountsChanged", () => {
       window.location.reload();
@@ -97,6 +109,7 @@ export const useWeb3Modal = () => {
         setNetwork(null);
       } else {
         setNetwork(chainFromConfig);
+        await reconnectWallet();
       }
     });
   };
