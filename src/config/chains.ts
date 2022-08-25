@@ -31,9 +31,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://evm.evmos.org"],
-    exampleContractAddress: "0x7A8e56c69Cae266D915FC37892Bd959CF844d53f",
+    exampleContractAddress: "0x6FbfA613835bEDF60a089eC080e01489C85FafbE",
     contractExplorerUrl:
-      "https://evm.evmos.org/address/0x7A8e56c69Cae266D915FC37892Bd959CF844d53f",
+      "https://evm.evmos.org/address/0x6FbfA613835bEDF60a089eC080e01489C85FafbE",
     logo: EvmosLogo,
   },
   [137]: {
@@ -46,9 +46,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://polygonscan.com/"],
-    exampleContractAddress: "0x5Bf1cd8CC736096aF9b01400F836FC16A7E490C9",
+    exampleContractAddress: "0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
     contractExplorerUrl:
-      "https://polygonscan.com/address/0x5Bf1cd8CC736096aF9b01400F836FC16A7E490C9",
+      "https://polygonscan.com/address/0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
     logo: PolygonLogo,
   },
   [3]: {
@@ -61,9 +61,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://ropsten.etherscan.io/"],
-    exampleContractAddress: "0xcB494d8dB930cD8aCcA4434197AACb9db44Af478",
+    exampleContractAddress: "0xFe627d6dEFD226eC9bB53177928a1D7Dfbc6c98e",
     contractExplorerUrl:
-      "https://ropsten.etherscan.io/address/0xcB494d8dB930cD8aCcA4434197AACb9db44Af478",
+      "https://ropsten.etherscan.io/address/0xFe627d6dEFD226eC9bB53177928a1D7Dfbc6c98e",
     logo: EthereumLogo,
   },
 };
