@@ -3,6 +3,7 @@ import PolygonLogo from "../assets/chains/polygon.png";
 import EthereumLogo from "../assets/chains/ethereum.png";
 import EvmosLogo from "../assets/chains/evmos.png";
 import OptimismLogo from "../assets/chains/optimism.png";
+import ArbitrumLogo from "../assets/chains/arbitrum.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -51,6 +52,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://polygonscan.com/address/0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
     logo: PolygonLogo,
+  },
+  [42161]: {
+    chainId: utils.hexValue(42161),
+    rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+    chainName: "Arbitrum One",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://optimistic.etherscan.io"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://arbiscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: ArbitrumLogo,
   },
   [10]: {
     chainId: utils.hexValue(10),
