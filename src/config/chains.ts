@@ -2,6 +2,7 @@ import { utils } from "ethers";
 import PolygonLogo from "../assets/chains/polygon.png";
 import EthereumLogo from "../assets/chains/ethereum.png";
 import EvmosLogo from "../assets/chains/evmos.png";
+import OptimismLogo from "../assets/chains/optimism.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -50,6 +51,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://polygonscan.com/address/0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
     logo: PolygonLogo,
+  },
+  [10]: {
+    chainId: utils.hexValue(10),
+    rpcUrls: ["https://mainnet.optimism.io"],
+    chainName: "Optimism",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://optimistic.etherscan.io"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://optimistic.etherscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: OptimismLogo,
   },
   [5]: {
     chainId: utils.hexValue(5),
