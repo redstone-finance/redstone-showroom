@@ -6,7 +6,7 @@ import { emptyPrices } from "../utils";
 
 type NetworkToAdd = Omit<
   ChainDetails,
-  "exampleContractAddress" | "contractExplorerUrl" | "logo"
+  "exampleContractAddress" | "contractExplorerUrl" | "logo" | "label"
 >;
 
 export const useWeb3Modal = () => {
@@ -36,6 +36,7 @@ export const useWeb3Modal = () => {
         exampleContractAddress,
         contractExplorerUrl,
         logo,
+        label,
         ...restNetworkParams
       } = network;
       try {

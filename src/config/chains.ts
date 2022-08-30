@@ -4,6 +4,7 @@ import EthereumLogo from "../assets/chains/ethereum.png";
 import EvmosLogo from "../assets/chains/evmos.png";
 import OptimismLogo from "../assets/chains/optimism.png";
 import ArbitrumLogo from "../assets/chains/arbitrum.png";
+import AvalancheLogo from "../assets/chains/avalanche.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -11,6 +12,7 @@ export interface ChainDetails {
   chainId: string;
   rpcUrls: string[];
   chainName: string;
+  label: string;
   nativeCurrency: {
     name: string;
     symbol: string;
@@ -27,6 +29,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(9001),
     rpcUrls: ["https://eth.bd.evmos.org:8545"],
     chainName: "Evmos Mainnet",
+    label: "Evmos",
     nativeCurrency: {
       name: "EVMOS",
       symbol: "EVMOS",
@@ -42,6 +45,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(137),
     rpcUrls: ["https://polygon-rpc.com"],
     chainName: "Polygon",
+    label: "Polygon",
     nativeCurrency: {
       name: "MATIC",
       symbol: "MATIC",
@@ -57,6 +61,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(42161),
     rpcUrls: ["https://arb1.arbitrum.io/rpc"],
     chainName: "Arbitrum One",
+    label: "Arbitrum",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
@@ -72,6 +77,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(10),
     rpcUrls: ["https://mainnet.optimism.io"],
     chainName: "Optimism",
+    label: "Optimism",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
@@ -87,6 +93,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(5),
     rpcUrls: ["https://goerli.infura.io/v3/"],
     chainName: "Goerli Test Network",
+    label: "Goerli",
     nativeCurrency: {
       name: "GoerliETH",
       symbol: "GoerliETH",
@@ -97,5 +104,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://goerli.etherscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: EthereumLogo,
+  },
+  [43114]: {
+    chainId: utils.hexValue(43114),
+    rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+    chainName: "Avalanche Network",
+    label: "Avalanche",
+    nativeCurrency: {
+      name: "AVAX",
+      symbol: "AVAX",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://snowtrace.io/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://snowtrace.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: AvalancheLogo,
   },
 };

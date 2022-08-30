@@ -20,12 +20,7 @@ export const ChainButton = ({
     onClick={() => onChainClick(chain)}
     disabled={disabled}
   >
-    <img
-      width={24}
-      height={24}
-      src={chain.logo}
-      alt={`${chain.chainName} logo`}
-    />
-    {chain.chainName}
+    <img width={24} height={24} src={chain.logo} alt={`${chain.label} logo`} />
+    {chain.label}
   </button>
 );
