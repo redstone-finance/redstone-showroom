@@ -7,6 +7,7 @@ import ArbitrumLogo from "../assets/chains/arbitrum.png";
 import AvalancheLogo from "../assets/chains/avalanche.png";
 import CeloLogo from "../assets/chains/celo.png";
 import BnbLogo from "../assets/chains/bnb.png";
+import FantomLogo from "../assets/chains/fantom.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -154,5 +155,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://bscscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: BnbLogo,
+  },
+  [250]: {
+    chainId: utils.hexValue(250),
+    rpcUrls: ["https://bsc-dataseed.binance.org/"],
+    chainName: "Fantom",
+    label: "Fantom",
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://ftmscan.com/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://ftmscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: FantomLogo,
   },
 };
