@@ -5,6 +5,7 @@ import EvmosLogo from "../assets/chains/evmos.png";
 import OptimismLogo from "../assets/chains/optimism.png";
 import ArbitrumLogo from "../assets/chains/arbitrum.png";
 import AvalancheLogo from "../assets/chains/avalanche.png";
+import CeloLogo from "../assets/chains/celo.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -120,5 +121,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://snowtrace.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: AvalancheLogo,
+  },
+  [42220]: {
+    chainId: utils.hexValue(42220),
+    rpcUrls: ["https://forno.celo.org"],
+    chainName: "Celo",
+    label: "Celo",
+    nativeCurrency: {
+      name: "Celo",
+      symbol: "CELO",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.celo.org/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://explorer.celo.org/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: CeloLogo,
   },
 };
