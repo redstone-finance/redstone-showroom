@@ -6,6 +6,7 @@ import OptimismLogo from "../assets/chains/optimism.png";
 import ArbitrumLogo from "../assets/chains/arbitrum.png";
 import AvalancheLogo from "../assets/chains/avalanche.png";
 import CeloLogo from "../assets/chains/celo.png";
+import BnbLogo from "../assets/chains/bnb.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -137,5 +138,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.celo.org/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: CeloLogo,
+  },
+  [56]: {
+    chainId: utils.hexValue(56),
+    rpcUrls: ["https://bsc-dataseed.binance.org/"],
+    chainName: "Smart Chain",
+    label: "BNB",
+    nativeCurrency: {
+      name: "BNB",
+      symbol: "BNB",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://bscscan.com"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://bscscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: BnbLogo,
   },
 };
