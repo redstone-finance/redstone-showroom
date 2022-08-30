@@ -51,19 +51,19 @@ export const chains: Chains = {
       "https://polygonscan.com/address/0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
     logo: PolygonLogo,
   },
-  [3]: {
-    chainId: utils.hexValue(3),
-    rpcUrls: ["https://ropsten.infura.io/v3/"],
-    chainName: "Ropsten Test Network",
+  [5]: {
+    chainId: utils.hexValue(5),
+    rpcUrls: ["https://goerli.infura.io/v3/"],
+    chainName: "Goerli Test Network",
     nativeCurrency: {
-      name: "RopstenETH",
-      symbol: "RopstenETH",
+      name: "GoerliETH",
+      symbol: "GoerliETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://ropsten.etherscan.io/"],
-    exampleContractAddress: "0xFe627d6dEFD226eC9bB53177928a1D7Dfbc6c98e",
+    blockExplorerUrls: ["https://goerli.etherscan.io/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     contractExplorerUrl:
-      "https://ropsten.etherscan.io/address/0xFe627d6dEFD226eC9bB53177928a1D7Dfbc6c98e",
+      "https://goerli.etherscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: EthereumLogo,
   },
 };
