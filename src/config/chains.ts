@@ -8,6 +8,7 @@ import AvalancheLogo from "../assets/chains/avalanche.png";
 import CeloLogo from "../assets/chains/celo.png";
 import BnbLogo from "../assets/chains/bnb.png";
 import FantomLogo from "../assets/chains/fantom.png";
+import KlaytnLogo from "../assets/chains/klaytn.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -171,5 +172,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://ftmscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: FantomLogo,
+  },
+  [8217]: {
+    chainId: utils.hexValue(8217),
+    rpcUrls: ["https://public-node-api.klaytnapi.com/v1/cypress"],
+    chainName: "Klaytn Mainnet",
+    label: "Klaytn",
+    nativeCurrency: {
+      name: "KLAY",
+      symbol: "KLAY",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://scope.klaytn.com"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://scope.klaytn.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: KlaytnLogo,
   },
 };

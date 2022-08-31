@@ -56,7 +56,7 @@ export const Showroom = () => {
           Please select a chain to see sample of Redstone Oracle data
         </p>
       )}
-      <div className="w-full flex flex-wrap justify-evenly gap-y-3 px-10 mt-10">
+      <div className="w-3/4 flex flex-wrap justify-center gap-3 px-10 mt-10">
         {chainsArray.map((chain) => (
           <ChainButton
             key={chain.chainId}
