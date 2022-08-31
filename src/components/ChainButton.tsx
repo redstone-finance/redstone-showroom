@@ -16,7 +16,7 @@ export const ChainButton = ({
   <button
     className={`flex align-center gap-2 border py-2 px-2 rounded ${
       chain.chainId === network?.chainId && "border-redstone"
-    } disabled:opacity-30`}
+    } disabled:opacity-30 hover:scale-110	ease-in-out duration-300`}
     onClick={() => onChainClick(chain)}
     disabled={disabled}
   >
