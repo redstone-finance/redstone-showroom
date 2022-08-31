@@ -9,6 +9,7 @@ import CeloLogo from "../assets/chains/celo.png";
 import BnbLogo from "../assets/chains/bnb.png";
 import FantomLogo from "../assets/chains/fantom.png";
 import KlaytnLogo from "../assets/chains/klaytn.png";
+import MoonbeamLogo from "../assets/chains/moonbeam.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -188,5 +189,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://scope.klaytn.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: KlaytnLogo,
+  },
+  [1284]: {
+    chainId: utils.hexValue(1284),
+    rpcUrls: ["https://rpc.api.moonbeam.network"],
+    chainName: "Moonbeam",
+    label: "Moonbeam",
+    nativeCurrency: {
+      name: "GLMR",
+      symbol: "GLMR",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://moonscan.io"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://moonscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: MoonbeamLogo,
   },
 };
