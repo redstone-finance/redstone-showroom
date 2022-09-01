@@ -10,6 +10,7 @@ import BnbLogo from "../assets/chains/bnb.png";
 import FantomLogo from "../assets/chains/fantom.png";
 import KlaytnLogo from "../assets/chains/klaytn.png";
 import MoonbeamLogo from "../assets/chains/moonbeam.png";
+import zkSyncLogo from "../assets/chains/zkSync.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -205,5 +206,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://moonscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: MoonbeamLogo,
+  },
+  [280]: {
+    chainId: utils.hexValue(280),
+    rpcUrls: ["https://zksync2-testnet.zksync.dev"],
+    chainName: "zkSync alpha testnet",
+    label: "zkSyncs",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://zksync2-testnet.zkscan.io/"],
+    exampleContractAddress: "0xD5F937c2570776cC1249E8fcFCa0466662e3d05c",
+    contractExplorerUrl:
+      "https://zksync2-testnet.zkscan.io/address/0xD5F937c2570776cC1249E8fcFCa0466662e3d05c",
+    logo: zkSyncLogo,
   },
 };
