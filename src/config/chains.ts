@@ -11,6 +11,7 @@ import FantomLogo from "../assets/chains/fantom.png";
 import KlaytnLogo from "../assets/chains/klaytn.png";
 import MoonbeamLogo from "../assets/chains/moonbeam.png";
 import zkSyncLogo from "../assets/chains/zkSync.png";
+import AuroraLogo from "../assets/chains/aurora.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -222,5 +223,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://zksync2-testnet.zkscan.io/address/0xD5F937c2570776cC1249E8fcFCa0466662e3d05c",
     logo: zkSyncLogo,
+  },
+  [1313161554]: {
+    chainId: utils.hexValue(1313161554),
+    rpcUrls: ["https://mainnet.aurora.dev"],
+    chainName: "Aurora",
+    label: "Aurora",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://aurorascan.dev/"],
+    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    contractExplorerUrl:
+      "https://aurorascan.dev/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    logo: AuroraLogo,
   },
 };
