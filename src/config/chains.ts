@@ -212,7 +212,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(280),
     rpcUrls: ["https://zksync2-testnet.zksync.dev"],
     chainName: "zkSync alpha testnet",
-    label: "zkSyncs",
+    label: "zkSync",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
