@@ -12,6 +12,7 @@ import KlaytnLogo from "../assets/chains/klaytn.png";
 import MoonbeamLogo from "../assets/chains/moonbeam.png";
 import zkSyncLogo from "../assets/chains/zkSync.png";
 import AuroraLogo from "../assets/chains/aurora.png";
+import ScrollLogo from "../assets/chains/scroll.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -239,5 +240,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://aurorascan.dev/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: AuroraLogo,
+  },
+  [534354]: {
+    chainId: utils.hexValue(534354),
+    rpcUrls: ["https://prealpha.scroll.io/l2"],
+    chainName: "Scroll L2 Testnet",
+    label: "Scroll",
+    nativeCurrency: {
+      name: "TSETH",
+      symbol: "TSETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://l2scan.scroll.io/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://l2scan.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: ScrollLogo,
   },
 };
