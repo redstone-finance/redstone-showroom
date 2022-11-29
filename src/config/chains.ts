@@ -220,9 +220,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://zksync2-testnet.zkscan.io/"],
-    exampleContractAddress: "0xD5F937c2570776cC1249E8fcFCa0466662e3d05c",
+    exampleContractAddress: "0x2e39e5Df2d31cd7f5Cd1Ee2F3df49f9F22145522",
     contractExplorerUrl:
-      "https://zksync2-testnet.zkscan.io/address/0xD5F937c2570776cC1249E8fcFCa0466662e3d05c",
+      "https://zksync2-testnet.zkscan.io/address/0x2e39e5Df2d31cd7f5Cd1Ee2F3df49f9F22145522",
     logo: zkSyncLogo,
   },
   [1313161554]: {
