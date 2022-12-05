@@ -13,6 +13,7 @@ import MoonbeamLogo from "../assets/chains/moonbeam.png";
 import zkSyncLogo from "../assets/chains/zkSync.png";
 import AuroraLogo from "../assets/chains/aurora.png";
 import ScrollLogo from "../assets/chains/scroll.png";
+import DogechainLogo from "../assets/chains/dogechain.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -256,5 +257,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://l2scan.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: ScrollLogo,
+  },
+  [2000]: {
+    chainId: utils.hexValue(2000),
+    rpcUrls: ["https://rpc.dogechain.dog"],
+    chainName: "Dogechain",
+    label: "Dogechain",
+    nativeCurrency: {
+      name: "DOGE",
+      symbol: "DOGE",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.dogechain.dog/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://explorer.dogechain.dog/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: DogechainLogo,
   },
 };
