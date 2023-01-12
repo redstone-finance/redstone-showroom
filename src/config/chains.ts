@@ -14,6 +14,7 @@ import zkSyncLogo from "../assets/chains/zkSync.png";
 import AuroraLogo from "../assets/chains/aurora.png";
 import ScrollLogo from "../assets/chains/scroll.png";
 import DogechainLogo from "../assets/chains/dogechain.png";
+import MantleLogo from "../assets/chains/mantle.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -273,5 +274,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.dogechain.dog/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: DogechainLogo,
+  },
+  [5001]: {
+    chainId: utils.hexValue(5001),
+    rpcUrls: ["​​https://rpc.testnet.mantle.xyz/"],
+    chainName: "Mantle Testnet",
+    label: "Mantle",
+    nativeCurrency: {
+      name: "BIT",
+      symbol: "BIT",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.testnet.mantle.xyz/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://explorer.testnet.mantle.xyz/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: MantleLogo,
   },
 };
