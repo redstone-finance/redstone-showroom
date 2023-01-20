@@ -62,7 +62,7 @@ export const useWeb3Modal = () => {
         method: "wallet_addEthereumChain",
         params: [networkParams],
       });
-    } catch {
+    } catch (error) {
       setPrices(emptyPrices);
     }
   };

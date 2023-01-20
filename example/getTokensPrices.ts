@@ -1,5 +1,5 @@
 import { Contract, providers } from "ethers";
-import { WrapperBuilder } from "redstone-evm-connector";
+import { WrapperBuilder } from "@redstone-finance/evm-connector";
 
 const contractAddress = "";
 const abi = "";
@@ -17,8 +17,14 @@ const provider = new providers.JsonRpcProvider(PROVIDER_RPC.rpc, {
 
 (async () => {
   const contract = new Contract(contractAddress, abi, provider);
-  const wrappedContract =
-    WrapperBuilder.wrapLite(contract).usingPriceFeed("redstone-rapid");
-  const btcPriceFromContract = await wrappedContract.getBTCPrice();
+  const wrappedContract = WrapperBuilder.wrap(contract).usingDataService(
+    {
+      dataServiceId: "redstone-avalanche-prod",
+      uniqueSignersCount: 3,
+      dataFeeds: ["ETH", "BTC"],
+    },
+    ["https://d33trozg86ya9x.cloudfront.net"]
+  );
+  const btcPriceFromContract = await wrappedContract.getTokensPrices();
   console.log(btcPriceFromContract);
 })();
