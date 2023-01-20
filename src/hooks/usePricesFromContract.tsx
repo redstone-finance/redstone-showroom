@@ -1,9 +1,9 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { utils, providers, Contract } from "ethers";
-import { WrapperBuilder } from "redstone-evm-connector";
+import { WrapperBuilder } from "@redstone-finance/evm-connector";
 import { emptyPrices } from "../utils";
 import { ChainDetails } from "../config/chains";
-import { abi } from "../config/ExampleRedstoneShowroomDetails.json";
+import { abi } from "../config/ShowroomContractAbi.json";
 import { usePricesData } from "./usePricesData";
 import { Prices } from "../types";
 
@@ -57,8 +57,14 @@ export const usePricesFromContract = (
     signer: providers.JsonRpcSigner
   ) => {
     const contract = new Contract(contractAddress, abi, signer);
-    const wrappedContract =
-      WrapperBuilder.wrapLite(contract).usingPriceFeed("redstone-rapid");
+    const wrappedContract = WrapperBuilder.wrap(contract).usingDataService(
+      {
+        dataServiceId: "redstone-rapid-demo",
+        uniqueSignersCount: 1,
+        dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+      },
+      ["https://d33trozg86ya9x.cloudfront.net"]
+    );
     return await wrappedContract.getPrices();
   };
 

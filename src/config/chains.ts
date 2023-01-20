@@ -46,9 +46,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://evm.evmos.org"],
-    exampleContractAddress: "0x6FbfA613835bEDF60a089eC080e01489C85FafbE",
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
-      "https://evm.evmos.org/address/0x6FbfA613835bEDF60a089eC080e01489C85FafbE",
+      "https://evm.evmos.org/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: EvmosLogo,
   },
   [137]: {
@@ -62,11 +62,12 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://polygonscan.com/"],
-    exampleContractAddress: "0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
+    exampleContractAddress: "0x0721b16dDC4931472b69855A5C149443C232205F",
     contractExplorerUrl:
-      "https://polygonscan.com/address/0xb7A7d4f62E6A1a09C3a32356EF36f2224568C2a5",
+      "https://polygonscan.com/address/0x0721b16dDC4931472b69855A5C149443C232205F",
     logo: PolygonLogo,
   },
+  /* TODO: try to deploy new contract on Aribtrum (recently gas cost ~23$)
   [42161]: {
     chainId: utils.hexValue(42161),
     rpcUrls: ["https://arb1.arbitrum.io/rpc"],
@@ -77,12 +78,13 @@ export const chains: Chains = {
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://optimistic.etherscan.io"],
+    blockExplorerUrls: ["https://arbiscan.io/"],
     exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     contractExplorerUrl:
       "https://arbiscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
     logo: ArbitrumLogo,
   },
+  */
   [10]: {
     chainId: utils.hexValue(10),
     rpcUrls: ["https://mainnet.optimism.io"],
@@ -94,9 +96,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://optimistic.etherscan.io"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://optimistic.etherscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://optimistic.etherscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: OptimismLogo,
   },
   [5]: {
@@ -110,9 +112,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://goerli.etherscan.io/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0xC9BE33f28520B1D94614039Ed06D5e8ed2cee048",
     contractExplorerUrl:
-      "https://goerli.etherscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://goerli.etherscan.io/address/0xC9BE33f28520B1D94614039Ed06D5e8ed2cee048",
     logo: EthereumLogo,
   },
   [43114]: {
@@ -126,9 +128,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://snowtrace.io/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x4d58dbF4a921FdD964Ece0732B1577cC25662587",
     contractExplorerUrl:
-      "https://snowtrace.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://snowtrace.io/address/0x4d58dbF4a921FdD964Ece0732B1577cC25662587",
     logo: AvalancheLogo,
   },
   [42220]: {
@@ -142,9 +144,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://explorer.celo.org/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://explorer.celo.org/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://explorer.celo.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: CeloLogo,
   },
   [56]: {
@@ -158,14 +160,14 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://bscscan.com"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://bscscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://bscscan.com/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: BnbLogo,
   },
   [250]: {
     chainId: utils.hexValue(250),
-    rpcUrls: ["https://bsc-dataseed.binance.org/"],
+    rpcUrls: ["https://rpc.ankr.com/fantom/"],
     chainName: "Fantom",
     label: "Fantom",
     nativeCurrency: {
@@ -174,9 +176,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://ftmscan.com/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://ftmscan.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://ftmscan.com/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: FantomLogo,
   },
   [8217]: {
@@ -190,9 +192,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://scope.klaytn.com"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
-      "https://scope.klaytn.com/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://scope.klaytn.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: KlaytnLogo,
   },
   [1284]: {
@@ -206,9 +208,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://moonscan.io"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     contractExplorerUrl:
-      "https://moonscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://moonscan.io/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     logo: MoonbeamLogo,
   },
   [280]: {
@@ -222,9 +224,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://zksync2-testnet.zkscan.io/"],
-    exampleContractAddress: "0x2e39e5Df2d31cd7f5Cd1Ee2F3df49f9F22145522",
+    exampleContractAddress: "0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     contractExplorerUrl:
-      "https://zksync2-testnet.zkscan.io/address/0x2e39e5Df2d31cd7f5Cd1Ee2F3df49f9F22145522",
+      "https://zksync2-testnet.zkscan.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     logo: zkSyncLogo,
   },
   [1313161554]: {
@@ -238,9 +240,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://aurorascan.dev/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x1a6bbc6Ff8BEeE20B4177Ac87580F4e2aF3Abf71",
     contractExplorerUrl:
-      "https://aurorascan.dev/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://aurorascan.dev/address/0x1a6bbc6Ff8BEeE20B4177Ac87580F4e2aF3Abf71",
     logo: AuroraLogo,
   },
   [534354]: {
@@ -254,9 +256,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://l2scan.scroll.io/"],
-    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     contractExplorerUrl:
-      "https://l2scan.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://l2scan.scroll.io/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: ScrollLogo,
   },
   [2000]: {
@@ -270,9 +272,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://explorer.dogechain.dog/"],
-    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     contractExplorerUrl:
-      "https://explorer.dogechain.dog/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://explorer.dogechain.dog/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: DogechainLogo,
   },
   [5001]: {
@@ -286,9 +288,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://explorer.testnet.mantle.xyz/"],
-    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     contractExplorerUrl:
-      "https://explorer.testnet.mantle.xyz/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://explorer.testnet.mantle.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: MantleLogo,
   },
 };
