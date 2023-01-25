@@ -2,8 +2,9 @@ import { useWeb3Modal } from "../hooks/useWeb3Modal";
 import { ChainButton } from "../components/ChainButton";
 import { ChainDetails, chains } from "../config/chains";
 import { CasperBlock } from "./CasperBlock";
-import { useCasper } from "../hooks/useCasper";
+import { useFuel } from "../hooks/useFuel";
 import { EvmBlock } from "./EvmBlock";
+import { FuelBlock } from "./FuelBlock";
 import { useState } from "react";
 
 const chainsArray = Object.values(chains);
@@ -12,7 +13,8 @@ export const Showroom = () => {
   const [network, setNetwork] = useState<ChainDetails | null>(null);
 
   const evm = useWeb3Modal(setNetwork);
-  const casper = useCasper();
+  const starknet = useStarknet();
+  const fuel = useFuel();
 
   const onChainClick = async (chain: ChainDetails) => {
     setNetwork(chain);
@@ -21,8 +23,12 @@ export const Showroom = () => {
       return await evm.connectWallet(chain);
     }
 
-    if (chain?.type === "casper") {
-      return await casper.connectWallet();
+    if (chain?.type === "starknet") {
+      return await starknet.connectWallet();
+    }
+
+    if (chain?.type === "fuel") {
+      return await fuel.connectWallet();
     }
   };
 
@@ -48,8 +54,11 @@ export const Showroom = () => {
       {(network?.type || "eth") === "eth" && (
         <EvmBlock props={{ ...evm }} network={network!} />
       )}
-      {network?.type === "casper" && (
-        <CasperBlock props={{ ...casper }} network={network!} />
+      {network?.type === "starknet" && (
+        <StarknetBlock props={{ ...starknet }} network={network!} />
+      )}
+      {network?.type === "fuel" && (
+        <FuelBlock props={{ ...fuel }} network={network!} />
       )}
     </div>
   );

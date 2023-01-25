@@ -1,5 +1,5 @@
 import { utils } from "ethers";
-import CasperLogo from "../assets/chains/casper.svg";
+import FuelLogo from "../assets/chains/fuel.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -376,23 +376,43 @@ export const chains: Chains = {
   //     "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
   //   logo: BaseLogo,
   // },
-  [9999999997]: {
-    chainId: utils.hexValue(9999999997),
-    rpcUrls: [],
-    chainName: "Casper Testnet",
-    label: "Casper",
+  // [9999999997]: {
+  //   chainId: utils.hexValue(9999999997),
+  //   rpcUrls: [],
+  //   chainName: "Casper Testnet",
+  //   label: "Casper",
+  //   nativeCurrency: {
+  //     name: "CSPR",
+  //     symbol: "CSPR",
+  //     decimals: 18,
+  //   },
+  //   blockExplorerUrls: ["https://testnet.cspr.live/"],
+  //   exampleContractAddress:
+  //     "a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
+  //   contractExplorerUrl:
+  //     "https://testnet.cspr.live/contract-package/a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
+  //   txExplorerUrl: "https://testnet.cspr.live/deploy/",
+  //   logo: CasperLogo,
+  //   type: "casper",
+  // },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: ["https://beta-3.fuel.network/graphql"],
+    chainName: "Fuel Beta-3 Network",
+    label: "Fuel",
     nativeCurrency: {
-      name: "CSPR",
-      symbol: "CSPR",
+      name: "ETH",
+      symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://testnet.cspr.live/"],
+    blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
     exampleContractAddress:
-      "a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
+      "0x8fdae6cb766121b5382977e98dc948dbdc95812a3e60c2cf2c0dfff06e877989",
     contractExplorerUrl:
-      "https://testnet.cspr.live/contract-package/a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
-    txExplorerUrl: "https://testnet.cspr.live/deploy/",
-    logo: CasperLogo,
-    type: "casper",
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/address/{walletAddress}",
+    txExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
+    logo: FuelLogo,
+    type: "fuel",
   },
 };
