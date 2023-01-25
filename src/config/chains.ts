@@ -3,7 +3,7 @@ import PolygonLogo from "../assets/chains/polygon.png";
 import EthereumLogo from "../assets/chains/ethereum.png";
 import EvmosLogo from "../assets/chains/evmos.png";
 import OptimismLogo from "../assets/chains/optimism.png";
-import ArbitrumLogo from "../assets/chains/arbitrum.png";
+// import ArbitrumLogo from "../assets/chains/arbitrum.png";
 import AvalancheLogo from "../assets/chains/avalanche.png";
 import CeloLogo from "../assets/chains/celo.png";
 import BnbLogo from "../assets/chains/bnb.png";
@@ -15,6 +15,7 @@ import AuroraLogo from "../assets/chains/aurora.png";
 import ScrollLogo from "../assets/chains/scroll.png";
 import DogechainLogo from "../assets/chains/dogechain.png";
 import MantleLogo from "../assets/chains/mantle.png";
+import StarknetLogo from "../assets/chains/starknet.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -31,7 +32,9 @@ export interface ChainDetails {
   blockExplorerUrls: string[];
   exampleContractAddress: string;
   contractExplorerUrl: string;
+  txExplorerUrl?: string;
   logo?: any;
+  isStarknet?: boolean;
 }
 
 export const chains: Chains = {
@@ -68,23 +71,23 @@ export const chains: Chains = {
     logo: PolygonLogo,
   },
   /* TODO: try to deploy new contract on Aribtrum (recently gas cost ~23$)
-  [42161]: {
-    chainId: utils.hexValue(42161),
-    rpcUrls: ["https://arb1.arbitrum.io/rpc"],
-    chainName: "Arbitrum One",
-    label: "Arbitrum",
-    nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
-      decimals: 18,
+    [42161]: {
+      chainId: utils.hexValue(42161),
+      rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+      chainName: "Arbitrum One",
+      label: "Arbitrum",
+      nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 18,
+      },
+      blockExplorerUrls: ["https://arbiscan.io/"],
+      exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      contractExplorerUrl:
+        "https://arbiscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      logo: ArbitrumLogo,
     },
-    blockExplorerUrls: ["https://arbiscan.io/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
-    contractExplorerUrl:
-      "https://arbiscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
-    logo: ArbitrumLogo,
-  },
-  */
+    */
   [10]: {
     chainId: utils.hexValue(10),
     rpcUrls: ["https://mainnet.optimism.io"],
@@ -292,5 +295,26 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.testnet.mantle.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: MantleLogo,
+  },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: [
+      "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
+    ],
+    chainName: "Starknet Test Network",
+    label: "Starknet",
+    nativeCurrency: {
+      name: "GoerliETH",
+      symbol: "GoerliETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet.starkscan.co/"],
+    exampleContractAddress:
+      "0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+    contractExplorerUrl:
+      "https://testnet.starkscan.co/contract/0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+    txExplorerUrl: "https://testnet.starkscan.co/tx/",
+    logo: StarknetLogo,
+    isStarknet: true,
   },
 };

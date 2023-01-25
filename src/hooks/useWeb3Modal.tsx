@@ -3,6 +3,7 @@ import { BigNumber, providers } from "ethers";
 import Web3Modal from "web3modal";
 import { ChainDetails, chains } from "../config/chains";
 import { emptyPrices } from "../utils";
+import { connect, IStarknetWindowObject } from "@argent/get-starknet";
 
 type NetworkToAdd = Omit<
   ChainDetails,
@@ -14,6 +15,9 @@ export const useWeb3Modal = () => {
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
   const [network, setNetwork] = useState<ChainDetails | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
+  const [starknet, setStarknet] = useState<IStarknetWindowObject | undefined>(
+    undefined
+  );
   const [walletAddress, setWalletAddress] = useState("");
   const [isChangingNetwork, setIsChangingNetwork] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
@@ -39,6 +43,15 @@ export const useWeb3Modal = () => {
         label,
         ...restNetworkParams
       } = network;
+
+      if (network.isStarknet == true) {
+        setIsChangingNetwork(false);
+        setNetwork(network);
+        await connectStarknetWallet();
+
+        return;
+      }
+
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
@@ -98,6 +111,37 @@ export const useWeb3Modal = () => {
     }
   };
 
+  const connectStarknetWallet = async () => {
+    setIsConnecting(true);
+    setStarknet(undefined);
+    setSigner(null);
+    setPrices(emptyPrices);
+
+    const starknet = await connect();
+
+    if (!starknet) {
+      return setIsConnecting(false);
+    }
+
+    try {
+      const [walletAddress] = await starknet.enable();
+
+      if (!starknet.isConnected) {
+        return setIsConnecting(false);
+      }
+
+      setWalletAddress(walletAddress);
+      setIsConnecting(false);
+
+      addStarknetListeners(starknet);
+
+      return setStarknet(starknet);
+    } catch (error: any) {
+    } finally {
+      setIsConnecting(false);
+    }
+  };
+
   const addListeners = (web3ModalProvider: any) => {
     web3ModalProvider.on("accountsChanged", () => {
       window.location.reload();
@@ -115,13 +159,25 @@ export const useWeb3Modal = () => {
     });
   };
 
+  const addStarknetListeners = (starknet: IStarknetWindowObject) => {
+    starknet.on("accountsChanged", () => {
+      window.location.reload();
+    });
+
+    starknet.on("networkChanged", () => {
+      window.location.reload();
+    });
+  };
+
   return {
     prices,
     setPrices,
     network,
     setNetwork,
     signer,
+    starknet,
     connectWallet,
+    connectStarknetWallet,
     walletAddress,
     isChangingNetwork,
     isConnecting,
