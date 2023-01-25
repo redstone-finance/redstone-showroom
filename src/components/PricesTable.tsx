@@ -14,7 +14,7 @@ export const PricesTable = ({ blockNumber, timestamp, prices }: Props) => {
   }));
 
   return (
-    <table className="w-3/5 table-auto border">
+    <table className="w-3/5 table-auto border mb-5">
       <tbody className="text-md">
         <tr>
           <td className="py-3 px-6">Block number</td>
