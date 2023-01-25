@@ -19,6 +19,7 @@ import WagmiLogo from "../assets/chains/wagmi-testnet.png";
 import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
+import StarknetLogo from "../assets/chains/starknet.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -35,7 +36,9 @@ export interface ChainDetails {
   blockExplorerUrls: string[];
   exampleContractAddress: string;
   contractExplorerUrl: string;
+  txExplorerUrl?: string;
   logo?: any;
+  isStarknet?: boolean;
 }
 
 export const chains: Chains = {
@@ -358,5 +361,26 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     logo: BaseLogo,
+  },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: [
+      "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
+    ],
+    chainName: "Starknet Test Network",
+    label: "Starknet",
+    nativeCurrency: {
+      name: "GoerliETH",
+      symbol: "GoerliETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet.starkscan.co/"],
+    exampleContractAddress:
+      "0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+    contractExplorerUrl:
+      "https://testnet.starkscan.co/contract/0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+    txExplorerUrl: "https://testnet.starkscan.co/tx/",
+    logo: StarknetLogo,
+    isStarknet: true,
   },
 };

@@ -8,6 +8,9 @@ import { ChainButton } from "../components/ChainButton";
 import { ChainDataTable } from "../components/ChainDataTable";
 import { PricesTable } from "../components/PricesTable";
 import { ChainDetails, chains } from "../config/chains";
+import { WritePricesButton } from "../components/WritePricesButton";
+import { ChainTx } from "../components/ChainTx";
+import { ReadPricesButton } from "../components/ReadPricesButton";
 
 const chainsArray = Object.values(chains);
 
@@ -20,21 +23,28 @@ export const Showroom = () => {
     network,
     setNetwork,
     signer,
+    starknet,
     connectWallet,
+    connectStarknetWallet,
     walletAddress,
     isChangingNetwork,
     isConnecting,
   } = useWeb3Modal();
   const {
     blockNumber,
+    txHash,
     timestamp,
     isLoading,
     errorMessage,
     setErrorMessage,
     getPricesFromContract,
+    getStarknetPricesFromPayload,
+    getStarknetPricesFromContract,
+    saveStarknetPricesToContract,
   } = usePricesFromContract(
     network,
     signer,
+    starknet,
     startMockLoader,
     setPrices,
     setIsMockLoading
@@ -42,8 +52,12 @@ export const Showroom = () => {
 
   const onChainClick = async (chain: ChainDetails) => {
     setNetwork(chain);
-    if (!signer) {
-      await connectWallet();
+    if (chain?.isStarknet != true && !signer) {
+      return await connectWallet();
+    }
+
+    if (chain?.isStarknet == true && !starknet) {
+      return await connectStarknetWallet();
     }
   };
 
@@ -67,15 +81,18 @@ export const Showroom = () => {
           />
         ))}
       </div>
-      {isChangingNetwork && signer && (
+      {isChangingNetwork && network?.isStarknet != true && signer && (
         <p className="mt-10 mb-0 text-lg font-bold">
           Please change network in MetaMask
         </p>
       )}
       {isConnecting && (
-        <p className="mt-10 mb-0 text-lg font-bold">Please login to MetaMask</p>
+        <p className="mt-10 mb-0 text-lg font-bold">
+          Please sign in to{" "}
+          {network?.isStarknet == true ? "Starknet" : "MetaMask"}
+        </p>
       )}
-      {signer && !isChangingNetwork && (
+      {signer && network?.isStarknet != true && !isChangingNetwork && (
         <div className="flex w-full justify-center items-center mt-8 flex-col">
           {network && (
             <ChainDataTable walletAddress={walletAddress} network={network} />
@@ -92,6 +109,40 @@ export const Showroom = () => {
             network && (
               <GetPriceButton getPriceFromContract={getPricesFromContract} />
             )
+          )}
+        </div>
+      )}
+      {starknet && network?.isStarknet && !isChangingNetwork && (
+        <div className="flex w-full justify-center items-center mt-8 flex-col">
+          {network && (
+            <ChainDataTable walletAddress={walletAddress} network={network} />
+          )}
+          {isMockLoading || isLoading ? (
+            <GetPriceLoader text={isMockLoading ? text : ""} />
+          ) : arePrices ? (
+            <PricesTable
+              blockNumber={blockNumber}
+              timestamp={timestamp}
+              prices={prices}
+            />
+          ) : (
+            [
+              network && (
+                <div className="flex gap-3">
+                  <WritePricesButton
+                    writePricesToContract={saveStarknetPricesToContract}
+                  />
+                  <ReadPricesButton
+                    readPricesFromContract={getStarknetPricesFromContract}
+                  />
+                  <GetPriceButton
+                    getPriceFromContract={getStarknetPricesFromPayload}
+                  />
+                </div>
+              ),
+
+              txHash && <ChainTx txHash={txHash} network={network} />,
+            ]
           )}
         </div>
       )}
