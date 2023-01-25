@@ -20,6 +20,7 @@ import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import StarknetLogo from "../assets/chains/starknet.png";
+import FuelLogo from "../assets/chains/fuel.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -416,5 +417,25 @@ export const chains: Chains = {
     txExplorerUrl: "https://testnet.starkscan.co/tx/",
     logo: StarknetLogo,
     type: "starknet",
+  },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: ["https://beta-3.fuel.network/graphql"],
+    chainName: "Fuel Beta-3 Network",
+    label: "Fuel",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
+    exampleContractAddress:
+      "0x8fdae6cb766121b5382977e98dc948dbdc95812a3e60c2cf2c0dfff06e877989",
+    contractExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/address/{walletAddress}",
+    txExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
+    logo: FuelLogo,
+    type: "fuel",
   },
 };
