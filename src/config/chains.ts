@@ -67,7 +67,6 @@ export const chains: Chains = {
       "https://polygonscan.com/address/0x0721b16dDC4931472b69855A5C149443C232205F",
     logo: PolygonLogo,
   },
-  /* TODO: try to deploy new contract on Aribtrum (recently gas cost ~23$)
   [42161]: {
     chainId: utils.hexValue(42161),
     rpcUrls: ["https://arb1.arbitrum.io/rpc"],
@@ -79,12 +78,11 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://arbiscan.io/"],
-    exampleContractAddress: "0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
-      "https://arbiscan.io/address/0xFf36C21bBc28C62c91b01D8a39B6af44e75596C1",
+      "https://arbiscan.io/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: ArbitrumLogo,
   },
-  */
   [10]: {
     chainId: utils.hexValue(10),
     rpcUrls: ["https://mainnet.optimism.io"],
