@@ -8,9 +8,8 @@ import { ChainButton } from "../components/ChainButton";
 import { ChainDataTable } from "../components/ChainDataTable";
 import { PricesTable } from "../components/PricesTable";
 import { ChainDetails, chains } from "../config/chains";
-import { WritePricesButton } from "../components/WritePricesButton";
-import { ChainTx } from "../components/ChainTx";
-import { ReadPricesButton } from "../components/ReadPricesButton";
+import { StarknetShowroom } from "./StarknetShowroom";
+import { useStarknet } from "../hooks/useStarknet";
 
 const chainsArray = Object.values(chains);
 
@@ -23,28 +22,26 @@ export const Showroom = () => {
     network,
     setNetwork,
     signer,
-    starknet,
     connectWallet,
-    connectStarknetWallet,
     walletAddress,
     isChangingNetwork,
     isConnecting,
   } = useWeb3Modal();
   const {
+    starknet,
+    connectWallet: connectStarknetWallet,
+    walletAddress: starknetWalletAddress,
+  } = useStarknet();
+  const {
     blockNumber,
-    txHash,
     timestamp,
     isLoading,
     errorMessage,
     setErrorMessage,
     getPricesFromContract,
-    getStarknetPricesFromPayload,
-    getStarknetPricesFromContract,
-    saveStarknetPricesToContract,
   } = usePricesFromContract(
     network,
     signer,
-    starknet,
     startMockLoader,
     setPrices,
     setIsMockLoading
@@ -113,38 +110,11 @@ export const Showroom = () => {
         </div>
       )}
       {starknet && network?.isStarknet && !isChangingNetwork && (
-        <div className="flex w-full justify-center items-center mt-8 flex-col">
-          {network && (
-            <ChainDataTable walletAddress={walletAddress} network={network} />
-          )}
-          {isMockLoading || isLoading ? (
-            <GetPriceLoader text={isMockLoading ? text : ""} />
-          ) : arePrices ? (
-            <PricesTable
-              blockNumber={blockNumber}
-              timestamp={timestamp}
-              prices={prices}
-            />
-          ) : (
-            [
-              network && (
-                <div className="flex gap-3">
-                  <WritePricesButton
-                    writePricesToContract={saveStarknetPricesToContract}
-                  />
-                  <ReadPricesButton
-                    readPricesFromContract={getStarknetPricesFromContract}
-                  />
-                  <GetPriceButton
-                    getPriceFromContract={getStarknetPricesFromPayload}
-                  />
-                </div>
-              ),
-
-              txHash && <ChainTx txHash={txHash} network={network} />,
-            ]
-          )}
-        </div>
+        <StarknetShowroom
+          network={network}
+          starknet={starknet}
+          walletAddress={starknetWalletAddress}
+        ></StarknetShowroom>
       )}
       {!!errorMessage && (
         <Modal

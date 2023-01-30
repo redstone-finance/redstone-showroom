@@ -4,7 +4,7 @@ import axios from "axios";
 
 export class StarknetDataProvider {
   private static dataFeedIdNumber = {
-    BTC: 4346947,
+    BTC: 4346947, // 256*256*ord('B') + 256*ord('T') + ord('C')
     ETH: 4543560,
     BNB: 4345410,
     AR: 16722,
