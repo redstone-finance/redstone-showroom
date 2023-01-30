@@ -46,8 +46,8 @@ export const useStarknetPrices = (
   const getPrices = async (fromContract: boolean) => {
     await performContractAction(async (contract: StarknetContract) => {
       const prices = fromContract
-        ? await contract.getPrices(dataProvider)
-        : await contract.readPrices(dataProvider);
+        ? await contract.readPrices(dataProvider)
+        : await contract.getPrices(dataProvider);
 
       handlePrices(setPrices, prices);
 
