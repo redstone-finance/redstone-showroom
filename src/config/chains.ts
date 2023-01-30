@@ -20,8 +20,11 @@ import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import StarknetLogo from "../assets/chains/starknet.png";
+import FuelLogo from "../assets/chains/fuel.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
+
+export type ChainType = "eth" | "starknet" | "fuel";
 
 export interface ChainDetails {
   chainId: string;
@@ -38,7 +41,7 @@ export interface ChainDetails {
   contractExplorerUrl: string;
   txExplorerUrl?: string;
   logo?: any;
-  isStarknet?: boolean;
+  type?: ChainType;
 }
 
 export const chains: Chains = {
@@ -362,8 +365,8 @@ export const chains: Chains = {
       "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     logo: BaseLogo,
   },
-  [9999999999]: {
-    chainId: utils.hexValue(9999999999),
+  [9999999998]: {
+    chainId: utils.hexValue(9999999998),
     rpcUrls: [
       "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
     ],
@@ -376,11 +379,31 @@ export const chains: Chains = {
     },
     blockExplorerUrls: ["https://testnet.starkscan.co/"],
     exampleContractAddress:
-      "0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+      "0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
     contractExplorerUrl:
-      "https://testnet.starkscan.co/contract/0x03179859e543c1b6f13bf23a9a6de17e04a3a34bdc277ea21010598ba3c9b120",
+      "https://testnet.starkscan.co/contract/0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
     txExplorerUrl: "https://testnet.starkscan.co/tx/",
     logo: StarknetLogo,
-    isStarknet: true,
+    type: "starknet",
+  },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: ["https://beta-3.fuel.network/graphql"],
+    chainName: "Fuel Beta-3 Network",
+    label: "Fuel",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
+    exampleContractAddress:
+      "0x8fdae6cb766121b5382977e98dc948dbdc95812a3e60c2cf2c0dfff06e877989",
+    contractExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/address/{walletAddress}",
+    txExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
+    logo: FuelLogo,
+    type: "fuel",
   },
 };

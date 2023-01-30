@@ -4,7 +4,7 @@ import { timeout } from "../utils";
 const loaderTexts = [
   "Fetching price data",
   "Sending transaction with fetched price data",
-  "Receiving prices from smart contract",
+  "Receiving data from smart contract",
 ];
 
 export const useMockLoader = () => {
@@ -14,9 +14,9 @@ export const useMockLoader = () => {
   const handleTextChange = async () => {
     for (const text of loaderTexts) {
       setText(text);
-      await timeout(1000);
+      await timeout(10);
     }
-    setIsMockLoading(false);
+    // setIsMockLoading(false);
   };
 
   const startMockLoader = () => {

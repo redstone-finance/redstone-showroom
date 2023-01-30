@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { BigNumber, providers } from "ethers";
 import Web3Modal from "web3modal";
 import { ChainDetails, chains } from "../config/chains";
 import { emptyPrices } from "../utils";
-import { connect, IStarknetWindowObject } from "@argent/get-starknet";
 
 type NetworkToAdd = Omit<
   ChainDetails,
-  "exampleContractAddress" | "contractExplorerUrl" | "logo" | "label"
+  | "exampleContractAddress"
+  | "contractExplorerUrl"
+  | "logo"
+  | "label"
+  | "isStarknet"
+  | "txExplorerUrl"
+  | "type"
 >;
 
-export const useWeb3Modal = () => {
+export const useWeb3Modal = (
+  setNetwork: Dispatch<SetStateAction<ChainDetails | null>>
+) => {
   const [prices, setPrices] = useState(emptyPrices);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
-  const [network, setNetwork] = useState<ChainDetails | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
-  const [starknet, setStarknet] = useState<IStarknetWindowObject | undefined>(
-    undefined
-  );
   const [walletAddress, setWalletAddress] = useState("");
   const [isChangingNetwork, setIsChangingNetwork] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
@@ -29,12 +32,8 @@ export const useWeb3Modal = () => {
     setWeb3Modal(web3Modal);
   }, []);
 
-  useEffect(() => {
-    changeNetwork();
-  }, [network]);
-
-  const changeNetwork = async () => {
-    if (network) {
+  const changeNetwork = async (network: ChainDetails | null) => {
+    if (network && (network.type || "eth") === "eth") {
       setIsChangingNetwork(true);
       const {
         exampleContractAddress,
@@ -43,14 +42,6 @@ export const useWeb3Modal = () => {
         label,
         ...restNetworkParams
       } = network;
-
-      if (network.isStarknet == true) {
-        setIsChangingNetwork(false);
-        setNetwork(network);
-        await connectStarknetWallet();
-
-        return;
-      }
 
       try {
         await window.ethereum.request({
@@ -80,9 +71,10 @@ export const useWeb3Modal = () => {
     }
   };
 
-  const connectWallet = async () => {
+  const connectWallet = async (network: ChainDetails | null) => {
     if (web3Modal) {
       try {
+        await changeNetwork(network);
         setIsConnecting(true);
         const instance = await web3Modal.connect();
         addListeners(instance);
@@ -111,37 +103,6 @@ export const useWeb3Modal = () => {
     }
   };
 
-  const connectStarknetWallet = async () => {
-    setIsConnecting(true);
-    setStarknet(undefined);
-    setSigner(null);
-    setPrices(emptyPrices);
-
-    const starknet = await connect();
-
-    if (!starknet) {
-      return setIsConnecting(false);
-    }
-
-    try {
-      const [walletAddress] = await starknet.enable();
-
-      if (!starknet.isConnected) {
-        return setIsConnecting(false);
-      }
-
-      setWalletAddress(walletAddress);
-      setIsConnecting(false);
-
-      addStarknetListeners(starknet);
-
-      return setStarknet(starknet);
-    } catch (error: any) {
-    } finally {
-      setIsConnecting(false);
-    }
-  };
-
   const addListeners = (web3ModalProvider: any) => {
     web3ModalProvider.on("accountsChanged", () => {
       window.location.reload();
@@ -159,25 +120,11 @@ export const useWeb3Modal = () => {
     });
   };
 
-  const addStarknetListeners = (starknet: IStarknetWindowObject) => {
-    starknet.on("accountsChanged", () => {
-      window.location.reload();
-    });
-
-    starknet.on("networkChanged", () => {
-      window.location.reload();
-    });
-  };
-
   return {
     prices,
     setPrices,
-    network,
-    setNetwork,
     signer,
-    starknet,
     connectWallet,
-    connectStarknetWallet,
     walletAddress,
     isChangingNetwork,
     isConnecting,
