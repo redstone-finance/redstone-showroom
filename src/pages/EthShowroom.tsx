@@ -3,10 +3,10 @@ import { GetPriceLoader } from "../components/GetPriceLoader";
 import { PricesTable } from "../components/PricesTable";
 import { GetPriceButton } from "../components/GetPriceButton";
 import { useMockLoader } from "../hooks/useMockLoader";
-import { useStarknet } from "../hooks/useStarknet";
 import { ChainDetails } from "../config/chains";
 import { usePricesFromContract } from "../hooks/usePricesFromContract";
 import { providers } from "ethers";
+import { useWeb3Modal } from "../hooks/useWeb3Modal";
 
 interface Props {
   network: ChainDetails;
@@ -17,7 +17,7 @@ interface Props {
 export const EthShowroom = ({ network, signer, walletAddress }: Props) => {
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
-  const { prices, setPrices } = useStarknet();
+  const { prices, setPrices } = useWeb3Modal();
   const { blockNumber, timestamp, isLoading, getPricesFromContract } =
     usePricesFromContract(
       network,
