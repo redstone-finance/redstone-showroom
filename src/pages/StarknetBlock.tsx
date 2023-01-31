@@ -6,25 +6,26 @@ import { ReadPricesButton } from "../components/ReadPricesButton";
 import { GetPriceButton } from "../components/GetPriceButton";
 import { ChainTx } from "../components/ChainTx";
 import { useMockLoader } from "../hooks/useMockLoader";
-import { useStarknet } from "../hooks/useStarknet";
 import { useStarknetPrices } from "../hooks/useStarknetPrices";
 import { ChainDetails } from "../config/chains";
 import { IStarknetWindowObject } from "@argent/get-starknet";
+import { Dispatch, SetStateAction } from "react";
+import { Prices } from "../types";
 
 interface Props {
-  network: ChainDetails;
-  starknet: IStarknetWindowObject | undefined;
-  walletAddress: string;
+  props: {
+    prices: Prices;
+    setPrices: Dispatch<SetStateAction<Prices>>;
+    walletAddress: string;
+    starknet: IStarknetWindowObject | undefined;
+  };
+  network: ChainDetails | null;
 }
 
-export const StarknetShowroom = ({
-  network,
-  starknet,
-  walletAddress,
-}: Props) => {
+export const StarknetBlock = ({ props, network }: Props) => {
+  const { prices, setPrices, walletAddress, starknet } = props;
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
-  const { prices, setPrices } = useStarknet();
   const {
     blockNumber,
     txHash,
@@ -43,7 +44,9 @@ export const StarknetShowroom = ({
 
   const arePrices = Object.values(prices).every((price) => !!price);
 
-  return (
+  return !starknet ? (
+    <div />
+  ) : (
     <div className="flex w-full justify-center items-center mt-8 flex-col">
       {network && (
         <ChainDataTable walletAddress={walletAddress} network={network} />
@@ -58,19 +61,12 @@ export const StarknetShowroom = ({
         />
       ) : (
         [
-          network && (
-            <div className="flex gap-3">
-              <WritePricesButton
-                writePricesToContract={writePricesToContract}
-              />
-              <ReadPricesButton
-                readPricesFromContract={readPricesFromContract}
-              />
-              <GetPriceButton getPriceFromContract={getPricesFromPayload} />
-            </div>
-          ),
-
-          txHash && <ChainTx txHash={txHash} network={network} />,
+          <div className="flex gap-3">
+            <WritePricesButton writePricesToContract={writePricesToContract} />
+            <ReadPricesButton readPricesFromContract={readPricesFromContract} />
+            <GetPriceButton getPriceFromContract={getPricesFromPayload} />
+          </div>,
+          network && txHash && <ChainTx txHash={txHash} network={network} />,
         ]
       )}
     </div>

@@ -14,7 +14,7 @@ interface Props {
   walletAddress: string;
 }
 
-export const EthShowroom = ({ network, signer, walletAddress }: Props) => {
+export const EthBlock = ({ network, signer, walletAddress }: Props) => {
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
   const { prices, setPrices } = useWeb3Modal();

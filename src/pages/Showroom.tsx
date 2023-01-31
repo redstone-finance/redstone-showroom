@@ -4,9 +4,9 @@ import { usePricesFromContract } from "../hooks/usePricesFromContract";
 import Modal from "../components/Modal";
 import { ChainButton } from "../components/ChainButton";
 import { ChainDetails, chains } from "../config/chains";
-import { StarknetShowroom } from "./StarknetShowroom";
+import { StarknetBlock } from "./StarknetBlock";
 import { useStarknet } from "../hooks/useStarknet";
-import { EthShowroom } from "./EthShowroom";
+import { EthBlock } from "./EthBlock";
 
 const chainsArray = Object.values(chains);
 
@@ -22,11 +22,6 @@ export const Showroom = () => {
     isChangingNetwork,
     isConnecting,
   } = useWeb3Modal();
-  const {
-    starknet,
-    connectWallet: connectStarknetWallet,
-    walletAddress: starknetWalletAddress,
-  } = useStarknet();
   const { errorMessage, setErrorMessage } = usePricesFromContract(
     network,
     signer,
@@ -35,14 +30,15 @@ export const Showroom = () => {
     setIsMockLoading
   );
 
+  const starknetProps = useStarknet();
   const onChainClick = async (chain: ChainDetails) => {
     setNetwork(chain);
     if (chain?.isStarknet != true && !signer) {
       return await connectWallet();
     }
 
-    if (chain?.isStarknet == true && !starknet) {
-      return await connectStarknetWallet();
+    if (chain?.isStarknet == true) {
+      return await starknetProps.connectWallet();
     }
   };
 
@@ -76,18 +72,14 @@ export const Showroom = () => {
         </p>
       )}
       {signer && network?.isStarknet != true && !isChangingNetwork && (
-        <EthShowroom
-          network={network}
+        <EthBlock
+          network={network!}
           signer={signer}
           walletAddress={walletAddress}
         />
       )}
-      {starknet && network?.isStarknet && (
-        <StarknetShowroom
-          network={network}
-          starknet={starknet}
-          walletAddress={starknetWalletAddress}
-        />
+      {network?.isStarknet && (
+        <StarknetBlock props={{ ...starknetProps }} network={network!} />
       )}
       {!!errorMessage && (
         <Modal

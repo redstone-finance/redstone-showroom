@@ -19,40 +19,41 @@ export const useStarknet = () => {
   }, [network]);
 
   const changeNetwork = async () => {
-    if (network) {
-      if (network.isStarknet == true) {
-        setNetwork(network);
-        await connectWallet();
-
-        return;
-      }
+    if (network && network.isStarknet == true) {
+      setNetwork(network);
+      await connectWallet();
     }
   };
 
   const connectWallet = async () => {
-    setIsConnecting(true);
-    setStarknet(undefined);
     setPrices(emptyPrices);
 
-    const starknet = await connect();
+    if (starknet) {
+      return;
+    }
 
-    if (!starknet) {
+    setIsConnecting(true);
+    setStarknet(undefined);
+
+    const newStarknet = await connect();
+
+    if (!newStarknet) {
       return setIsConnecting(false);
     }
 
     try {
-      const [walletAddress] = await starknet.enable();
+      const [address] = await newStarknet.enable();
 
-      if (!starknet.isConnected) {
+      if (!newStarknet.isConnected) {
         return setIsConnecting(false);
       }
 
-      setWalletAddress(walletAddress);
+      setWalletAddress(address);
       setIsConnecting(false);
 
-      addListeners(starknet);
+      addListeners(newStarknet);
 
-      return setStarknet(starknet);
+      return setStarknet(newStarknet);
     } catch (error: any) {
     } finally {
       setIsConnecting(false);
@@ -75,5 +76,6 @@ export const useStarknet = () => {
     starknet,
     connectWallet,
     walletAddress,
+    network,
   };
 };
