@@ -15,6 +15,7 @@ import AuroraLogo from "../assets/chains/aurora.png";
 import ScrollLogo from "../assets/chains/scroll.png";
 import DogechainLogo from "../assets/chains/dogechain.png";
 import MantleLogo from "../assets/chains/mantle.png";
+import WagmiLogo from "../assets/chains/wagmi-testnet.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -290,5 +291,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.testnet.mantle.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: MantleLogo,
+  },
+  [11111]: {
+    chainId: utils.hexValue(11111),
+    rpcUrls: ["https://subnets.avax.network/wagmi/wagmi-chain-testnet/rpc"],
+    chainName: "WAGMI",
+    label: "WAGMI Testnet",
+    nativeCurrency: {
+      name: "WGM",
+      symbol: "WGM",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://subnets-test.avax.network/wagmi/"],
+    exampleContractAddress: "0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
+    contractExplorerUrl:
+      "https://subnets-test.avax.network/wagmi/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
+    logo: WagmiLogo,
   },
 };
