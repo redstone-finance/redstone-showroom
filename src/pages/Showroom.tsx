@@ -1,23 +1,18 @@
 import { useWeb3Modal } from "../hooks/useWeb3Modal";
 import { useMockLoader } from "../hooks/useMockLoader";
 import { usePricesFromContract } from "../hooks/usePricesFromContract";
-import { GetPriceLoader } from "../components/GetPriceLoader";
-import { GetPriceButton } from "../components/GetPriceButton";
 import Modal from "../components/Modal";
 import { ChainButton } from "../components/ChainButton";
-import { ChainDataTable } from "../components/ChainDataTable";
-import { PricesTable } from "../components/PricesTable";
 import { ChainDetails, chains } from "../config/chains";
 import { StarknetShowroom } from "./StarknetShowroom";
 import { useStarknet } from "../hooks/useStarknet";
+import { EthShowroom } from "./EthShowroom";
 
 const chainsArray = Object.values(chains);
 
 export const Showroom = () => {
-  const { text, isMockLoading, setIsMockLoading, startMockLoader } =
-    useMockLoader();
+  const { setIsMockLoading, startMockLoader } = useMockLoader();
   const {
-    prices,
     setPrices,
     network,
     setNetwork,
@@ -32,14 +27,7 @@ export const Showroom = () => {
     connectWallet: connectStarknetWallet,
     walletAddress: starknetWalletAddress,
   } = useStarknet();
-  const {
-    blockNumber,
-    timestamp,
-    isLoading,
-    errorMessage,
-    setErrorMessage,
-    getPricesFromContract,
-  } = usePricesFromContract(
+  const { errorMessage, setErrorMessage } = usePricesFromContract(
     network,
     signer,
     startMockLoader,
@@ -57,8 +45,6 @@ export const Showroom = () => {
       return await connectStarknetWallet();
     }
   };
-
-  const arePrices = Object.values(prices).every((price) => !!price);
 
   return (
     <div className="flex justify-center items-center flex-col">
@@ -90,31 +76,18 @@ export const Showroom = () => {
         </p>
       )}
       {signer && network?.isStarknet != true && !isChangingNetwork && (
-        <div className="flex w-full justify-center items-center mt-8 flex-col">
-          {network && (
-            <ChainDataTable walletAddress={walletAddress} network={network} />
-          )}
-          {isMockLoading || isLoading ? (
-            <GetPriceLoader text={isMockLoading ? text : ""} />
-          ) : arePrices ? (
-            <PricesTable
-              blockNumber={blockNumber}
-              timestamp={timestamp}
-              prices={prices}
-            />
-          ) : (
-            network && (
-              <GetPriceButton getPriceFromContract={getPricesFromContract} />
-            )
-          )}
-        </div>
+        <EthShowroom
+          network={network}
+          signer={signer}
+          walletAddress={walletAddress}
+        />
       )}
-      {starknet && network?.isStarknet && !isChangingNetwork && (
+      {starknet && network?.isStarknet && (
         <StarknetShowroom
           network={network}
           starknet={starknet}
           walletAddress={starknetWalletAddress}
-        ></StarknetShowroom>
+        />
       )}
       {!!errorMessage && (
         <Modal
