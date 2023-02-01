@@ -10,7 +10,7 @@ export const ChainTx = ({ txHash, network }: Props) => (
   <table className="w-3/5 table-auto border mt-8">
     <tbody className="text-md">
       <tr>
-        <td className="flex items-center gap-3 py-3 px-6">
+        <td className="flex items-center gap-3 py-3 px-3">
           <img
             className="object-scale-down w-6 h-6"
             src={TxIcon}
@@ -18,7 +18,7 @@ export const ChainTx = ({ txHash, network }: Props) => (
           />
           Last transaction:
         </td>
-        <td className="py-3 px-6 text-right underline">
+        <td className="py-3 px-3 text-right underline">
           <a
             href={network.txExplorerUrl + txHash}
             target="blank"
@@ -29,7 +29,7 @@ export const ChainTx = ({ txHash, network }: Props) => (
         </td>
       </tr>
       <tr>
-        <td colSpan={2} className="text-sm px-6 py-3">
+        <td colSpan={2} className="text-sm px-3">
           <i>
             This transaction writes a snapshot of current prices to the
             contract's storage.

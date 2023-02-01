@@ -64,6 +64,7 @@ export const useStarknetPrices = (
   };
 
   const writePricesToContract = async () => {
+    setPrices(emptyPrices);
     await performContractAction(async (contract: StarknetContract) => {
       const txHash = await contract.writePrices(dataProvider);
       setTxHash(txHash);

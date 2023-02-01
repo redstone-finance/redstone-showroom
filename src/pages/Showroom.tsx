@@ -45,11 +45,11 @@ export const Showroom = () => {
   return (
     <div className="flex justify-center items-center flex-col">
       {!network && (
-        <p className="mt-10 mb-0 text-lg font-bold">
-          Please select a chain to see sample of Redstone Oracle data
+        <p className="mb-10 text-lg font-bold">
+          Please select a chain-button to integrate your wallet:
         </p>
       )}
-      <div className="w-3/4 flex flex-wrap justify-center gap-3 px-10 mt-10">
+      <div className="w-3/5 flex flex-wrap justify-center gap-3 px-10">
         {chainsArray.map((chain) => (
           <ChainButton
             key={chain.chainId}

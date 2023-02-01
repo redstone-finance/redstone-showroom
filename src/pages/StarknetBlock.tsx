@@ -53,14 +53,15 @@ export const StarknetBlock = ({ props, network }: Props) => {
       )}
       {isMockLoading || isLoading ? (
         <GetPriceLoader text={isMockLoading ? text : ""} />
-      ) : arePrices ? (
-        <PricesTable
-          blockNumber={blockNumber}
-          timestamp={timestamp}
-          prices={prices}
-        />
       ) : (
         [
+          arePrices && (
+            <PricesTable
+              blockNumber={blockNumber}
+              timestamp={timestamp}
+              prices={prices}
+            />
+          ),
           <div className="flex gap-3">
             <WritePricesButton writePricesToContract={writePricesToContract} />
             <ReadPricesButton readPricesFromContract={readPricesFromContract} />
