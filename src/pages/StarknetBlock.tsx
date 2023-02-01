@@ -11,6 +11,7 @@ import { ChainDetails } from "../config/chains";
 import { IStarknetWindowObject } from "@argent/get-starknet";
 import { Dispatch, SetStateAction } from "react";
 import { Prices } from "../types";
+import Modal from "../components/Modal";
 
 interface Props {
   props: {
@@ -34,6 +35,8 @@ export const StarknetBlock = ({ props, network }: Props) => {
     getPricesFromPayload,
     readPricesFromContract,
     writePricesToContract,
+    errorMessage,
+    setErrorMessage,
   } = useStarknetPrices(
     network,
     starknet,
@@ -73,13 +76,24 @@ export const StarknetBlock = ({ props, network }: Props) => {
               To <b>write</b> a snapshot of current <b>prices</b> to the
               contract's storage you should have <b>testnet ETH</b> be added to
               the wallet by using:&nbsp;
-              <a target={"blank"} href="https://faucet.goerli.starknet.io/">
-                https://faucet.goerli.starknet.io/
+              <a
+                target="blank"
+                href="https://faucet.goerli.starknet.io/"
+                referrerPolicy="no-referrer"
+              >
+                <u>https://faucet.goerli.starknet.io/</u>
               </a>
             </i>
           </div>,
           network && txHash && <ChainTx txHash={txHash} network={network} />,
         ]
+      )}
+      {!!errorMessage && (
+        <Modal
+          closeModal={() => setErrorMessage("")}
+          title="Problem with contract interaction"
+          text={errorMessage}
+        />
       )}
     </div>
   );

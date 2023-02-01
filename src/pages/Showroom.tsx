@@ -81,7 +81,7 @@ export const Showroom = () => {
       {network?.isStarknet && (
         <StarknetBlock props={{ ...starknetProps }} network={network!} />
       )}
-      {!!errorMessage && (
+      {!!errorMessage && ( // should be moved to EthBlock
         <Modal
           closeModal={() => setErrorMessage("")}
           title="Problem with contract interaction"
