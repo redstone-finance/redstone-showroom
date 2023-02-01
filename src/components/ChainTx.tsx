@@ -28,6 +28,14 @@ export const ChainTx = ({ txHash, network }: Props) => (
           </a>
         </td>
       </tr>
+      <tr>
+        <td colSpan={2} className="text-sm px-6 py-3">
+          <i>
+            This transaction writes a snapshot of current prices to the
+            contract's storage.
+          </i>
+        </td>
+      </tr>
     </tbody>
   </table>
 );

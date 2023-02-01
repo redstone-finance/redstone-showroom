@@ -66,6 +66,17 @@ export const StarknetBlock = ({ props, network }: Props) => {
             <ReadPricesButton readPricesFromContract={readPricesFromContract} />
             <GetPriceButton getPriceFromContract={getPricesFromPayload} />
           </div>,
+
+          <div className="px-6 py-3 text-sm w-3/5 text-center">
+            <i>
+              To <b>write</b> a snapshot of current <b>prices</b> to the
+              contract's storage you should have <b>testnet ETH</b> be added to
+              the wallet by using:&nbsp;
+              <a target={"blank"} href="https://faucet.goerli.starknet.io/">
+                https://faucet.goerli.starknet.io/
+              </a>
+            </i>
+          </div>,
           network && txHash && <ChainTx txHash={txHash} network={network} />,
         ]
       )}
