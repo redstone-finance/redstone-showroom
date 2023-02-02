@@ -17,7 +17,10 @@ export abstract class StarknetCommand {
     const contract = this.getContract();
 
     const args = await this.getArgs();
+
+    const date = new Date().getTime();
     const response = await contract.call(this.getMethodName(), args);
+    console.log(`Got values from contract ${new Date().getTime() - date}`);
 
     return this.getValue(response);
   }

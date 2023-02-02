@@ -84,11 +84,13 @@ export const useStarknetPrices = (
           const contract = new StarknetContract(contractAddress, starknet);
 
           await callback(contract);
+          setIsMockLoading(false);
           setIsLoading(false);
         }
       } catch (error) {
         console.error(error);
         handleError();
+        setIsMockLoading(false);
         setIsLoading(false);
       }
     } else {

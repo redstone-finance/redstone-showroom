@@ -28,7 +28,11 @@ export class StarknetDataProvider {
     );
     console.log(`Got prices ${new Date().getTime() - date}`);
 
-    return StarknetDataProvider.preparePayloadData(payloadResponse.data);
+    let payloadData = StarknetDataProvider.preparePayloadData(
+      payloadResponse.data
+    );
+    console.log(`Payload prepared ${new Date().getTime() - date}`);
+    return payloadData;
   }
 
   async getDataFeedNumbers(): Promise<BigNumberish[]> {
