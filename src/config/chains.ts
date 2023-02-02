@@ -16,6 +16,7 @@ import ScrollLogo from "../assets/chains/scroll.png";
 import DogechainLogo from "../assets/chains/dogechain.png";
 import MantleLogo from "../assets/chains/mantle.png";
 import WagmiLogo from "../assets/chains/wagmi-testnet.png";
+import PolygonZkEVMLogo from "../assets/chains/polygon-zkEVM.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -307,5 +308,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://subnets-test.avax.network/wagmi/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     logo: WagmiLogo,
+  },
+  [1422]: {
+    chainId: utils.hexValue(1422),
+    rpcUrls: ["https://rpc.public.zkevm-test.net"],
+    chainName: "Polygon zkEVM Testnet",
+    label: "Polygon zkEVM Testnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.public.zkevm-test.net"],
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    contractExplorerUrl:
+      "https://explorer.public.zkevm-test.net/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    logo: PolygonZkEVMLogo,
   },
 };
