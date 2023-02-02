@@ -22,9 +22,11 @@ export class StarknetDataProvider {
       return Promise.reject("That invocation requires non-empty dataFeeds");
     }
 
+    const date = new Date().getTime();
     const payloadResponse = await axios.get(
       `${this.dataServiceUrl}/data-packages/payload?data-packages/payload?unique-signers-count=${this.requestParams.uniqueSignersCount}&data-service-id=${this.requestParams.dataServiceId}&data-feed-id=${this.requestParams.dataFeeds}&format=hex`
     );
+    console.log(`Got prices ${new Date().getTime() - date}`);
 
     return StarknetDataProvider.preparePayloadData(payloadResponse.data);
   }

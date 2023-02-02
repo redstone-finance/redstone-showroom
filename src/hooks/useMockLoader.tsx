@@ -14,7 +14,7 @@ export const useMockLoader = () => {
   const handleTextChange = async () => {
     for (const text of loaderTexts) {
       setText(text);
-      await timeout(1000);
+      await timeout(10);
     }
     setIsMockLoading(false);
   };

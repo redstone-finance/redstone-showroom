@@ -45,21 +45,22 @@ export const useStarknetPrices = (
 
   const getPrices = async (fromContract: boolean) => {
     await performContractAction(async (contract: StarknetContract) => {
-      const prices = fromContract
-        ? await contract.readPrices(dataProvider)
-        : await contract.getPrices(dataProvider);
+      const date = new Date().getTime();
+      console.log(`START ${new Date().getTime() - date}`);
+
+      const [prices, blockNumber, timestamp] = await Promise.all([
+        fromContract
+          ? contract.readPrices(dataProvider)
+          : contract.getPrices(dataProvider),
+        StarknetContract.getBlockNumber(network!.rpcUrls[0]),
+        fromContract ? contract.readTimestamp() : getPricesTimestamp(),
+      ]);
 
       handlePrices(setPrices, prices);
-
-      const blockNumber = await StarknetContract.getBlockNumber(
-        network!.rpcUrls[0]
-      );
-
       setBlockNumber(blockNumber);
-      const timestamp = fromContract
-        ? await contract.readTimestamp()
-        : await getPricesTimestamp();
       setTimestamp(timestamp);
+
+      console.log(`END ${new Date().getTime() - date}`);
     });
   };
 
