@@ -71,7 +71,7 @@ export const StarknetBlock = ({ props, network }: Props) => {
             <GetPriceButton getPriceFromContract={getPricesFromPayload} />
           </div>,
 
-          <div className="px-6 py-3 text-sm w-3/5 text-center">
+          <div className="px-6 py-3 text-sm w-3/5 text-center text-gray-500">
             <i>
               To <b>write</b> a snapshot of current <b>prices</b> to the
               contract's storage you should have <b>testnet ETH</b> be added to

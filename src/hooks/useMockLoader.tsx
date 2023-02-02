@@ -4,7 +4,7 @@ import { timeout } from "../utils";
 const loaderTexts = [
   "Fetching price data",
   "Sending transaction with fetched price data",
-  "Receiving price data from smart contract",
+  "Receiving data from smart contract",
 ];
 
 export const useMockLoader = () => {
