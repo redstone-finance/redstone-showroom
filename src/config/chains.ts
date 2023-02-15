@@ -299,7 +299,7 @@ export const chains: Chains = {
   [9999999999]: {
     chainId: utils.hexValue(9999999999),
     rpcUrls: [
-      "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
+      "https://starknet-goerli2.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
     ],
     chainName: "Starknet Test Network",
     label: "Starknet",
@@ -308,12 +308,12 @@ export const chains: Chains = {
       symbol: "GoerliETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://testnet.starkscan.co/"],
+    blockExplorerUrls: ["https://testnet-2.starkscan.co/"],
     exampleContractAddress:
-      "0x0607225af5093bc54456f0e8b4628c3b1d3d3b44f0068caf0ef9850c53e9a7c4",
+      "0x02e769161c6c4300e8d634f51c733ce1d7c7faaf31866000c1aeb5f330187829",
     contractExplorerUrl:
-      "https://testnet.starkscan.co/contract/0x0607225af5093bc54456f0e8b4628c3b1d3d3b44f0068caf0ef9850c53e9a7c4",
-    txExplorerUrl: "https://testnet.starkscan.co/tx/",
+      "https://testnet-2.starkscan.co/contract/0x02e769161c6c4300e8d634f51c733ce1d7c7faaf31866000c1aeb5f330187829",
+    txExplorerUrl: "https://testnet-2.starkscan.co/tx/",
     logo: StarknetLogo,
     isStarknet: true,
   },

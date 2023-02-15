@@ -75,14 +75,7 @@ export const StarknetBlock = ({ props, network }: Props) => {
             <i>
               To <b>write</b> a snapshot of current <b>prices</b> to the
               contract's storage you should have <b>testnet ETH</b> be added to
-              the wallet by using:&nbsp;
-              <a
-                target="blank"
-                href="https://faucet.goerli.starknet.io/"
-                referrerPolicy="no-referrer"
-              >
-                <u>https://faucet.goerli.starknet.io/</u>
-              </a>
+              the wallet.
             </i>
           </div>,
           network && txHash && <ChainTx txHash={txHash} network={network} />,
