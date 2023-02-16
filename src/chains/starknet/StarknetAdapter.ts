@@ -7,17 +7,18 @@ import {
   ReadPricesCommand,
   ReadTimestampCommand,
   WritePricesCommand,
-} from "./ContractCommands";
-import { StarknetDataProvider } from "./StarknetDataProvider";
+} from "./StarknetCommands";
+import { DataProvider } from "../../hooks/DataProvider";
+import { ContractAdapter } from "../../hooks/ContractAdapter";
 
-export class StarknetContract {
+export class StarknetAdapter implements ContractAdapter {
   constructor(
-    private address: string,
+    private contractAddress: string,
     private starknet: IStarknetWindowObject | undefined,
     private network: StarknetChainId = "goerli-alpha"
   ) {}
 
-  static async getBlockNumber(rpcUrl: string) {
+  async getBlockNumber(rpcUrl: string): Promise<number> {
     const response = await axios.post(rpcUrl, {
       jsonrpc: "2.0",
       method: "starknet_blockNumber",
@@ -28,38 +29,38 @@ export class StarknetContract {
     return response.data.result;
   }
 
-  async getPrices(dataProvider: StarknetDataProvider): Promise<number[]> {
+  async getPrices(dataProvider: DataProvider): Promise<number[]> {
     return new GetPricesCommand(
-      dataProvider,
-      this.address,
       this.starknet,
-      this.network
+      this.contractAddress,
+      this.network,
+      dataProvider
     ).execute();
   }
 
-  async readPrices(dataProvider: StarknetDataProvider): Promise<number[]> {
+  async readPrices(dataProvider: DataProvider): Promise<number[]> {
     return new ReadPricesCommand(
-      dataProvider,
-      this.address,
       this.starknet,
-      this.network
+      this.contractAddress,
+      this.network,
+      dataProvider
     ).execute();
   }
 
   async readTimestamp(): Promise<number> {
     return new ReadTimestampCommand(
-      this.address,
+      this.contractAddress,
       this.starknet,
       this.network
     ).execute();
   }
 
-  async writePrices(dataProvider: StarknetDataProvider): Promise<string> {
+  async writePrices(dataProvider: DataProvider): Promise<string> {
     return new WritePricesCommand(
-      dataProvider,
-      this.address,
+      this.network,
+      this.contractAddress,
       this.starknet,
-      this.network
+      dataProvider
     ).execute();
   }
 }

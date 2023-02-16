@@ -11,6 +11,8 @@ type NetworkToAdd = Omit<
   | "logo"
   | "label"
   | "isStarknet"
+  | "txExplorerUrl"
+  | "type"
 >;
 
 export const useWeb3Modal = () => {
@@ -34,7 +36,7 @@ export const useWeb3Modal = () => {
   }, [network]);
 
   const changeNetwork = async () => {
-    if (network && network.isStarknet != true) {
+    if (network && (network.type || "eth") === "eth") {
       setIsChangingNetwork(true);
       const {
         exampleContractAddress,

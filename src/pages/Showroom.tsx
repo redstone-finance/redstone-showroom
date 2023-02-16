@@ -1,19 +1,16 @@
 import { useWeb3Modal } from "../hooks/useWeb3Modal";
-import { useMockLoader } from "../hooks/useMockLoader";
-import { usePricesFromContract } from "../hooks/usePricesFromContract";
-import Modal from "../components/Modal";
 import { ChainButton } from "../components/ChainButton";
 import { ChainDetails, chains } from "../config/chains";
 import { StarknetBlock } from "./StarknetBlock";
 import { useStarknet } from "../hooks/useStarknet";
 import { EthBlock } from "./EthBlock";
+import { FuelBlock } from "./FuelBlock";
+import { useFuel } from "../hooks/useFuel";
 
 const chainsArray = Object.values(chains);
 
 export const Showroom = () => {
-  const { setIsMockLoading, startMockLoader } = useMockLoader();
   const {
-    setPrices,
     network,
     setNetwork,
     signer,
@@ -22,23 +19,23 @@ export const Showroom = () => {
     isChangingNetwork,
     isConnecting,
   } = useWeb3Modal();
-  const { errorMessage, setErrorMessage } = usePricesFromContract(
-    network,
-    signer,
-    startMockLoader,
-    setPrices,
-    setIsMockLoading
-  );
 
-  const starknetProps = useStarknet();
+  const starknet = useStarknet();
+  const fuel = useFuel();
+
   const onChainClick = async (chain: ChainDetails) => {
     setNetwork(chain);
-    if (chain?.isStarknet != true && !signer) {
+
+    if ((chain?.type || "eth") === "eth" && !signer) {
       return await connectWallet();
     }
 
-    if (chain?.isStarknet == true) {
-      return await starknetProps.connectWallet();
+    if (chain?.type === "starknet") {
+      return await starknet.connectWallet();
+    }
+
+    if (chain?.type === "fuel") {
+      return await fuel.connectWallet();
     }
   };
 
@@ -60,33 +57,28 @@ export const Showroom = () => {
           />
         ))}
       </div>
-      {isChangingNetwork && network?.isStarknet != true && signer && (
+      {isChangingNetwork && (network?.type || "eth") === "eth" && signer && (
         <p className="mt-10 mb-0 text-lg font-bold">
           Please change network in MetaMask
         </p>
       )}
-      {isConnecting && (
+      {isConnecting && (network?.type || "eth") === "eth" && (
         <p className="mt-10 mb-0 text-lg font-bold">
-          Please sign in to{" "}
-          {network?.isStarknet == true ? "Starknet" : "MetaMask"}
+          Please sign in to "MetaMask"
         </p>
       )}
-      {signer && network?.isStarknet != true && !isChangingNetwork && (
+      {signer && (network?.type || "eth") === "eth" && !isChangingNetwork && (
         <EthBlock
           network={network!}
           signer={signer}
           walletAddress={walletAddress}
         />
       )}
-      {network?.isStarknet && (
-        <StarknetBlock props={{ ...starknetProps }} network={network!} />
+      {network?.type === "starknet" && (
+        <StarknetBlock props={{ ...starknet }} network={network!} />
       )}
-      {!!errorMessage && ( // should be moved to EthBlock
-        <Modal
-          closeModal={() => setErrorMessage("")}
-          title="Problem with contract interaction"
-          text={errorMessage}
-        />
+      {network?.type === "fuel" && (
+        <FuelBlock props={{ ...fuel }} network={network!} />
       )}
     </div>
   );

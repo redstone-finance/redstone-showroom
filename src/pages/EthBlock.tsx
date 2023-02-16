@@ -4,9 +4,11 @@ import { PricesTable } from "../components/PricesTable";
 import { GetPriceButton } from "../components/GetPriceButton";
 import { useMockLoader } from "../hooks/useMockLoader";
 import { ChainDetails } from "../config/chains";
-import { usePricesFromContract } from "../hooks/usePricesFromContract";
 import { providers } from "ethers";
 import { useWeb3Modal } from "../hooks/useWeb3Modal";
+import { EthAdapter } from "../chains/evm/EthAdapter";
+import { useContractPrices } from "../hooks/useContractPrices";
+import Modal from "../components/Modal";
 
 interface Props {
   network: ChainDetails;
@@ -18,14 +20,23 @@ export const EthBlock = ({ network, signer, walletAddress }: Props) => {
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
   const { prices, setPrices } = useWeb3Modal();
-  const { blockNumber, timestamp, isLoading, getPricesFromContract } =
-    usePricesFromContract(
-      network,
-      signer,
-      startMockLoader,
-      setPrices,
-      setIsMockLoading
-    );
+
+  const adapter = new EthAdapter(network?.exampleContractAddress!, signer!);
+
+  const {
+    blockNumber,
+    timestamp,
+    isLoading,
+    getPricesFromPayload,
+    errorMessage,
+    setErrorMessage,
+  } = useContractPrices(
+    network,
+    adapter,
+    startMockLoader,
+    setPrices,
+    setIsMockLoading
+  );
 
   const arePrices = Object.values(prices).every((price) => !!price);
 
@@ -44,8 +55,15 @@ export const EthBlock = ({ network, signer, walletAddress }: Props) => {
         />
       ) : (
         network && (
-          <GetPriceButton getPriceFromContract={getPricesFromContract} />
+          <GetPriceButton getPriceFromContract={getPricesFromPayload} />
         )
+      )}
+      {!!errorMessage && (
+        <Modal
+          closeModal={() => setErrorMessage("")}
+          title="Problem with contract interaction"
+          text={errorMessage}
+        />
       )}
     </div>
   );

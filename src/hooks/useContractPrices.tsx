@@ -1,12 +1,11 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { emptyPrices } from "../utils";
 import { ChainDetails } from "../config/chains";
-import { usePricesData } from "./usePricesData";
+import { usePricesData } from "../chains/evm/usePricesData";
 import { Prices } from "../types";
-import { StarknetContract } from "./starknet/StarknetContract";
-import { IStarknetWindowObject } from "@argent/get-starknet";
-import { StarknetDataProvider } from "./starknet/StarknetDataProvider";
-import { handlePrices } from "./handle_prices";
+import { DataProvider } from "./DataProvider";
+import { ContractAdapter } from "./ContractAdapter";
+import { utils } from "ethers";
 
 const DATA_SERVICE_URL = "https://d33trozg86ya9x.cloudfront.net";
 const dataPackageRequestParams = {
@@ -15,14 +14,14 @@ const dataPackageRequestParams = {
   dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
 };
 
-const dataProvider = new StarknetDataProvider(
+const dataProvider = new DataProvider(
   DATA_SERVICE_URL,
   dataPackageRequestParams
 );
 
-export const useStarknetPrices = (
+export const useContractPrices = (
   network: ChainDetails | null,
-  starknet: IStarknetWindowObject | undefined,
+  adapter: ContractAdapter,
   startMockLoader: () => void,
   setPrices: Dispatch<SetStateAction<Prices>>,
   setIsMockLoading: Dispatch<SetStateAction<boolean>>
@@ -44,16 +43,16 @@ export const useStarknetPrices = (
   };
 
   const getPrices = async (fromContract: boolean) => {
-    await performContractAction(async (contract: StarknetContract) => {
+    await performContractAction(async (adapter: ContractAdapter) => {
       const date = new Date().getTime();
       console.log(`START ${new Date().getTime() - date}`);
 
       const [prices, blockNumber, timestamp] = await Promise.all([
         fromContract
-          ? contract.readPrices(dataProvider)
-          : contract.getPrices(dataProvider),
-        StarknetContract.getBlockNumber(network!.rpcUrls[0]),
-        fromContract ? contract.readTimestamp() : getPricesTimestamp(),
+          ? adapter.readPrices(dataProvider)
+          : adapter.getPrices(dataProvider),
+        adapter.getBlockNumber(network!.rpcUrls[0]),
+        fromContract ? adapter.readTimestamp() : getPricesTimestamp(),
       ]);
 
       handlePrices(setPrices, prices);
@@ -66,24 +65,34 @@ export const useStarknetPrices = (
 
   const writePricesToContract = async () => {
     setPrices(emptyPrices);
-    await performContractAction(async (contract: StarknetContract) => {
-      const txHash = await contract.writePrices(dataProvider);
-      setTxHash(txHash);
+    await performContractAction(async (adapter: ContractAdapter) => {
+      const txHashOrPrices = await adapter.writePrices(dataProvider);
+
+      if (typeof txHashOrPrices === "string") {
+        setTxHash(txHashOrPrices);
+      } else {
+        handlePrices(setPrices, txHashOrPrices);
+        const [timestamp, blockNumber] = await Promise.all([
+          adapter.readTimestamp(),
+          adapter.getBlockNumber(network!.rpcUrls[0]),
+        ]);
+
+        setBlockNumber(blockNumber);
+        setTimestamp(timestamp);
+      }
     });
   };
 
   const performContractAction = async (
-    callback: (contract: StarknetContract) => void
+    callback: (adapter: ContractAdapter) => void
   ) => {
-    if (network && starknet) {
+    if (network) {
       try {
         startMockLoader();
         setIsLoading(true);
-        const contractAddress = network.exampleContractAddress;
-        if (contractAddress) {
-          const contract = new StarknetContract(contractAddress, starknet);
 
-          await callback(contract);
+        if (adapter) {
+          await callback(adapter);
           setIsMockLoading(false);
           setIsLoading(false);
         }
@@ -103,8 +112,22 @@ export const useStarknetPrices = (
     setPrices(emptyPrices);
     setIsMockLoading(false);
     setErrorMessage(
-      "There was problem with fetching data from smart contract. Please try again or contact RedStone team"
+      "There was problem with fetching data from smart adapter. Please try again or contact RedStone team"
     );
+  };
+
+  const handlePrices = (
+    setPrices: (value: ((prevState: Prices) => Prices) | Prices) => void,
+    prices: number[]
+  ) => {
+    setPrices({
+      btc: utils.formatUnits(prices[0], 8),
+      eth: utils.formatUnits(prices[1], 8),
+      bnb: utils.formatUnits(prices[2], 8),
+      ar: utils.formatUnits(prices[3], 8),
+      avax: utils.formatUnits(prices[4], 8),
+      celo: utils.formatUnits(prices[5], 8),
+    });
   };
 
   return {
