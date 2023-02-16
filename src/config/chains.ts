@@ -17,6 +17,7 @@ import DogechainLogo from "../assets/chains/dogechain.png";
 import MantleLogo from "../assets/chains/mantle.png";
 import WagmiLogo from "../assets/chains/wagmi-testnet.png";
 import PolygonZkEVMLogo from "../assets/chains/polygon-zkEVM.png";
+import CantoLogo from "../assets/chains/canto.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -324,5 +325,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.public.zkevm-test.net/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: PolygonZkEVMLogo,
+  },
+  [7700]: {
+    chainId: utils.hexValue(7700),
+    rpcUrls: ["https://canto.slingshot.finance"],
+    chainName: "Canto",
+    label: "Canto",
+    nativeCurrency: {
+      name: "CANTO",
+      symbol: "CANTO",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://evm.explorer.canto.io/"],
+    exampleContractAddress: "0xf16dA7ABcac966B3ba9c1DFa17D8A9626237bcf8",
+    contractExplorerUrl:
+      "https://evm.explorer.canto.io/address/0xf16dA7ABcac966B3ba9c1DFa17D8A9626237bcf8",
+    logo: CantoLogo,
   },
 };
