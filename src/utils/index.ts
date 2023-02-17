@@ -9,6 +9,7 @@ export const emptyPrices = {
   ar: "",
   avax: "",
   celo: "",
+  canto: "",
 };
 
 export const formatPrice = (price: number) => {

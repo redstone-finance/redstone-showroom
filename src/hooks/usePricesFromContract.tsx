@@ -6,6 +6,7 @@ import { ChainDetails } from "../config/chains";
 import { abi } from "../config/ShowroomContractAbi.json";
 import { usePricesData } from "./usePricesData";
 import { Prices } from "../types";
+import axios  from "axios";
 
 export const usePricesFromContract = (
   network: ChainDetails | null,
@@ -36,6 +37,7 @@ export const usePricesFromContract = (
             ar: utils.formatUnits(prices[3], 8),
             avax: utils.formatUnits(prices[4], 8),
             celo: utils.formatUnits(prices[5], 8),
+            canto: prices[6]
           });
           const blockNumber = await signer.provider.getBlockNumber();
           setBlockNumber(blockNumber);
@@ -65,7 +67,17 @@ export const usePricesFromContract = (
       },
       ["https://d33trozg86ya9x.cloudfront.net"]
     );
-    return await wrappedContract.getPrices();
+
+    const canto = axios.get("https://d33trozg86ya9x.cloudfront.net/data-packages/latest?unique-signers-count=1&data-service-id=redstone-main-demo&data-feeds=CANTO");
+
+    let result = await Promise.all( [
+        wrappedContract.getPrices(),
+      canto
+    ]);
+
+    const cantoPrice = result[1].data.CANTO[0].dataPoints[0].value;
+
+    return { ...result[0], 6: cantoPrice }
   };
 
   const handleError = () => {

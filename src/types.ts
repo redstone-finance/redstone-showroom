@@ -5,4 +5,5 @@ export interface Prices {
   ar: string;
   avax: string;
   celo: string;
+  canto: string;
 }
