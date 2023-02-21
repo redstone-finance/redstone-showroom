@@ -216,17 +216,17 @@ export const chains: Chains = {
   [280]: {
     chainId: utils.hexValue(280),
     rpcUrls: ["https://zksync2-testnet.zksync.dev"],
-    chainName: "zkSync alpha testnet",
+    chainName: "zkSync Era Testnet",
     label: "zkSync",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://zksync2-testnet.zkscan.io/"],
-    exampleContractAddress: "0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+    blockExplorerUrls: ["https://goerli.explorer.zksync.io/"],
+    exampleContractAddress: "0xfC751219f2d99f9fE01e777625352Fe22D37433A",
     contractExplorerUrl:
-      "https://zksync2-testnet.zkscan.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+      "https://goerli.explorer.zksync.io/address/0xfC751219f2d99f9fE01e777625352Fe22D37433A",
     logo: zkSyncLogo,
   },
   [1313161554]: {
