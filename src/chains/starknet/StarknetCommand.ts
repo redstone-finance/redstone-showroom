@@ -1,6 +1,6 @@
 import { IStarknetWindowObject } from "@argent/get-starknet";
 import { Contract, Provider, Result, StarknetChainId } from "starknet";
-import * as prices_abi from "../../config/prices_abi.json";
+import * as prices_abi from "./prices_abi.json";
 
 export abstract class StarknetCommand {
   constructor(
@@ -15,7 +15,6 @@ export abstract class StarknetCommand {
 
   async execute() {
     const contract = this.getContract();
-
     const args = await this.getArgs();
 
     const date = new Date().getTime();

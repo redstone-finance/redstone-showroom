@@ -32,7 +32,10 @@ export const ChainDataTable = ({ walletAddress, network }: Props) => (
         </td>
         <td className="py-3 px-3 text-right underline">
           <a
-            href={network.contractExplorerUrl}
+            href={network.contractExplorerUrl.replace(
+              "{walletAddress}",
+              walletAddress
+            )}
             target="blank"
             referrerPolicy="no-referrer"
           >

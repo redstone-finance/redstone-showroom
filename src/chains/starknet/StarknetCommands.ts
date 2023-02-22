@@ -1,14 +1,14 @@
-import { IStarknetWindowObject } from "@argent/get-starknet";
-import { Result, StarknetChainId } from "starknet";
-import { StarknetDataProvider } from "./StarknetDataProvider";
+import { BigNumberish, Result, StarknetChainId } from "starknet";
+import { DataProvider } from "../../hooks/DataProvider";
 import { InvokeStarknetCommand, StarknetCommand } from "./StarknetCommand";
+import { IStarknetWindowObject } from "@argent/get-starknet";
 
 export class GetPricesCommand extends StarknetCommand {
   constructor(
-    private dataProvider: StarknetDataProvider,
-    contractAddress: string,
     starknet: IStarknetWindowObject | undefined,
-    network: StarknetChainId = "goerli-alpha"
+    contractAddress: string,
+    network = "goerli-alpha",
+    private dataProvider: DataProvider
   ) {
     super(contractAddress, starknet, network);
   }
@@ -20,21 +20,21 @@ export class GetPricesCommand extends StarknetCommand {
   async getArgs(): Promise<any[]> {
     return [
       await this.dataProvider.getDataFeedNumbers(),
-      await this.dataProvider.getPayloadData(),
+      DataProvider.splitPayloadData(await this.dataProvider.getPayloadData()),
     ];
   }
 
   getValue(response: Result) {
-    return response[0].map((value) => value.toNumber());
+    return response[0].map((value: BigNumberish) => value.toNumber());
   }
 }
 
 export class ReadPricesCommand extends StarknetCommand {
   constructor(
-    private dataProvider: StarknetDataProvider,
-    contractAddress: string,
     starknet: IStarknetWindowObject | undefined,
-    network: StarknetChainId = "goerli-alpha"
+    contractAddress: string,
+    network = "goerli-alpha",
+    private dataProvider: DataProvider
   ) {
     super(contractAddress, starknet, network);
   }
@@ -48,7 +48,7 @@ export class ReadPricesCommand extends StarknetCommand {
   }
 
   getValue(response: Result) {
-    return response[0].map((value) => value.toNumber());
+    return response[0].map((value: BigNumberish) => value.toNumber());
   }
 }
 
@@ -68,10 +68,10 @@ export class ReadTimestampCommand extends StarknetCommand {
 
 export class WritePricesCommand extends InvokeStarknetCommand {
   constructor(
-    private dataProvider: StarknetDataProvider,
+    network = "goerli-alpha",
     contractAddress: string,
     starknet: IStarknetWindowObject | undefined,
-    network: StarknetChainId = "goerli-alpha"
+    private dataProvider: DataProvider
   ) {
     super(contractAddress, starknet, network);
   }
@@ -83,7 +83,7 @@ export class WritePricesCommand extends InvokeStarknetCommand {
   async getArgs(): Promise<any> {
     return [
       await this.dataProvider.getDataFeedNumbers(),
-      await this.dataProvider.getPayloadData(),
+      DataProvider.splitPayloadData(await this.dataProvider.getPayloadData()),
     ];
   }
 }
