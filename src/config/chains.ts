@@ -310,9 +310,9 @@ export const chains: Chains = {
     },
     blockExplorerUrls: ["https://testnet.starkscan.co/"],
     exampleContractAddress:
-      "0x034b36e7187df7899f8494fdb17d4399234d56473718d86e51732c9eea08d548",
+      "0x03415baef48d1e4de16722520fe7787e40d199e93a86291562f91060a37be4ae",
     contractExplorerUrl:
-      "https://testnet.starkscan.co/contract/0x034b36e7187df7899f8494fdb17d4399234d56473718d86e51732c9eea08d548",
+      "https://testnet.starkscan.co/contract/0x03415baef48d1e4de16722520fe7787e40d199e93a86291562f91060a37be4ae",
     txExplorerUrl: "https://testnet.starkscan.co/tx/",
     logo: StarknetLogo,
     isStarknet: true,
