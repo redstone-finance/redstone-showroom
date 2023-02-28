@@ -18,6 +18,7 @@ import MantleLogo from "../assets/chains/mantle.png";
 import WagmiLogo from "../assets/chains/wagmi-testnet.png";
 import PolygonZkEVMLogo from "../assets/chains/polygon-zkEVM.png";
 import CantoLogo from "../assets/chains/canto.png";
+import BaseLogo from "../assets/chains/base.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -48,7 +49,7 @@ export const chains: Chains = {
       symbol: "EVMOS",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://evm.evmos.org"],
+    blockExplorerUrls: ["https://evm.evmos.org/"],
     exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
       "https://evm.evmos.org/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
@@ -96,7 +97,7 @@ export const chains: Chains = {
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://optimistic.etherscan.io"],
+    blockExplorerUrls: ["https://optimistic.etherscan.io/"],
     exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
       "https://optimistic.etherscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
@@ -160,7 +161,7 @@ export const chains: Chains = {
       symbol: "BNB",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://bscscan.com"],
+    blockExplorerUrls: ["https://bscscan.com/"],
     exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
       "https://bscscan.com/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
@@ -192,7 +193,7 @@ export const chains: Chains = {
       symbol: "KLAY",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://scope.klaytn.com"],
+    blockExplorerUrls: ["https://scope.klaytn.com/"],
     exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
       "https://scope.klaytn.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
@@ -208,7 +209,7 @@ export const chains: Chains = {
       symbol: "GLMR",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://moonscan.io"],
+    blockExplorerUrls: ["https://moonscan.io/"],
     exampleContractAddress: "0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     contractExplorerUrl:
       "https://moonscan.io/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
@@ -320,7 +321,7 @@ export const chains: Chains = {
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://explorer.public.zkevm-test.net"],
+    blockExplorerUrls: ["https://explorer.public.zkevm-test.net/"],
     exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     contractExplorerUrl:
       "https://explorer.public.zkevm-test.net/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
@@ -341,5 +342,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://evm.explorer.canto.io/address/0xf16dA7ABcac966B3ba9c1DFa17D8A9626237bcf8",
     logo: CantoLogo,
+  },
+  [84531]: {
+    chainId: utils.hexValue(84531),
+    rpcUrls: ["https://goerli.base.org"],
+    chainName: "Base Goerli",
+    label: "Base Goerli",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://goerli.basescan.org/"],
+    exampleContractAddress: "0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
+    contractExplorerUrl:
+      "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
+    logo: BaseLogo,
   },
 };
