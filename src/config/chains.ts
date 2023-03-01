@@ -10,13 +10,13 @@ import BnbLogo from "../assets/chains/bnb.png";
 import FantomLogo from "../assets/chains/fantom.png";
 import KlaytnLogo from "../assets/chains/klaytn.png";
 import MoonbeamLogo from "../assets/chains/moonbeam.png";
-import zkSyncLogo from "../assets/chains/zkSync.png";
+import zkSyncLogo from "../assets/chains/zk-sync.png";
 import AuroraLogo from "../assets/chains/aurora.png";
 import ScrollLogo from "../assets/chains/scroll.png";
 import DogechainLogo from "../assets/chains/dogechain.png";
 import MantleLogo from "../assets/chains/mantle.png";
 import WagmiLogo from "../assets/chains/wagmi-testnet.png";
-import PolygonZkEVMLogo from "../assets/chains/polygon-zkEVM.png";
+import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 
@@ -219,7 +219,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(280),
     rpcUrls: ["https://zksync2-testnet.zksync.dev"],
     chainName: "zkSync Era Testnet",
-    label: "zkSync",
+    label: "zkSync Era Testnet",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
