@@ -332,7 +332,7 @@ export const chains: Chains = {
     },
     blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
     exampleContractAddress:
-      "0x865b2fbbc3b6f16e8a747d1a7629418d69fea5eeaaf87673a3d01a39a504e5e1",
+      "0xc57fd17f24c6fef493917c518c32fc686609d90df74c8b7aa179143a46238adf",
     contractExplorerUrl:
       "https://fuellabs.github.io/block-explorer-v2/address/{walletAddress}",
     txExplorerUrl: "https://fuellabs.github.io/block-explorer-v2/transaction/",

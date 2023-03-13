@@ -4,7 +4,7 @@ import { DataProvider } from "../../hooks/DataProvider";
 
 export class FuelGetTimestampCommand extends FuelCommand {
   async getValue(value: BN): Promise<any> {
-    return value.toNumber() * 1000;
+    return value.toNumber();
   }
 
   override async getArgs(): Promise<any> {
