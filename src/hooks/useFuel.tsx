@@ -28,7 +28,7 @@ export const useFuel = () => {
   }, []);
 
   const changePrivateKey = async (e: any) => {
-    const provider = new Provider("https://node-beta-2.fuel.network/graphql");
+    const provider = new Provider("https://beta-3.fuel.network/graphql");
     let newWallet = undefined;
 
     try {

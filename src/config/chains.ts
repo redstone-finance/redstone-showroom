@@ -322,8 +322,8 @@ export const chains: Chains = {
   },
   [9999999999]: {
     chainId: utils.hexValue(9999999999),
-    rpcUrls: ["https://node-beta-2.fuel.network/graphql"],
-    chainName: "Fuel Test Network",
+    rpcUrls: ["https://beta-3.fuel.network/graphql"],
+    chainName: "Fuel Beta-3 Network",
     label: "Fuel",
     nativeCurrency: {
       name: "ETH",
@@ -332,10 +332,11 @@ export const chains: Chains = {
     },
     blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
     exampleContractAddress:
-      "0xc57fd17f24c6fef493917c518c32fc686609d90df74c8b7aa179143a46238adf",
+      "0x97bf8072e4fb10997136bc8574ac9cc0ebf9960dc81fd04bb46c8d9f165b725b",
     contractExplorerUrl:
-      "https://fuellabs.github.io/block-explorer-v2/address/{walletAddress}",
-    txExplorerUrl: "https://fuellabs.github.io/block-explorer-v2/transaction/",
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/address/{walletAddress}",
+    txExplorerUrl:
+      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
     logo: FuelLogo,
     type: "fuel",
   },

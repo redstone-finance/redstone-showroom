@@ -104,8 +104,8 @@ export const FuelBlock = ({ props, network }: Props) => {
               To <b>interact with the contract</b> you should have <b>ETH</b> be
               added to the wallet <br /> by using{" "}
               <b>
-                <a target="_blank" href="https://faucet-beta-2.fuel.network/">
-                  https://faucet-beta-2.fuel.network/
+                <a target="_blank" href="https://faucet-beta-3.fuel.network/">
+                  https://faucet-beta-3.fuel.network/
                 </a>
               </b>
             </i>
