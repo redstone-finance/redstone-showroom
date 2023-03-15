@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { emptyPrices } from "../utils";
 import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
+import { FuelWalletLocked } from "@fuel-wallet/sdk";
 
 export const useFuel = () => {
   const [prices, setPrices] = useState(emptyPrices);
@@ -41,7 +42,7 @@ export const useFuel = () => {
     setWallet(newWallet);
   };
 
-  const connectWallet = async () => {
+  const connectWallet = async (): Promise<unknown> => {
     setPrices(emptyPrices);
 
     if (wallet) {
@@ -61,8 +62,17 @@ export const useFuel = () => {
       return setIsConnecting(false);
     }
 
-    const account = await fuel.currentAccount();
-    const newWallet = await fuel.getWallet(account);
+    let newWallet: FuelWalletLocked | undefined = undefined;
+
+    try {
+      const account = await fuel.currentAccount();
+      newWallet = await fuel.getWallet(account);
+    } catch (error: any) {
+      console.log(error); // Mostly in case when the only one of the accounts is connected.
+
+      await fuel.disconnect();
+      return await connectWallet();
+    }
 
     if (!newWallet) {
       return setIsConnecting(false);
@@ -89,9 +99,10 @@ export const useFuel = () => {
       if (account == wallet?.address.toString()) {
         return;
       }
+      reload();
     });
     fuel?.on(fuel.events.network, reload);
-  }, [fuel, wallet]);
+  }, [fuel, wallet, walletAddress]);
 
   return {
     prices,
