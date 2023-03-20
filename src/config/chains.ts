@@ -247,20 +247,20 @@ export const chains: Chains = {
       "https://aurorascan.dev/address/0x1a6bbc6Ff8BEeE20B4177Ac87580F4e2aF3Abf71",
     logo: AuroraLogo,
   },
-  [534354]: {
-    chainId: utils.hexValue(534354),
-    rpcUrls: ["https://prealpha.scroll.io/l2"],
-    chainName: "Scroll L2 Testnet",
+  [534353]: {
+    chainId: utils.hexValue(534353),
+    rpcUrls: ["https://alpha-rpc.scroll.io/l2"],
+    chainName: "Scroll Alpha Testnet",
     label: "Scroll",
     nativeCurrency: {
-      name: "TSETH",
-      symbol: "TSETH",
+      name: "ETH",
+      symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://l2scan.scroll.io/"],
-    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    blockExplorerUrls: ["https://blockscout.scroll.io/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://l2scan.scroll.io/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+      "https://blockscout.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: ScrollLogo,
   },
   [2000]: {
