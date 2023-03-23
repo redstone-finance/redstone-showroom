@@ -311,8 +311,8 @@ export const chains: Chains = {
       "https://subnets-test.avax.network/wagmi/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     logo: WagmiLogo,
   },
-  [1422]: {
-    chainId: utils.hexValue(1422),
+  [1442]: {
+    chainId: utils.hexValue(1442),
     rpcUrls: ["https://rpc.public.zkevm-test.net"],
     chainName: "Polygon zkEVM Testnet",
     label: "Polygon zkEVM Testnet",
