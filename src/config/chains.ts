@@ -231,6 +231,22 @@ export const chains: Chains = {
       "https://goerli.explorer.zksync.io/address/0xfC751219f2d99f9fE01e777625352Fe22D37433A",
     logo: zkSyncLogo,
   },
+  [324]: {
+    chainId: utils.hexValue(324),
+    rpcUrls: ["https://mainnet.era.zksync.io"],
+    chainName: "zkSync Era Mainnet",
+    label: "zkSync Era Mainnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.zksync.io/"],
+    exampleContractAddress: "0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+    contractExplorerUrl:
+      "https://explorer.zksync.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+    logo: zkSyncLogo,
+  },
   [1313161554]: {
     chainId: utils.hexValue(1313161554),
     rpcUrls: ["https://mainnet.aurora.dev"],
