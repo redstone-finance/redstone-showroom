@@ -343,6 +343,22 @@ export const chains: Chains = {
       "https://explorer.public.zkevm-test.net/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: PolygonZkEVMLogo,
   },
+  [1101]: {
+    chainId: utils.hexValue(1101),
+    rpcUrls: ["https://zkevm-rpc.com"],
+    chainName: "Polygon zkEVM",
+    label: "Polygon zkEVM",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://zkevm.polygonscan.com/"],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    contractExplorerUrl:
+      "https://zkevm.polygonscan.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    logo: PolygonZkEVMLogo,
+  },
   [7700]: {
     chainId: utils.hexValue(7700),
     rpcUrls: ["https://canto.slingshot.finance"],
