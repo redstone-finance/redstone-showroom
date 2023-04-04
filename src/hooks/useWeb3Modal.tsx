@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { BigNumber, providers } from "ethers";
 import Web3Modal from "web3modal";
 import { ChainDetails, chains } from "../config/chains";
@@ -6,13 +6,20 @@ import { emptyPrices } from "../utils";
 
 type NetworkToAdd = Omit<
   ChainDetails,
-  "exampleContractAddress" | "contractExplorerUrl" | "logo" | "label"
+  | "exampleContractAddress"
+  | "contractExplorerUrl"
+  | "logo"
+  | "label"
+  | "isStarknet"
+  | "txExplorerUrl"
+  | "type"
 >;
 
-export const useWeb3Modal = () => {
+export const useWeb3Modal = (
+  setNetwork: Dispatch<SetStateAction<ChainDetails | null>>
+) => {
   const [prices, setPrices] = useState(emptyPrices);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal | null>(null);
-  const [network, setNetwork] = useState<ChainDetails | null>(null);
   const [signer, setSigner] = useState<providers.JsonRpcSigner | null>(null);
   const [walletAddress, setWalletAddress] = useState("");
   const [isChangingNetwork, setIsChangingNetwork] = useState(false);
@@ -25,12 +32,8 @@ export const useWeb3Modal = () => {
     setWeb3Modal(web3Modal);
   }, []);
 
-  useEffect(() => {
-    changeNetwork();
-  }, [network]);
-
-  const changeNetwork = async () => {
-    if (network) {
+  const changeNetwork = async (network: ChainDetails | null) => {
+    if (network && (network.type || "eth") === "eth") {
       setIsChangingNetwork(true);
       const {
         exampleContractAddress,
@@ -39,6 +42,7 @@ export const useWeb3Modal = () => {
         label,
         ...restNetworkParams
       } = network;
+
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
@@ -67,9 +71,10 @@ export const useWeb3Modal = () => {
     }
   };
 
-  const connectWallet = async () => {
+  const connectWallet = async (network: ChainDetails | null) => {
     if (web3Modal) {
       try {
+        await changeNetwork(network);
         setIsConnecting(true);
         const instance = await web3Modal.connect();
         addListeners(instance);
@@ -118,8 +123,6 @@ export const useWeb3Modal = () => {
   return {
     prices,
     setPrices,
-    network,
-    setNetwork,
     signer,
     connectWallet,
     walletAddress,
