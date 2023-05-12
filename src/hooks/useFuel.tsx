@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { emptyPrices } from "../utils";
 import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
 import { FuelWalletLocked } from "@fuel-wallet/sdk";
@@ -96,7 +96,7 @@ export const useFuel = () => {
 
     fuel?.on(fuel.events.accounts, reload);
     fuel?.on(fuel.events.currentAccount, (account) => {
-      if (account == wallet?.address.toString()) {
+      if (!wallet || account == wallet?.address.toString()) {
         return;
       }
       reload();

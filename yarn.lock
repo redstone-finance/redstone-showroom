@@ -788,10 +788,10 @@
   resolved "https://registry.yarnpkg.com/@fuel-ts/wordlists/-/wordlists-0.35.0.tgz#abb7c0e842624029a1fb07c5e066fc6dbb51f785"
   integrity sha512-MuyozQd/hFAb6OEA6zvYtU8kHKTeyBMCscvlz6Sma7b/EqFzXX2puwSuKu9U7qijdKv7cZHDECIAQPPMAWs8fg==
 
-"@fuel-wallet/sdk@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@fuel-wallet/sdk/-/sdk-0.7.0.tgz#6c2e290d2911ecd1592f384b77395528fecd9d48"
-  integrity sha512-H0AXXdQTg1nc7B28RXvu2RbP13GWhMKVuylzIJ7t5aq/au8t8WHAkWy1+qwXUNU87G1gCSDv3UemU+Q+QNjNdg==
+"@fuel-wallet/sdk@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@fuel-wallet/sdk/-/sdk-0.7.2.tgz#36ae1f09afc76f27dd1aa365b6b75e8a04b77aac"
+  integrity sha512-S3vNsQLrvrH1fr68PKZIDUImVaeVJ43WVZqCHNwyiByag9n9AMQL2IG987ByNUUmnRKfzkS6UmVvri7gaWo6WA==
   dependencies:
     "@types/chrome" "^0.0.212"
     dexie-observable "4.0.1-beta.13"
