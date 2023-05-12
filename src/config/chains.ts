@@ -1,5 +1,4 @@
 import { utils } from "ethers";
-// import ArbitrumLogo from "../assets/chains/arbitrum.png";
 import FuelLogo from "../assets/chains/fuel.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
