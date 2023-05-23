@@ -1256,10 +1256,10 @@
   resolved "https://registry.npmjs.org/@fuel-ts/wordlists/-/wordlists-0.35.0.tgz"
   integrity sha512-MuyozQd/hFAb6OEA6zvYtU8kHKTeyBMCscvlz6Sma7b/EqFzXX2puwSuKu9U7qijdKv7cZHDECIAQPPMAWs8fg==
 
-"@fuel-wallet/sdk@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.npmjs.org/@fuel-wallet/sdk/-/sdk-0.7.1.tgz"
-  integrity sha512-uTx+BUbm8W6oqxiELt6jTERxuG9R/Owb/s5heZ3lb5ir5Cy5F/3EE2o9TVh/9MY2/paUXV1hKkM/NY+0JREeug==
+"@fuel-wallet/sdk@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.npmjs.org/@fuel-wallet/sdk/-/sdk-0.7.2.tgz"
+  integrity sha512-S3vNsQLrvrH1fr68PKZIDUImVaeVJ43WVZqCHNwyiByag9n9AMQL2IG987ByNUUmnRKfzkS6UmVvri7gaWo6WA==
   dependencies:
     "@types/chrome" "^0.0.212"
     dexie-observable "4.0.1-beta.13"
@@ -2169,7 +2169,7 @@
     redstone-protocol "1.0.5"
     redstone-sdk "1.0.7"
 
-"@redstone-finance/fuel-connector@file:../redstone-oracles-monorepo/worktree-dev/packages/fuel-connector/dist/redstone-finance-fuel-connector-0.2.1.tgz":
+"@redstone-finance/fuel-connector@^0.2.1":
   version "0.2.1"
   resolved "file:../redstone-oracles-monorepo/worktree-dev/packages/fuel-connector/dist/redstone-finance-fuel-connector-0.2.1.tgz"
   integrity sha512-eTX1rRa48S12uexHo6z1llp4/n1kjIKSLqXkouUpPhN3t/eCY6GFs3FtXNsjIj3fqTDUyXEWy3ZiIGSVgKlG8A==
@@ -3456,7 +3456,7 @@ fuels@^0.31.0:
     "@fuel-ts/wordlists" "0.31.0"
     commander "^9.4.1"
 
-fuels@>=0.35.0:
+fuels@^0.35.0, fuels@>=0.35.0:
   version "0.35.0"
   resolved "https://registry.npmjs.org/fuels/-/fuels-0.35.0.tgz"
   integrity sha512-a0YTD+AJ7WeQHaj1cRW3M6YnumC0tLfd8Ay/KJ0FLAmr77BqVfh3cKDy6459Yjpeitc60K8+nAk0G36rIn6Ezw==
@@ -3609,7 +3609,7 @@ graceful-fs@^4.2.9:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
-graphql-request@^5.0.0, graphql-request@5.1.0:
+graphql-request@^5.0.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/graphql-request/-/graphql-request-5.1.0.tgz"
   integrity sha512-0OeRVYigVwIiXhNmqnPDt+JhMzsjinxHE7TVy3Lm6jUzav0guVcL0lfSbi6jVTRAxcbwgyr6yrZioSHxf9gHzw==
