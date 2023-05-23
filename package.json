@@ -7,12 +7,20 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@argent/get-starknet": "^5.3.13",
+    "@fuel-wallet/sdk": "^0.7.2",
     "@redstone-finance/evm-connector": "^0.0.18",
+    "@redstone-finance/fuel-connector": "^0.2.1",
+    "@redstone-finance/starknet-connector": "^0.2.2",
+    "axios": "^1.2.2",
     "ethers": "^5.6.9",
+    "fuels": "^0.35.0",
     "parcel": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redstone-api": "^0.4.11",
+    "redstone-sdk": "^1.0.9",
+    "starknet": "^4.22.0",
     "web3modal": "^1.9.8"
   },
   "devDependencies": {
@@ -20,6 +28,7 @@
     "@types/react-dom": "^18.0.6",
     "assert": "^2.0.0",
     "buffer": "^5.5.0",
+    "path-browserify": "^1.0.1",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "stream-browserify": "^3.0.0",
