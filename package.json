@@ -3,8 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "rm -rf .parcel-cache && parcel index.html",
-    "build": "parcel build index.html"
+    "fix": "rm -rf ./node_modules/@fuel-ts/providers/node_modules/graphql-request",
+    "dev": "yarn fix && rm -rf .parcel-cache && parcel index.html",
+    "build": "yarn fix && parcel build index.html"
   },
   "dependencies": {
     "@redstone-finance/casper-connector": "file:redstone-finance-casper-connector-0.5.3.tgz",
