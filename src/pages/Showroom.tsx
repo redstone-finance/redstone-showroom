@@ -3,7 +3,9 @@ import { ChainButton } from "../components/ChainButton";
 import { ChainDetails, chains } from "../config/chains";
 import { StarknetBlock } from "./StarknetBlock";
 import { useStarknet } from "../hooks/useStarknet";
+import { useFuel } from "../hooks/useFuel";
 import { EvmBlock } from "./EvmBlock";
+import { FuelBlock } from "./FuelBlock";
 import { useState } from "react";
 
 const chainsArray = Object.values(chains);
@@ -13,6 +15,7 @@ export const Showroom = () => {
 
   const evm = useWeb3Modal(setNetwork);
   const starknet = useStarknet();
+  const fuel = useFuel();
 
   const onChainClick = async (chain: ChainDetails) => {
     setNetwork(chain);
@@ -23,6 +26,10 @@ export const Showroom = () => {
 
     if (chain?.type === "starknet") {
       return await starknet.connectWallet();
+    }
+
+    if (chain?.type === "fuel") {
+      return await fuel.connectWallet();
     }
   };
 
@@ -50,6 +57,9 @@ export const Showroom = () => {
       )}
       {network?.type === "starknet" && (
         <StarknetBlock props={{ ...starknet }} network={network!} />
+      )}
+      {network?.type === "fuel" && (
+        <FuelBlock props={{ ...fuel }} network={network!} />
       )}
     </div>
   );
