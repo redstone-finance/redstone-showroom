@@ -19,6 +19,7 @@ import WagmiLogo from "../assets/chains/wagmi-testnet.png";
 import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
+import LineaLogo from "../assets/chains/linea.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -390,5 +391,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     logo: BaseLogo,
+  },
+  [59140]: {
+    chainId: utils.hexValue(59140),
+    rpcUrls: ["https://rpc.goerli.linea.build"],
+    chainName: "Linea Goerli test network",
+    label: "Linea Goerli",
+    nativeCurrency: {
+      name: "LineaETH",
+      symbol: "LineaETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.goerli.linea.build"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://explorer.goerli.linea.build/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: LineaLogo,
   },
 };
