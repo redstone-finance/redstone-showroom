@@ -20,6 +20,7 @@ import PolygonZkEVMLogo from "../assets/chains/polygon-zk-evm.png";
 import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import LineaLogo from "../assets/chains/linea.png";
+import TelosLogo from "../assets/chains/telos.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -407,5 +408,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.goerli.linea.build/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: LineaLogo,
+  },
+  [41]: {
+    chainId: utils.hexValue(41),
+    rpcUrls: ["https://testnet.telos.net/evm"],
+    chainName: "Telos Testnet",
+    label: "Telos Testnet",
+    nativeCurrency: {
+      name: "TLOS",
+      symbol: "TLOS",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet.teloscan.io/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://testnet.teloscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: TelosLogo,
   },
 };
