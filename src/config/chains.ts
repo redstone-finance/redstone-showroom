@@ -301,7 +301,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(5001),
     rpcUrls: ["​​https://rpc.testnet.mantle.xyz/"],
     chainName: "Mantle Testnet",
-    label: "Mantle",
+    label: "Mantle Testnet",
     nativeCurrency: {
       name: "BIT",
       symbol: "BIT",
@@ -424,5 +424,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://testnet.teloscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: TelosLogo,
+  },
+  [5000]: {
+    chainId: utils.hexValue(5000),
+    rpcUrls: ["https://rpc.mantle.xyz"],
+    chainName: "Mantle",
+    label: "Mantle",
+    nativeCurrency: {
+      name: "MNT",
+      symbol: "MNT",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.mantle.xyz/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://explorer.mantle.xyz/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: MantleLogo,
   },
 };
