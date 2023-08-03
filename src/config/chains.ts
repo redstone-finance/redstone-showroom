@@ -441,4 +441,20 @@ export const chains: Chains = {
       "https://explorer.mantle.xyz/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: MantleLogo,
   },
+  [8453]: {
+    chainId: utils.hexValue(8453),
+    rpcUrls: ["https://mainnet.base.org"],
+    chainName: "Base Mainnet",
+    label: "Base Mainnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://basescan.org/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://basescan.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: BaseLogo,
+  },
 };
