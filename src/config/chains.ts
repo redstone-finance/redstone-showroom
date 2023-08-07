@@ -21,6 +21,7 @@ import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import LineaLogo from "../assets/chains/linea.png";
 import TelosLogo from "../assets/chains/telos.png";
+import ZetaChainLogo from "../assets/chains/zetachain.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -456,5 +457,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://basescan.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: BaseLogo,
+  },
+  [7001]: {
+    chainId: utils.hexValue(7001),
+    rpcUrls: ["https://rpc.ankr.com/zetachain_evm_testnet"],
+    chainName: "ZetaChain Athens Testnet",
+    label: "ZetaChain Testnet",
+    nativeCurrency: {
+      name: "aZETA",
+      symbol: "aZETA",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.athens.zetachain.com"],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    contractExplorerUrl:
+      "https://explorer.athens.zetachain.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    logo: ZetaChainLogo,
   },
 };
