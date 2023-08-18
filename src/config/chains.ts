@@ -21,10 +21,11 @@ import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import StarknetLogo from "../assets/chains/starknet.png";
 import FuelLogo from "../assets/chains/fuel.svg";
+import TonLogo from "../assets/chains/ton.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
-export type ChainType = "eth" | "starknet" | "fuel";
+export type ChainType = "eth" | "starknet" | "fuel" | "ton";
 
 export interface ChainDetails {
   chainId: string;
@@ -397,8 +398,8 @@ export const chains: Chains = {
       "https://goerli.basescan.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     logo: BaseLogo,
   },
-  [9999999998]: {
-    chainId: utils.hexValue(9999999998),
+  [9999999997]: {
+    chainId: utils.hexValue(9999999997),
     rpcUrls: [
       "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
     ],
@@ -418,8 +419,8 @@ export const chains: Chains = {
     logo: StarknetLogo,
     type: "starknet",
   },
-  [9999999999]: {
-    chainId: utils.hexValue(9999999999),
+  [9999999998]: {
+    chainId: utils.hexValue(9999999998),
     rpcUrls: ["https://beta-3.fuel.network/graphql"],
     chainName: "Fuel Beta-3 Network",
     label: "Fuel",
@@ -437,5 +438,23 @@ export const chains: Chains = {
       "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
     logo: FuelLogo,
     type: "fuel",
+  },
+  [9999999999]: {
+    chainId: utils.hexValue(9999999999),
+    rpcUrls: ["https://testnet.toncenter.com/api/v2/jsonRPC"],
+    chainName: "TON Test Network",
+    label: "TON",
+    nativeCurrency: {
+      name: "GoerliETH",
+      symbol: "GoerliETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet.starkscan.co/"],
+    exampleContractAddress: "EQCMxfukwpP3BI_6Pn3lmOXgxlp3dPabVGOM0UvJCjsDhkdD",
+    contractExplorerUrl:
+      "https://testnet.tonviewer.com/EQCMxfukwpP3BI_6Pn3lmOXgxlp3dPabVGOM0UvJCjsDhkdD",
+    txExplorerUrl: "https://testnet.starkscan.co/tx/",
+    logo: TonLogo,
+    type: "ton",
   },
 };

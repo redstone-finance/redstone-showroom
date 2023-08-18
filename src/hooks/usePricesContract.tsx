@@ -10,7 +10,6 @@ import {
   IPricesContractAdapter,
 } from "redstone-sdk";
 
-const DATA_SERVICE_URL = "https://d33trozg86ya9x.cloudfront.net";
 const dataPackageRequestParams = {
   dataServiceId: "redstone-rapid-demo",
   uniqueSignersCount: 1,
@@ -32,9 +31,7 @@ export const usePricesContract = (
   const [errorMessage, setErrorMessage] = useState("");
 
   const { getPricesTimestamp } = usePricesData();
-  const paramsProvider = new paramsProviderClass(dataPackageRequestParams, [
-    DATA_SERVICE_URL,
-  ]);
+  const paramsProvider = new paramsProviderClass(dataPackageRequestParams);
 
   const readPricesFromContract = async () => {
     await getPrices(true);
