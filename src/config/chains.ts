@@ -269,7 +269,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(534353),
     rpcUrls: ["https://alpha-rpc.scroll.io/l2"],
     chainName: "Scroll Alpha Testnet",
-    label: "Scroll",
+    label: "Scroll Alpha Testnet",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
@@ -279,6 +279,22 @@ export const chains: Chains = {
     exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
       "https://blockscout.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: ScrollLogo,
+  },
+  [534351]: {
+    chainId: utils.hexValue(534351),
+    rpcUrls: ["https://sepolia-rpc.scroll.io"],
+    chainName: "Scroll Sepolia",
+    label: "Scroll Sepolia",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://sepolia-blockscout.scroll.io/"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://sepolia-blockscout.scroll.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: ScrollLogo,
   },
   [2000]: {
