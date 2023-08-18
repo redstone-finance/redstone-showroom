@@ -14,7 +14,7 @@
     "@redstone-finance/evm-connector": "^0.0.18",
     "@redstone-finance/starknet-connector": "^0.2.2",
     "@redstone-finance/fuel-connector": "^0.2.2",
-    "@redstone-finance/ton-connector": "file:redstone-finance-ton-connector-0.0.14.tgz",
+    "@redstone-finance/ton-connector": "file:redstone-finance-ton-connector-0.0.15.tgz",
     "axios": "^1.2.2",
     "ethers": "^5.6.9",
     "graphql-request": "5.1.0",
@@ -27,8 +27,7 @@
     "ton-core": "^0.49.1",
     "ton-crypto": "^3.2.0",
     "web3modal": "^1.9.8",
-    "redstone-sdk": "file:redstone-sdk-1.4.0.tgz",
-    "redstone-protocol": "file:redstone-protocol-1.0.6.tgz"
+    "redstone-sdk": "file:redstone-sdk-1.4.0.tgz"
   },
   "alias": {
     "@fuel-ts/transactions/configs": "@fuel-ts/transactions/dist/configs",
