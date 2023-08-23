@@ -11,9 +11,11 @@ import { ChainDetails } from "../config/chains";
 import { Dispatch, SetStateAction } from "react";
 import { Prices } from "../types";
 import Modal from "../components/Modal";
-import { TonPricesContractConnector } from "@redstone-finance/ton-connector/src";
+import {
+  CustomTonNetwork,
+  TonPricesContractConnector,
+} from "@redstone-finance/ton-connector/src";
 import { KeyPair } from "ton-crypto/dist/primitives/nacl";
-import { ShowroomTonNetwork } from "../chains/ton/ShowroomTonNetwork";
 
 interface Props {
   props: {
@@ -30,9 +32,12 @@ export const TonBlock = ({ props, network }: Props) => {
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
 
-  const tonNetwork = new ShowroomTonNetwork(() => {
-    return walletKey;
-  }, network!.rpcUrls[0]);
+  const tonNetwork = new CustomTonNetwork(
+    () => {
+      return walletKey;
+    },
+    { apiEndpoint: network!.rpcUrls[0], apiKey: process.env.TONCENTER_API_KEY }
+  );
   const connector = new TonPricesContractConnector(
     tonNetwork,
     network!.exampleContractAddress
