@@ -425,20 +425,20 @@ export const chains: Chains = {
       "https://explorer.goerli.linea.build/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: LineaLogo,
   },
-  [41]: {
-    chainId: utils.hexValue(41),
-    rpcUrls: ["https://testnet.telos.net/evm"],
-    chainName: "Telos Testnet",
-    label: "Telos Testnet",
+  [40]: {
+    chainId: utils.hexValue(40),
+    rpcUrls: ["https://mainnet.telos.net/evm"],
+    chainName: "Telos",
+    label: "Telos",
     nativeCurrency: {
       name: "TLOS",
       symbol: "TLOS",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://testnet.teloscan.io/"],
+    blockExplorerUrls: ["https://teloscan.io/"],
     exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://testnet.teloscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://teloscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: TelosLogo,
   },
   [5000]: {
