@@ -21,6 +21,7 @@ import CantoLogo from "../assets/chains/canto.png";
 import BaseLogo from "../assets/chains/base.png";
 import LineaLogo from "../assets/chains/linea.png";
 import TelosLogo from "../assets/chains/telos.png";
+import MantaLogo from "../assets/chains/manta.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -472,5 +473,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://basescan.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: BaseLogo,
+  },
+  [3441005]: {
+    chainId: utils.hexValue(3441005),
+    rpcUrls: ["https://manta-testnet.calderachain.xyz/http"],
+    chainName: "Manta Testnet L2 Rollup",
+    label: "Manta Testnet",
+    nativeCurrency: {
+      name: "MANTA",
+      symbol: "MANTA",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://pacific-explorer.manta.network/"],
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    contractExplorerUrl:
+      "https://pacific-explorer.manta.network/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    logo: MantaLogo,
   },
 };
