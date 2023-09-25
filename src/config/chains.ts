@@ -475,20 +475,20 @@ export const chains: Chains = {
       "https://basescan.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: BaseLogo,
   },
-  [3441005]: {
-    chainId: utils.hexValue(3441005),
-    rpcUrls: ["https://manta-testnet.calderachain.xyz/http"],
-    chainName: "Manta Testnet L2 Rollup",
-    label: "Manta Testnet",
+  [169]: {
+    chainId: utils.hexValue(169),
+    rpcUrls: ["https://pacific-rpc.manta.network/http"],
+    chainName: "Manta Pacific Mainnet",
+    label: "Manta Pacific Mainnet",
     nativeCurrency: {
-      name: "MANTA",
-      symbol: "MANTA",
+      name: "ETH",
+      symbol: "ETH",
       decimals: 18,
     },
     blockExplorerUrls: ["https://pacific-explorer.manta.network/"],
-    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://pacific-explorer.manta.network/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+      "https://pacific-explorer.manta.network/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: MantaLogo,
   },
   [30]: {
