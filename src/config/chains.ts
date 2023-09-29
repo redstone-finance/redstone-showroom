@@ -23,6 +23,7 @@ import LineaLogo from "../assets/chains/linea.png";
 import TelosLogo from "../assets/chains/telos.png";
 import MantaLogo from "../assets/chains/manta.png";
 import RSKLogo from "../assets/chains/rsk.png";
+import AltLayerLogo from "../assets/chains/alt-layer.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -506,5 +507,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.rsk.co/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: RSKLogo,
+  },
+  [4000003]: {
+    chainId: utils.hexValue(4000003),
+    rpcUrls: ["https://zero.alt.technology/"],
+    chainName: "AltLayer Zero Gas Network",
+    label: "AltLayer Zero Gas",
+    nativeCurrency: {
+      name: "ZERO",
+      symbol: "ZERO",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://zero-explorer.alt.technology"],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    contractExplorerUrl:
+      "https://zero-explorer.alt.technology/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850/",
+    logo: AltLayerLogo,
   },
 };
