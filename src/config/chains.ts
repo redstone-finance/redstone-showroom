@@ -24,6 +24,7 @@ import TelosLogo from "../assets/chains/telos.png";
 import MantaLogo from "../assets/chains/manta.png";
 import RSKLogo from "../assets/chains/rsk.png";
 import AltLayerLogo from "../assets/chains/alt-layer.png";
+import GalacticaLogo from "../assets/chains/galactica.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -523,5 +524,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://zero-explorer.alt.technology/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850/",
     logo: AltLayerLogo,
+  },
+  [41233]: {
+    chainId: utils.hexValue(41233),
+    rpcUrls: ["https://evm-rpc-devnet-v1.galactica.com/"],
+    chainName: "Galactica-DevNet-v1.1",
+    label: "Galactica DevNet",
+    nativeCurrency: {
+      name: "GNET",
+      symbol: "GNET",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer-devnet-v1.galactica.com"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://explorer-devnet-v1.galactica.com/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: GalacticaLogo,
   },
 };
