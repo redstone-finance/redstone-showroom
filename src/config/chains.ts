@@ -44,6 +44,22 @@ export interface ChainDetails {
 }
 
 export const chains: Chains = {
+  [1]: {
+    chainId: utils.hexValue(1),
+    rpcUrls: ["https://mainnet.infura.io/v3/"],
+    chainName: "Ethereum Mainnet",
+    label: "Ethereum Mainnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://etherscan.io"],
+    exampleContractAddress: "0xf5839a9ef554ad59453d78867e3d7de2cd7e80aa",
+    contractExplorerUrl:
+      "https://etherscan.io/address/0xf5839a9ef554ad59453d78867e3d7de2cd7e80aa",
+    logo: EthereumLogo,
+  },
   [9001]: {
     chainId: utils.hexValue(9001),
     rpcUrls: ["https://eth.bd.evmos.org:8545"],
@@ -112,7 +128,7 @@ export const chains: Chains = {
     chainId: utils.hexValue(5),
     rpcUrls: ["https://goerli.infura.io/v3/"],
     chainName: "Goerli Test Network",
-    label: "Goerli",
+    label: "Ethereum Goerli",
     nativeCurrency: {
       name: "GoerliETH",
       symbol: "GoerliETH",
