@@ -1,3 +1,3 @@
 # RedStone Showroom
 
-Simple app which demonstrate redstone integration with EVM chains.
+Simple app which demonstrate redstone integration on the TON network.
