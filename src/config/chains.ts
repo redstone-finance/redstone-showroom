@@ -284,11 +284,11 @@ export const chains: Chains = {
       "https://aurorascan.dev/address/0x1a6bbc6Ff8BEeE20B4177Ac87580F4e2aF3Abf71",
     logo: AuroraLogo,
   },
-  [534353]: {
-    chainId: utils.hexValue(534353),
-    rpcUrls: ["https://alpha-rpc.scroll.io/l2"],
-    chainName: "Scroll Alpha Testnet",
-    label: "Scroll Alpha Testnet",
+  [534352]: {
+    chainId: utils.hexValue(534352),
+    rpcUrls: ["https://rpc.scroll.io"],
+    chainName: "Scroll",
+    label: "Scroll",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
