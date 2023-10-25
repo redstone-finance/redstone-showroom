@@ -24,6 +24,7 @@ import TelosLogo from "../assets/chains/telos.png";
 import MantaLogo from "../assets/chains/manta.png";
 import RSKLogo from "../assets/chains/rsk.png";
 import AltLayerLogo from "../assets/chains/alt-layer.png";
+import HorizenLogo from "../assets/chains/horizen.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -539,5 +540,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://zero-explorer.alt.technology/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850/",
     logo: AltLayerLogo,
+  },
+  [1663]: {
+    chainId: utils.hexValue(1663),
+    rpcUrls: ["https://gobi-rpc.horizenlabs.io/ethv1"],
+    chainName: "Gobi Testnet",
+    label: "Horizen Gobi Testnet",
+    nativeCurrency: {
+      name: "tZEN",
+      symbol: "tZEN",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://gobi-explorer.horizen.io"],
+    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    contractExplorerUrl:
+      "https://gobi-explorer.horizen.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    logo: HorizenLogo,
   },
 };
