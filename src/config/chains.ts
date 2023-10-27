@@ -541,20 +541,20 @@ export const chains: Chains = {
       "https://zero-explorer.alt.technology/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850/",
     logo: AltLayerLogo,
   },
-  [1663]: {
-    chainId: utils.hexValue(1663),
-    rpcUrls: ["https://gobi-rpc.horizenlabs.io/ethv1"],
-    chainName: "Gobi Testnet",
-    label: "Horizen Gobi Testnet",
+  [7332]: {
+    chainId: utils.hexValue(7332),
+    rpcUrls: ["https://eon-rpc.horizenlabs.io/ethv1"],
+    chainName: "Horizen EON Mainnet",
+    label: "Horizen EON Mainnet",
     nativeCurrency: {
-      name: "tZEN",
-      symbol: "tZEN",
+      name: "ZEN",
+      symbol: "ZEN",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://gobi-explorer.horizen.io"],
+    blockExplorerUrls: ["https://eon-explorer.horizenlabs.io"],
     exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     contractExplorerUrl:
-      "https://gobi-explorer.horizen.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://eon-explorer.horizenlabs.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: HorizenLogo,
   },
 };
