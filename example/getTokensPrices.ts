@@ -17,14 +17,11 @@ const provider = new providers.JsonRpcProvider(PROVIDER_RPC.rpc, {
 
 (async () => {
   const contract = new Contract(contractAddress, abi, provider);
-  const wrappedContract = WrapperBuilder.wrap(contract).usingDataService(
-    {
-      dataServiceId: "redstone-rapid-demo",
-      uniqueSignersCount: 1,
-      dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
-    },
-    ["https://d33trozg86ya9x.cloudfront.net"]
-  );
+  const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
+    dataServiceId: "redstone-rapid-demo",
+    uniqueSignersCount: 1,
+    dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+  });
   const tokenPrices = await wrappedContract.getPrices();
   console.log(tokenPrices);
 })();

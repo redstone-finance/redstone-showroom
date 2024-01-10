@@ -57,14 +57,11 @@ export const usePricesFromContract = (
     signer: providers.JsonRpcSigner
   ) => {
     const contract = new Contract(contractAddress, abi, signer);
-    const wrappedContract = WrapperBuilder.wrap(contract).usingDataService(
-      {
-        dataServiceId: "redstone-rapid-demo",
-        uniqueSignersCount: 1,
-        dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
-      },
-      ["https://d33trozg86ya9x.cloudfront.net"]
-    );
+    const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
+      dataServiceId: "redstone-rapid-demo",
+      uniqueSignersCount: 1,
+      dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+    });
     return await wrappedContract.getPrices();
   };
 

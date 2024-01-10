@@ -237,27 +237,27 @@ export const chains: Chains = {
       "https://moonscan.io/address/0xd75F4B5AA9480E6956f2570Dd258ca716784f6E1",
     logo: MoonbeamLogo,
   },
-  [280]: {
-    chainId: utils.hexValue(280),
-    rpcUrls: ["https://zksync2-testnet.zksync.dev"],
-    chainName: "zkSync Era Testnet",
-    label: "zkSync Era Testnet",
+  [300]: {
+    chainId: utils.hexValue(300),
+    rpcUrls: ["https://sepolia.era.zksync.dev/"],
+    chainName: "zkSync Sepolia Testnet",
+    label: "zkSync Sepolia",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://goerli.explorer.zksync.io/"],
-    exampleContractAddress: "0xfC751219f2d99f9fE01e777625352Fe22D37433A",
+    blockExplorerUrls: ["https://sepolia.explorer.zksync.io/"],
+    exampleContractAddress: "0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     contractExplorerUrl:
-      "https://goerli.explorer.zksync.io/address/0xfC751219f2d99f9fE01e777625352Fe22D37433A",
+      "https://sepolia.explorer.zksync.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     logo: zkSyncLogo,
   },
   [324]: {
     chainId: utils.hexValue(324),
     rpcUrls: ["https://mainnet.era.zksync.io"],
     chainName: "zkSync Era Mainnet",
-    label: "zkSync Era Mainnet",
+    label: "zkSync Era",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
