@@ -26,6 +26,7 @@ import RSKLogo from "../assets/chains/rsk.png";
 import AltLayerLogo from "../assets/chains/alt-layer.png";
 import HorizenLogo from "../assets/chains/horizen.png";
 import ParallelLogo from "../assets/chains/parallel.png";
+import BlastLogo from "../assets/chains/blast.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -577,5 +578,20 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorerl2new-surprised-harlequin-bonobo-fvcy2k9oqh.t.conduit.xyz/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
     logo: ParallelLogo,
+  },
+  [168587773]: {
+    chainId: utils.hexValue(168587773),
+    rpcUrls: [`https://rpc.s2.testblast.io/${process.env.BLAST_API_KEY}`],
+    chainName: "Blast Testnet",
+    label: "Blast Testnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: [],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    contractExplorerUrl: "",
+    logo: BlastLogo,
   },
 };
