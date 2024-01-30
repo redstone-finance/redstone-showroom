@@ -27,6 +27,7 @@ import AltLayerLogo from "../assets/chains/alt-layer.png";
 import HorizenLogo from "../assets/chains/horizen.png";
 import ParallelLogo from "../assets/chains/parallel.png";
 import BlastLogo from "../assets/chains/blast.png";
+import EtherlinkLogo from "../assets/chains/etherlink.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -593,5 +594,21 @@ export const chains: Chains = {
     exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl: "",
     logo: BlastLogo,
+  },
+  [128123]: {
+    chainId: utils.hexValue(128123),
+    rpcUrls: ["https://node.ghostnet.etherlink.com"],
+    chainName: "Etherlink Testnet",
+    label: "Etherlink Testnet",
+    nativeCurrency: {
+      name: "XTZ",
+      symbol: "XTZ",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet-explorer.etherlink.com/"],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    contractExplorerUrl:
+      "https://testnet-explorer.etherlink.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
+    logo: EtherlinkLogo,
   },
 };
