@@ -28,6 +28,7 @@ import HorizenLogo from "../assets/chains/horizen.png";
 import ParallelLogo from "../assets/chains/parallel.png";
 import BlastLogo from "../assets/chains/blast.png";
 import EtherlinkLogo from "../assets/chains/etherlink.png";
+import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -610,5 +611,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://testnet-explorer.etherlink.com/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: EtherlinkLogo,
+  },
+  [810180]: {
+    chainId: utils.hexValue(810180),
+    rpcUrls: ["https://rpc.zklink.io/"],
+    chainName: "zkLink Nova",
+    label: "zkLink Nova",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.zklink.io/"],
+    exampleContractAddress: "0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+    contractExplorerUrl:
+      "https://explorer.zklink.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
+    logo: zkLinkNovaLogo,
   },
 };
