@@ -29,6 +29,7 @@ import ParallelLogo from "../assets/chains/parallel.png";
 import BlastLogo from "../assets/chains/blast.png";
 import EtherlinkLogo from "../assets/chains/etherlink.png";
 import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
+import storyNetworkLogo from "../assets/chains/story-network.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -627,5 +628,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.zklink.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     logo: zkLinkNovaLogo,
+  },
+  [1513]: {
+    chainId: utils.hexValue(1513),
+    rpcUrls: ["https://story-network.rpc.caldera.xyz/http"],
+    chainName: "Story Network",
+    label: "Story Network",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://story-network.explorer.caldera.xyz/"],
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    contractExplorerUrl:
+      "https://story-network.explorer.caldera.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    logo: storyNetworkLogo,
   },
 };
