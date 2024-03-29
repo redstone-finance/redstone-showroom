@@ -388,9 +388,9 @@ export const chains: Chains = {
     },
     blockExplorerUrls: ["https://sepolia.starkscan.co/"],
     exampleContractAddress:
-      "0x06cc91f70cace6e5dd428cd79c919e6156572a98fd57c04b123d7f2b91ee46ae",
+      "0x0037b17a782f5a0134bd21faf200f35c96b436dc3af51f5534aa69fd4261bec9",
     contractExplorerUrl:
-      "https://sepolia.starkscan.co/contract/0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
+      "https://sepolia.starkscan.co/contract/0x0037b17a782f5a0134bd21faf200f35c96b436dc3af51f5534aa69fd4261bec9",
     txExplorerUrl: "https://sepolia.starkscan.co/tx/",
     logo: StarknetLogo,
     type: "starknet",

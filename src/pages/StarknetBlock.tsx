@@ -88,7 +88,9 @@ export const StarknetBlock = ({ props, network }: Props) => {
                 href="https://book.starknet.io/ch02-05-01-start-with-sepolia.html"
                 referrerPolicy="no-referrer"
               >
-                <u>https://faucet.goerli.starknet.io/</u>
+                <u>
+                  https://book.starknet.io/ch02-05-01-start-with-sepolia.html
+                </u>
               </a>
             </i>
           </div>,

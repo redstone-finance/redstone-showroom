@@ -16,6 +16,7 @@
     "parcel": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "starknet": "^5.29.0",
     "web3modal": "^1.9.8"
   },
   "devDependencies": {

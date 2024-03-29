@@ -4910,6 +4910,7 @@ __metadata:
     prettier: "npm:^2.7.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    starknet: "npm:^5.29.0"
     stream-browserify: "npm:^3.0.0"
     tailwindcss: "npm:^3.1.6"
     typescript: "npm:^4.6.4"

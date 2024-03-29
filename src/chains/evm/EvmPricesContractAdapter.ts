@@ -1,16 +1,19 @@
-import { ContractParamsProvider, PricesContractAdapter } from "redstone-sdk";
+import {
+  ContractParamsProvider,
+  IPricesContractAdapter,
+} from "@redstone-finance/sdk";
 import { Contract } from "ethers";
 
 import { WrapperBuilder } from "@redstone-finance/evm-connector";
 
-export class EvmPricesContractAdapter implements PricesContractAdapter {
+export class EvmPricesContractAdapter implements IPricesContractAdapter {
   constructor(private contract: Contract) {}
 
   async getPricesFromPayload(
     paramsProvider: ContractParamsProvider
   ): Promise<number[]> {
     return await WrapperBuilder.wrap(this.contract)
-      .usingDataService(paramsProvider.requestParams, paramsProvider.urls)
+      .usingDataService(paramsProvider.requestParams)
       .getPrices();
   }
 
