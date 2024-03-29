@@ -8,21 +8,18 @@ import { ChainTx } from "../components/ChainTx";
 import { useMockLoader } from "../hooks/useMockLoader";
 import { usePricesContract } from "../hooks/usePricesContract";
 import { ChainDetails } from "../config/chains";
-import { IStarknetWindowObject } from "@argent/get-starknet";
+import { StarknetWindowObject } from "@argent/get-starknet";
 import { Dispatch, SetStateAction } from "react";
 import { Prices } from "../types";
 import Modal from "../components/Modal";
-import {
-  StarknetContractParamsProvider,
-  StarknetPricesContractConnector,
-} from "@redstone-finance/starknet-connector";
+import { PriceAdapterStarknetContractConnector } from "@redstone-finance/starknet-connector";
 
 interface Props {
   props: {
     prices: Prices;
     setPrices: Dispatch<SetStateAction<Prices>>;
     walletAddress: string;
-    starknet: IStarknetWindowObject | undefined;
+    starknet: StarknetWindowObject | undefined;
   };
   network: ChainDetails | null;
 }
@@ -32,7 +29,7 @@ export const StarknetBlock = ({ props, network }: Props) => {
   const { text, isMockLoading, setIsMockLoading, startMockLoader } =
     useMockLoader();
 
-  const connector = new StarknetPricesContractConnector(
+  const connector = new PriceAdapterStarknetContractConnector(
     starknet?.account,
     network?.exampleContractAddress!
   );
@@ -52,8 +49,7 @@ export const StarknetBlock = ({ props, network }: Props) => {
     connector,
     startMockLoader,
     setPrices,
-    setIsMockLoading,
-    StarknetContractParamsProvider
+    setIsMockLoading
   );
 
   const arePrices = Object.values(prices).every((price) => !!price);
@@ -85,11 +81,11 @@ export const StarknetBlock = ({ props, network }: Props) => {
           <div className="px-6 py-3 text-sm w-3/5 text-center text-gray-500">
             <i>
               To <b>write</b> a snapshot of current <b>prices</b> to the
-              contract's storage you should have <b>testnet ETH</b> be added to
-              the wallet by using:&nbsp;
+              contract's storage you should have <b>sepoliaETH</b> be added to
+              the wallet as described here:&nbsp;
               <a
                 target="blank"
-                href="https://faucet.goerli.starknet.io/"
+                href="https://book.starknet.io/ch02-05-01-start-with-sepolia.html"
                 referrerPolicy="no-referrer"
               >
                 <u>https://faucet.goerli.starknet.io/</u>

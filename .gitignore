@@ -26,3 +26,4 @@ dist-ssr
 .env
 
 .parcel-cache/
+.yarn

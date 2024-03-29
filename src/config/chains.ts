@@ -378,22 +378,20 @@ export const chains: Chains = {
   // },
   [9999999998]: {
     chainId: utils.hexValue(9999999998),
-    rpcUrls: [
-      "https://starknet-goerli.infura.io/v3/0d9bfc9a170947ce8c4f2e15dae7c62a",
-    ],
-    chainName: "Starknet Test Network",
+    rpcUrls: [],
+    chainName: "Starknet Sepolia Network",
     label: "Starknet",
     nativeCurrency: {
-      name: "GoerliETH",
-      symbol: "GoerliETH",
+      name: "SepoliaETH",
+      symbol: "SepoliaETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://testnet.starkscan.co/"],
+    blockExplorerUrls: ["https://sepolia.starkscan.co/"],
     exampleContractAddress:
-      "0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
+      "0x06cc91f70cace6e5dd428cd79c919e6156572a98fd57c04b123d7f2b91ee46ae",
     contractExplorerUrl:
-      "https://testnet.starkscan.co/contract/0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
-    txExplorerUrl: "https://testnet.starkscan.co/tx/",
+      "https://sepolia.starkscan.co/contract/0x03a4732136f974a250bf7d95683af13b05a4d605d3f3390469f6178448a73ae1",
+    txExplorerUrl: "https://sepolia.starkscan.co/tx/",
     logo: StarknetLogo,
     type: "starknet",
   },

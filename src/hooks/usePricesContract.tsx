@@ -3,14 +3,13 @@ import { emptyPrices } from "../utils";
 import { ChainDetails } from "../config/chains";
 import { usePricesData } from "../chains/evm/usePricesData";
 import { Prices } from "../types";
-import { utils } from "ethers";
+import { BigNumberish, utils } from "ethers";
 import {
   ContractParamsProvider,
   IContractConnector,
   IPricesContractAdapter,
-} from "redstone-sdk";
+} from "@redstone-finance/sdk";
 
-const DATA_SERVICE_URL = "https://d33trozg86ya9x.cloudfront.net";
 const dataPackageRequestParams = {
   dataServiceId: "redstone-rapid-demo",
   uniqueSignersCount: 1,
@@ -32,9 +31,7 @@ export const usePricesContract = (
   const [errorMessage, setErrorMessage] = useState("");
 
   const { getPricesTimestamp } = usePricesData();
-  const paramsProvider = new paramsProviderClass(dataPackageRequestParams, [
-    DATA_SERVICE_URL,
-  ]);
+  const paramsProvider = new paramsProviderClass(dataPackageRequestParams);
 
   const readPricesFromContract = async () => {
     await getPrices(true);
@@ -126,7 +123,7 @@ export const usePricesContract = (
 
   const handlePrices = (
     setPrices: (value: ((prevState: Prices) => Prices) | Prices) => void,
-    prices: number[]
+    prices: BigNumberish[]
   ) => {
     setPrices({
       btc: utils.formatUnits(prices[0], 8),
