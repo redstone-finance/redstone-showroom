@@ -12,43 +12,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@argent/get-starknet@npm:^6.4.7":
-  version: 6.4.7
-  resolution: "@argent/get-starknet@npm:6.4.7"
+"@argent/get-starknet@npm:^5.3.21":
+  version: 5.3.21
+  resolution: "@argent/get-starknet@npm:5.3.21"
   dependencies:
-    "@argent/web-sdk": "npm:^6.4.1"
-    "@argent/x-window": "npm:^6.4.0"
-    bowser: "npm:^2.11.0"
-    get-starknet-core: "npm:^3.1.0"
-    lodash-es: "npm:^4.17.21"
-    svelte-forms: "npm:^2.3.1"
-  peerDependencies:
-    starknet: 5.18.0
-  checksum: 10c0/c86ef43a12bb5f4662f9cbe5e68da1f8ada22d7dd964e06f4fb986f82a4bcdfbd4c0ac4ed73c6b21a2f79cedb33ff2181902bf77b2cb2cabfeae64be413cef9b
-  languageName: node
-  linkType: hard
-
-"@argent/web-sdk@npm:^6.4.1":
-  version: 6.4.1
-  resolution: "@argent/web-sdk@npm:6.4.1"
-  dependencies:
-    "@argent/x-window": "npm:^6.4.0"
-    get-starknet-core: "npm:^3.0.1"
-    lodash-es: "npm:^4.17.21"
-    trpc-browser: "npm:^1.3.2"
-  peerDependencies:
-    starknet: 5.12.0
-  checksum: 10c0/2787ad98b3199c03dd42801cfb705ee14480ab170f0c8df9c505fd9a5f687803a375cd0ef75be6624a7c6e9976f3837f245e5e7171798220c20d731cc47d0593
-  languageName: node
-  linkType: hard
-
-"@argent/x-window@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@argent/x-window@npm:6.4.0"
-  peerDependencies:
-    starknet: ^4.21.0
-    zod: ^3.20.6
-  checksum: 10c0/2e7b6f8cd258cbd7b32dac69b99f7767768b1ca506df4f91c6d1ed0e11c51f2009487de02f409471fef98c586a52525bfce841e5b0d719ad3190ea749998eed5
+    get-starknet: "npm:^1.0.0"
+  checksum: 10c0/45d86140a294f6c74416114aff8a944c5bdb9c520b3ff647d3fbbda646b1b57175d1b70f06f1c3140d3d90f8eb3fea6084c9ffa50f00bfee408ed15663783b8a
   languageName: node
   linkType: hard
 
@@ -1811,17 +1780,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redstone-finance/evm-connector@npm:^0.3.6":
-  version: 0.3.6
-  resolution: "@redstone-finance/evm-connector@npm:0.3.6"
+"@redstone-finance/evm-connector@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@redstone-finance/evm-connector@npm:0.4.0"
   dependencies:
     "@chainlink/contracts": "npm:^0.6.1"
     "@openzeppelin/contracts": "npm:^4.8.1"
-    "@redstone-finance/protocol": "npm:^0.3.6"
-    "@redstone-finance/sdk": "npm:^0.3.6"
-    axios: "npm:^1.5.1"
+    "@redstone-finance/protocol": "npm:^0.4.0"
+    "@redstone-finance/sdk": "npm:^0.4.0"
+    axios: "npm:^1.6.2"
     ethers: "npm:^5.7.2"
-  checksum: 10c0/f891f73f0706cd4efabadf9a206531fbda42e536a16c5f1de7e4dde5c95194790c3b4800a5da60bb8cc8a24f81af5aea0431d3d2ac6d66c17edd7a63b622b811
+  checksum: 10c0/40e1455ff58c93d8f063d82690c57d9ee9d48e91e77ff1c9a174bf1e3b915441bfd7612e38f3b9f21c9996a7aeb1cce30bb437896fe62cbb27aba0936fe4a797
   languageName: node
   linkType: hard
 
@@ -1832,12 +1801,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redstone-finance/oracles-smartweave-contracts@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@redstone-finance/oracles-smartweave-contracts@npm:0.4.0"
+  checksum: 10c0/1ec5f0e004e7061682f6f1ddef7c773f9e25a4f4adcd72fb425531515c04f6631745e6e7f4d6908ee6cf27c47bcbe761891c3567af00325f2198c96d75f37ab3
+  languageName: node
+  linkType: hard
+
 "@redstone-finance/protocol@npm:^0.3.6":
   version: 0.3.6
   resolution: "@redstone-finance/protocol@npm:0.3.6"
   dependencies:
     ethers: "npm:^5.7.2"
   checksum: 10c0/79dc98e1299b2b9ce39adc13e902b59eec20b6a9515407f53867df149d0bc92a83dac26468e36f7816d5a4c412d2945f05b3c5f55eaae03b6386db0e5a2bb010
+  languageName: node
+  linkType: hard
+
+"@redstone-finance/protocol@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@redstone-finance/protocol@npm:0.4.0"
+  dependencies:
+    ethers: "npm:^5.7.2"
+  checksum: 10c0/e6ebe86dced1cfe7f8ddc4b51398bdd0ac94e002bd6d8dd373913346bb9b217afa2f432cffff1357cf626809eade7c83e54dd33bc946cea5b952ebb6872617ea
   languageName: node
   linkType: hard
 
@@ -1851,6 +1836,19 @@ __metadata:
     axios: "npm:^1.5.1"
     ethers: "npm:^5.7.2"
   checksum: 10c0/d80bb435a2d9315c30675d1424ceda8d4015f87ed37ff3a41786f61dc07054354ddae82f74a188ab0af9904c8ccc4d49c2b0c9b932abf64c6bcb09cf95596405
+  languageName: node
+  linkType: hard
+
+"@redstone-finance/sdk@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@redstone-finance/sdk@npm:0.4.0"
+  dependencies:
+    "@redstone-finance/oracles-smartweave-contracts": "npm:^0.4.0"
+    "@redstone-finance/protocol": "npm:^0.4.0"
+    "@redstone-finance/utils": "npm:^0.4.0"
+    axios: "npm:^1.6.2"
+    ethers: "npm:^5.7.2"
+  checksum: 10c0/85a7390b89721bed7ece9c9aa91814326e704f60b6efd2f3360f31d88a50a6ace2e92652fcd19a5d271e64b74f6b234813ebacb903d4b1d987569a8beadd036d
   languageName: node
   linkType: hard
 
@@ -1875,6 +1873,18 @@ __metadata:
     ethereum-multicall: "npm:^2.19.0"
     ethers: "npm:^5.7.2"
   checksum: 10c0/27c3733b8aab0616e0c7600b9b624fc29ddac1401e5c889baab4eb4ec1c85b06a597f7268dfb63101eef7c5674fc5f22f9e9b7be878eb619d342e3851f55db2c
+  languageName: node
+  linkType: hard
+
+"@redstone-finance/utils@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@redstone-finance/utils@npm:0.4.0"
+  dependencies:
+    axios: "npm:^1.6.2"
+    decimal.js: "npm:^10.4.3"
+    ethers: "npm:^5.7.2"
+    zod: "npm:^3.22.4"
+  checksum: 10c0/4d3572ec506764ffd499825213caf94381cf707589026cbe173fc1f5aafeac0d07c5e50a9a7aba299ce76185c0616b392be1c14390cd9c8ea1e7e3401be29596
   languageName: node
   linkType: hard
 
@@ -2293,7 +2303,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.5.1, axios@npm:^1.6.8":
+"axios@npm:^1.5.1, axios@npm:^1.6.2, axios@npm:^1.6.8":
   version: 1.6.8
   resolution: "axios@npm:1.6.8"
   dependencies:
@@ -3296,15 +3306,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-starknet-core@npm:^3.0.1, get-starknet-core@npm:^3.1.0":
-  version: 3.2.0
-  resolution: "get-starknet-core@npm:3.2.0"
+"get-starknet@npm:^1.0.0":
+  version: 1.5.0
+  resolution: "get-starknet@npm:1.5.0"
+  dependencies:
+    bowser: "npm:^2.11.0"
   peerDependencies:
-    starknet: ^5.18.0
-  peerDependenciesMeta:
-    starknet:
-      optional: false
-  checksum: 10c0/05dfebfe50d171a4278631b19cf5fcb2f1efc4e01c4e6580ebc389573e7fb714533410b3e92e36498cf5b9bb260ecde3ffc6e2947015ad1c6033443cdd521109
+    starknet: ^3.12.3
+  checksum: 10c0/9fc5b6763e6f6ff24ad11aa00edbedfcaea0c7f0948531b6c7380ef39290974eccaa974355100bf761897b4bb25db2d38fb4f8cae33b30d904e3b8c7ed125831
   languageName: node
   linkType: hard
 
@@ -3710,13 +3719,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-promise@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "is-promise@npm:4.0.0"
-  checksum: 10c0/ebd5c672d73db781ab33ccb155fb9969d6028e37414d609b115cc534654c91ccd061821d5b987eefaa97cf4c62f0b909bb2f04db88306de26e91bfe8ddc01503
-  languageName: node
-  linkType: hard
-
 "is-typed-array@npm:^1.1.3":
   version: 1.1.13
   resolution: "is-typed-array@npm:1.1.13"
@@ -3995,13 +3997,6 @@ __metadata:
   bin:
     download-lmdb-prebuilds: bin/download-prebuilds.js
   checksum: 10c0/5c95ae636611f32d3583b26bca0d4b0dc236378f785b5735420edda62f88ddacc17c7586d586779a49f3377422c85c3e0b416c4a47f1c21945f76f001551afc9
-  languageName: node
-  linkType: hard
-
-"lodash-es@npm:^4.17.21":
-  version: 4.17.21
-  resolution: "lodash-es@npm:4.17.21"
-  checksum: 10c0/fb407355f7e6cd523a9383e76e6b455321f0f153a6c9625e21a8827d10c54c2a2341bd2ae8d034358b60e07325e1330c14c224ff582d04612a46a4f0479ff2f2
   languageName: node
   linkType: hard
 
@@ -4893,9 +4888,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "redstone-showroom@workspace:."
   dependencies:
-    "@argent/get-starknet": "npm:^6.4.7"
-    "@redstone-finance/evm-connector": "npm:^0.3.6"
-    "@redstone-finance/sdk": "npm:^0.3.6"
+    "@argent/get-starknet": "npm:^5.3.21"
+    "@redstone-finance/evm-connector": "npm:^0.4.0"
+    "@redstone-finance/sdk": "npm:^0.4.0"
     "@redstone-finance/starknet-connector": "file:redstone-finance-starknet-connector-0.3.6.tgz"
     "@types/react": "npm:^18.0.15"
     "@types/react-dom": "npm:^18.0.6"
@@ -5325,15 +5320,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-forms@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "svelte-forms@npm:2.3.1"
-  dependencies:
-    is-promise: "npm:^4.0.0"
-  checksum: 10c0/4e47913b2f2538257cbb853ce39ccac6ed461c688e067c849ca5bc0ae883f3ce4c250235732d138addb2f5e9f2847686198268b5854f75871646bef860ad99bb
-  languageName: node
-  linkType: hard
-
 "svgo@npm:^2.4.0":
   version: 2.8.0
   resolution: "svgo@npm:2.8.0"
@@ -5450,16 +5436,6 @@ __metadata:
   version: 0.0.3
   resolution: "tr46@npm:0.0.3"
   checksum: 10c0/047cb209a6b60c742f05c9d3ace8fa510bff609995c129a37ace03476a9b12db4dbf975e74600830ef0796e18882b2381fb5fb1f6b4f96b832c374de3ab91a11
-  languageName: node
-  linkType: hard
-
-"trpc-browser@npm:^1.3.2":
-  version: 1.3.7
-  resolution: "trpc-browser@npm:1.3.7"
-  peerDependencies:
-    "@trpc/client": ^10.0.0
-    "@trpc/server": ^10.0.0
-  checksum: 10c0/b8519b6e37ad529f31695bb5ca081162fd3b63e21b109a53a961a48d4b9b01ec8eecb93ddd4c7bbe030e13cff5d097d0cef0ac926e1319e0353a37aab8e961ed
   languageName: node
   linkType: hard
 
@@ -5750,5 +5726,12 @@ __metadata:
     y18n: "npm:^5.0.5"
     yargs-parser: "npm:^21.1.1"
   checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 10c0/7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
   languageName: node
   linkType: hard

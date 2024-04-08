@@ -7,9 +7,9 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@argent/get-starknet": "^6.4.7",
-    "@redstone-finance/evm-connector": "^0.3.6",
-    "@redstone-finance/sdk": "^0.3.6",
+    "@argent/get-starknet": "^5.3.21",
+    "@redstone-finance/evm-connector": "^0.4.0",
+    "@redstone-finance/sdk": "^0.4.0",
     "@redstone-finance/starknet-connector": "file:redstone-finance-starknet-connector-0.3.6.tgz",
     "axios": "^1.6.8",
     "ethers": "^5.7.2",
@@ -51,6 +51,5 @@
   },
   "alias": {
     "process": false
-  },
-  "packageManager": "yarn@4.1.1"
+  }
 }
