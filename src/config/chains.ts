@@ -30,6 +30,7 @@ import BlastLogo from "../assets/chains/blast.png";
 import EtherlinkLogo from "../assets/chains/etherlink.png";
 import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
 import storyNetworkLogo from "../assets/chains/story-network.svg";
+import cyberConnectLogo from "../assets/chains/cyber-connect.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -644,5 +645,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://story-network.explorer.caldera.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: storyNetworkLogo,
+  },
+  [111557560]: {
+    chainId: utils.hexValue(111557560),
+    rpcUrls: ["https://cyber-testnet.alt.technology/"],
+    chainName: "Cyber Testnet",
+    label: "Cyber Testnet",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://cyber-testnet-explorer.alt.technology/"],
+    exampleContractAddress: "0xacf97fb2f2c336c45b799dab925ad10adc70fcac",
+    contractExplorerUrl:
+      "https://cyber-testnet-explorer.alt.technology/address/0xacf97fb2f2c336c45b799dab925ad10adc70fcac",
+    logo: cyberConnectLogo,
   },
 };
