@@ -646,20 +646,20 @@ export const chains: Chains = {
       "https://story-network.explorer.caldera.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: storyNetworkLogo,
   },
-  [111557560]: {
-    chainId: utils.hexValue(111557560),
-    rpcUrls: ["https://cyber-testnet.alt.technology/"],
-    chainName: "Cyber Testnet",
-    label: "Cyber Testnet",
+  [7560]: {
+    chainId: utils.hexValue(7560),
+    rpcUrls: ["https://cyber.alt.technology/"],
+    chainName: "Cyber",
+    label: "Cyber",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://cyber-testnet-explorer.alt.technology/"],
-    exampleContractAddress: "0xacf97fb2f2c336c45b799dab925ad10adc70fcac",
+    blockExplorerUrls: ["https://cyber-explorer.alt.technology/"],
+    exampleContractAddress: "0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     contractExplorerUrl:
-      "https://cyber-testnet-explorer.alt.technology/address/0xacf97fb2f2c336c45b799dab925ad10adc70fcac",
+      "https://cyber-explorer.alt.technology/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: cyberConnectLogo,
   },
 };
