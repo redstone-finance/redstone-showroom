@@ -1,5 +1,8 @@
 import { Contract, providers } from "ethers";
-import { IContractConnector, IPricesContractAdapter } from "redstone-sdk";
+import {
+  IContractConnector,
+  IPricesContractAdapter,
+} from "@redstone-finance/sdk";
 import { EvmPricesContractAdapter } from "./EvmPricesContractAdapter";
 import { abi } from "./ShowroomContractAbi.json";
 
@@ -11,7 +14,7 @@ export class EvmPricesContractConnector
     private readonly signer: providers.JsonRpcSigner
   ) {}
 
-  getBlockNumber(rpcUrl: string): Promise<number> {
+  getBlockNumber(): Promise<number> {
     return this.signer.provider.getBlockNumber();
   }
 
@@ -19,5 +22,9 @@ export class EvmPricesContractConnector
     return new EvmPricesContractAdapter(
       new Contract(this.contractAddress, abi, this.signer)
     );
+  }
+
+  waitForTransaction(txId: string): Promise<boolean> {
+    return Promise.resolve(true);
   }
 }

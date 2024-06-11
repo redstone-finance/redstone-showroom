@@ -14,6 +14,7 @@ const dataPackageRequestParams = {
   dataServiceId: "redstone-rapid-demo",
   uniqueSignersCount: 1,
   dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+  dataPackagesIds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
 };
 
 export const usePricesContract = (
@@ -50,7 +51,7 @@ export const usePricesContract = (
         fromContract
           ? adapter.readPricesFromContract(paramsProvider)
           : adapter.getPricesFromPayload(paramsProvider),
-        connector.getBlockNumber(network!.rpcUrls[0]),
+        connector.getBlockNumber(),
         fromContract
           ? adapter.readTimestampFromContract()
           : getPricesTimestamp(),
@@ -77,7 +78,7 @@ export const usePricesContract = (
         handlePrices(setPrices, txHashOrPrices);
         const [timestamp, blockNumber] = await Promise.all([
           adapter.readTimestampFromContract(),
-          connector.getBlockNumber(network!.rpcUrls[0]),
+          connector.getBlockNumber(),
         ]);
 
         setBlockNumber(blockNumber);

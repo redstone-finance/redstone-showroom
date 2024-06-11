@@ -1,9 +1,9 @@
 import { utils } from "ethers";
-import StarknetLogo from "../assets/chains/starknet.png";
+import CasperLogo from "../assets/chains/casper.svg";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
-export type ChainType = "eth" | "starknet" | "fuel";
+export type ChainType = "eth" | "starknet" | "fuel" | "casper";
 
 export interface ChainDetails {
   chainId: string;
@@ -379,39 +379,20 @@ export const chains: Chains = {
   [9999999997]: {
     chainId: utils.hexValue(9999999997),
     rpcUrls: [],
-    chainName: "Starknet Sepolia Network",
-    label: "Sepolia",
+    chainName: "Casper Testnet",
+    label: "Casper",
     nativeCurrency: {
-      name: "SepoliaETH",
-      symbol: "SepoliaETH",
+      name: "CSPR",
+      symbol: "CSPR",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://sepolia.starkscan.co/"],
+    blockExplorerUrls: ["https://testnet.cspr.live/"],
     exampleContractAddress:
-      "0x0037b17a782f5a0134bd21faf200f35c96b436dc3af51f5534aa69fd4261bec9",
+      "a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
     contractExplorerUrl:
-      "https://sepolia.starkscan.co/contract/0x0037b17a782f5a0134bd21faf200f35c96b436dc3af51f5534aa69fd4261bec9",
-    txExplorerUrl: "https://sepolia.starkscan.co/tx/",
-    logo: StarknetLogo,
-    type: "starknet",
-  },
-  [9999999998]: {
-    chainId: utils.hexValue(9999999998),
-    rpcUrls: [],
-    chainName: "Starknet Mainnet",
-    label: "Mainnet",
-    nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
-      decimals: 18,
-    },
-    blockExplorerUrls: ["https://starkscan.co/"],
-    exampleContractAddress:
-      "0x06c2a5ad0542e37c57750c6f35c05df47179453d0724b7d04bd6de4cb36cf227",
-    contractExplorerUrl:
-      "https://starkscan.co/contract/0x06c2a5ad0542e37c57750c6f35c05df47179453d0724b7d04bd6de4cb36cf227",
-    txExplorerUrl: "https://starkscan.co/tx/",
-    logo: StarknetLogo,
-    type: "starknet",
+      "https://testnet.cspr.live/contract-package/a7d8f289ea75288342872ec928eacb1c781b2d1bfeb04f31400640b1aec4db3b",
+    txExplorerUrl: "https://testnet.cspr.live/deploy/",
+    logo: CasperLogo,
+    type: "casper",
   },
 };

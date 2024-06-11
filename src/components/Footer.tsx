@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <footer className="flex mt-auto mb-5 w-full justify-center gap-6">
       <div>
-        <span className="flex text-sm text-gray-500">© RedStone 2022</span>
+        <span className="flex text-sm text-gray-500">© RedStone 2024</span>
       </div>
       <div className="flex gap-3">
         <a href="https://discord.com/invite/PVxBZKFr46" target="_blank">

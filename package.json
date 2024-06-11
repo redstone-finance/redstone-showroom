@@ -7,11 +7,11 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@argent/get-starknet": "^5.3.21",
+    "@redstone-finance/casper-connector": "file:redstone-finance-casper-connector-0.5.2-showroom3.tgz",
     "@redstone-finance/evm-connector": "^0.4.0",
-    "@redstone-finance/sdk": "^0.4.0",
-    "@redstone-finance/starknet-connector": "file:redstone-finance-starknet-connector-0.3.6.tgz",
+    "@redstone-finance/sdk": "^0.5.2",
     "axios": "^1.6.8",
+    "casper-js-sdk": "^2.15.5",
     "ethers": "^5.7.2",
     "parcel": "^2.6.2",
     "react": "^18.2.0",
@@ -51,5 +51,6 @@
   },
   "alias": {
     "process": false
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
