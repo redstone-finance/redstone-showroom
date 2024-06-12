@@ -10,8 +10,10 @@ import { ChainDetails } from "../config/chains";
 import { Dispatch, SetStateAction } from "react";
 import { Prices } from "../types";
 import Modal from "../components/Modal";
-import { PriceRelayAdapterCasperContractConnector } from "@redstone-finance/casper-connector";
-import { WalletCasperContractConnection } from "../chains/casper/WalletCasperContractConnection";
+import {
+  PriceRelayAdapterCasperContractConnector,
+  WalletCasperConnection,
+} from "@redstone-finance/casper-connector";
 import { GetPriceButton } from "../components/GetPriceButton";
 
 interface Props {
@@ -30,11 +32,10 @@ export const CasperBlock = ({ props, network }: Props) => {
     useMockLoader();
 
   const connector = new PriceRelayAdapterCasperContractConnector(
-    WalletCasperContractConnection.make(
+    WalletCasperConnection.makeWithWallet(
       provider,
-      walletAddress,
       "casper-test",
-      process.env.CASPER_NODE_URL
+      process.env.CASPER_NODE_URL!
     ),
     network?.exampleContractAddress!
   );

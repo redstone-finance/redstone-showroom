@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { emptyPrices } from "../utils";
-import { ICasperProvider } from "../chains/casper/WalletCasperContractConnection";
+import {
+  CasperWalletInterface,
+  CasperWindow,
+} from "@redstone-finance/casper-connector";
 
 const REQUESTS_TIMEOUT_MS = 30 * 60 * 1000;
 
-type ICasperWindow = {
-  CasperWalletProvider: (options: { timeout: number }) => ICasperProvider;
-};
+const casperWindow = window as unknown as CasperWindow;
 
 export const getProvider = () => {
-  let providerConstructor = (window as unknown as ICasperWindow)
-    .CasperWalletProvider;
+  let providerConstructor = casperWindow.CasperWalletProvider;
   if (providerConstructor === undefined) {
     alert("Casper Wallet extension is not installed!");
     return;
@@ -22,7 +22,7 @@ export const getProvider = () => {
 
 export const useCasper = () => {
   const [prices, setPrices] = useState(emptyPrices);
-  const [provider, setProvider] = useState<ICasperProvider | undefined>(
+  const [provider, setProvider] = useState<CasperWalletInterface | undefined>(
     undefined
   );
   const [walletAddress, setWalletAddress] = useState("");
