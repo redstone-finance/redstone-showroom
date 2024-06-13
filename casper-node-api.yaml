@@ -1,0 +1,37 @@
+openapi: "3.0.1"
+info:
+  title: "casper-node-api"
+  version: "2024-06-11 16:34:26UTC"
+servers:
+  - url: "https://rnuwjx7f5h.execute-api.eu-west-1.amazonaws.com/{basePath}"
+    variables:
+      basePath:
+        default: ""
+paths:
+  /rpc:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /rpc"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "http_proxy"
+        httpMethod: "ANY"
+        uri: "http://52.35.59.254:7777/rpc"
+        connectionType: "INTERNET"
+        timeoutInMillis: 30000
+x-amazon-apigateway-cors:
+  allowMethods:
+    - "*"
+  allowHeaders:
+    - "accept"
+    - "authorization"
+    - "content-type"
+    - "x-requested-with"
+  exposeHeaders:
+    - "*"
+  maxAge: 0
+  allowCredentials: false
+  allowOrigins:
+    - "*"
+x-amazon-apigateway-importexport-version: "1.0"

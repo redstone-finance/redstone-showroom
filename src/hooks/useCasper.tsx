@@ -58,7 +58,7 @@ export const useCasper = () => {
       setWalletAddress(await newProvider.getActivePublicKey());
       setIsConnecting(false);
 
-      // addListeners(newProvider);
+      addListeners();
 
       return setProvider(newProvider);
     } catch (error: any) {
@@ -68,15 +68,21 @@ export const useCasper = () => {
     }
   };
 
-  // const addListeners = (starknet: IStarknetWindowObject) => {
-  //   starknet.on("accountsChanged", () => {
-  //     window.location.reload();
-  //   });
-  //
-  //   starknet.on("networkChanged", () => {
-  //     window.location.reload();
-  //   });
-  // };
+  const addListeners = () => {
+    if (!casperWindow.CasperWalletEventTypes) {
+      return;
+    }
+
+    for (const event of [
+      casperWindow.CasperWalletEventTypes.ActiveKeyChanged,
+      casperWindow.CasperWalletEventTypes.Locked,
+      casperWindow.CasperWalletEventTypes.Disconnected,
+    ]) {
+      window.addEventListener(event, () => {
+        window.location.reload();
+      });
+    }
+  };
 
   return {
     prices,
