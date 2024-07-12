@@ -8,18 +8,17 @@
     "build": "yarn fix && parcel build index.html"
   },
   "dependencies": {
-    "@redstone-finance/casper-connector": "file:redstone-finance-casper-connector-0.5.3.tgz",
-    "@redstone-finance/evm-connector": "^0.4.0",
+    "@fuel-wallet/sdk": "^0.16.1",
+    "@redstone-finance/evm-connector": "^0.5.2",
+    "@redstone-finance/fuel-connector": "file:redstone-finance-fuel-connector-0.5.2.tgz",
     "@redstone-finance/sdk": "^0.5.2",
-    "@fuel-wallet/sdk": "^0.9.2",
     "axios": "^1.6.8",
-    "casper-js-sdk": "^2.15.5",
     "ethers": "^5.7.2",
+    "fuels": "0.91.0",
     "graphql-request": "5.1.0",
     "parcel": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "starknet": "^5.29.0",
     "web3modal": "^1.9.8"
   },
   "alias": {
@@ -28,7 +27,7 @@
     "@fuel-ts/program/configs": "@fuel-ts/program/dist/configs",
     "@fuel-ts/wallet/configs": "@fuel-ts/wallet/dist/configs",
     "@fuel-ts/address/configs": "@fuel-ts/address/dist/configs",
-    "process": false
+    "@fuel-ts/account/configs": "@fuel-ts/account/dist/configs"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
@@ -38,6 +37,7 @@
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.38",
     "prettier": "^2.7.1",
+    "process": "^0.11.10",
     "stream-browserify": "^3.0.0",
     "tailwindcss": "^3.1.6",
     "typescript": "^4.6.4"
@@ -58,9 +58,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "alias": {
-    "process": false
   },
   "packageManager": "yarn@4.1.1"
 }

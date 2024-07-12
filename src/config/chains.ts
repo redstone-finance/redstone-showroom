@@ -397,21 +397,19 @@ export const chains: Chains = {
   // },
   [9999999999]: {
     chainId: utils.hexValue(9999999999),
-    rpcUrls: ["https://beta-3.fuel.network/graphql"],
-    chainName: "Fuel Beta-3 Network",
+    rpcUrls: ["https://testnet.fuel.network/v1/graphql"],
+    chainName: "Fuel Sepolia Network",
     label: "Fuel",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://fuellabs.github.io/block-explorer-v2/block/"],
+    blockExplorerUrls: ["https://app.fuel.network/block/"],
     exampleContractAddress:
-      "0x8fdae6cb766121b5382977e98dc948dbdc95812a3e60c2cf2c0dfff06e877989",
-    contractExplorerUrl:
-      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/address/{walletAddress}",
-    txExplorerUrl:
-      "https://fuellabs.github.io/block-explorer-v2/beta-3/#/transaction/",
+      "0x1830b1154e5670f13e5ff15729603bcaf8000c36dc2ca86cae02ba1b6abd2e7e",
+    contractExplorerUrl: "https://app.fuel.network/block/{walletAddress}",
+    txExplorerUrl: "https://app.fuel.network/block/transaction/",
     logo: FuelLogo,
     type: "fuel",
   },

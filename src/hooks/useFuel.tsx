@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { emptyPrices } from "../utils";
 import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
 import { FuelWalletLocked } from "@fuel-wallet/sdk";
@@ -29,7 +29,9 @@ export const useFuel = () => {
   }, []);
 
   const changePrivateKey = async (e: any) => {
-    const provider = new Provider("https://beta-3.fuel.network/graphql");
+    const provider = await Provider.create(
+      "https://testnet.fuel.network/v1/graphql"
+    );
     let newWallet = undefined;
 
     try {
