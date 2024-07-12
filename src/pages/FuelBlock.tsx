@@ -20,6 +20,7 @@ interface Props {
     setPrices: Dispatch<SetStateAction<Prices>>;
     walletAddress: string;
     wallet: WalletLocked | WalletUnlocked | undefined;
+    hasConnector: boolean;
     changePrivateKey: ChangeEventHandler<HTMLInputElement>;
   };
   network: ChainDetails | null;
@@ -57,7 +58,7 @@ export const FuelBlock = ({ props, network }: Props) => {
   return !wallet ? (
     <p className="mt-10 mb-0 text-lg text-center">
       <b>Please sign in to Fuel</b>
-      {!window.fuel && (
+      {!props.hasConnector && (
         <div className="px-6 py-3 text-sm w-full text-center text-gray-500 mt-8 border">
           <div className="w-full mb-2">
             The Fuel Wallet extension you can install from here:{" "}

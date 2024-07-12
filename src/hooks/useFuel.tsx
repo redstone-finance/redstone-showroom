@@ -1,32 +1,17 @@
 import { useEffect, useState } from "react";
 import { emptyPrices } from "../utils";
 import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
-import { Fuel, FuelWalletConnector, FuelWalletLocked } from "@fuel-wallet/sdk";
+import { Fuel, FuelWalletLocked } from "@fuel-wallet/sdk";
 
 export const useFuel = () => {
-  const fuel = new Fuel({ connectors: [new FuelWalletConnector()] });
   const [prices, setPrices] = useState(emptyPrices);
-  // const [fuel, setFuel] = useState<Window["fuel"]>();
+  const [fuelConnector, setFuelConnector] = useState<Fuel | undefined>();
+  const [hasConnector, setHasConnector] = useState<boolean>();
   const [wallet, setWallet] = useState<
     WalletLocked | WalletUnlocked | undefined
   >(undefined);
   const [walletAddress, setWalletAddress] = useState("");
   const [_, setIsConnecting] = useState(false);
-
-  useEffect(() => {
-    // const onFuelLoaded = () => {
-    //   setFuel(window.fuel);
-    // };
-    //
-    // if (window.fuel) {
-    //   onFuelLoaded();
-    // }
-    // document.addEventListener("FuelLoaded", onFuelLoaded);
-    //
-    // return () => {
-    //   document.removeEventListener("FuelLoaded", onFuelLoaded);
-    // };
-  }, []);
 
   const changePrivateKey = async (e: any) => {
     const provider = await Provider.create(
@@ -44,21 +29,26 @@ export const useFuel = () => {
     setWallet(newWallet);
   };
 
-  const connectWallet = async (): Promise<unknown> => {
+  const connectWallet = async (
+    fuelConnector: Fuel,
+    hasConnector: boolean
+  ): Promise<unknown> => {
     setPrices(emptyPrices);
 
     if (wallet) {
       return;
     }
 
+    setHasConnector(hasConnector);
+    setFuelConnector(fuelConnector);
     setIsConnecting(true);
     setWallet(undefined);
 
-    if (!fuel) {
+    if (!hasConnector) {
       return;
     }
 
-    const isConnected = await fuel.connect();
+    const isConnected = await fuelConnector.connect();
 
     if (!isConnected) {
       return setIsConnecting(false);
@@ -67,13 +57,13 @@ export const useFuel = () => {
     let newWallet: FuelWalletLocked | undefined = undefined;
 
     try {
-      const account = await fuel.currentAccount();
-      newWallet = await fuel.getWallet(account!);
+      const account = await fuelConnector.currentAccount();
+      newWallet = await fuelConnector.getWallet(account!);
     } catch (error: any) {
       console.log(error); // Mostly in case when the only one of the accounts is connected.
 
-      await fuel.disconnect();
-      return await connectWallet();
+      await fuelConnector.disconnect();
+      return await connectWallet(fuelConnector, hasConnector);
     }
 
     if (!newWallet) {
@@ -93,17 +83,18 @@ export const useFuel = () => {
 
   useEffect(() => {
     function reload() {
+      console.error("RELOAD");
       // window.location.reload();
     }
 
-    fuel?.on(fuel.events.accounts, reload);
-    fuel?.on(fuel.events.currentAccount, (account) => {
+    fuelConnector?.on(fuelConnector.events.accounts, reload);
+    fuelConnector?.on(fuelConnector.events.currentAccount, (account) => {
       if (account == wallet?.address.toString()) {
         return;
       }
       reload();
     });
-    fuel?.on(fuel.events.networks, reload);
+    fuelConnector?.on(fuelConnector.events.networks, reload);
   }, [wallet, walletAddress]);
 
   return {
@@ -112,6 +103,7 @@ export const useFuel = () => {
     wallet,
     connectWallet,
     walletAddress,
+    hasConnector,
     changePrivateKey,
   };
 };
