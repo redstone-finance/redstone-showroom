@@ -5,11 +5,22 @@ import { useFuel } from "../hooks/useFuel";
 import { EvmBlock } from "./EvmBlock";
 import { FuelBlock } from "./FuelBlock";
 import { useState } from "react";
-import { Fuel, FuelWalletConnector } from "@fuel-wallet/sdk";
+import {
+  FueletWalletConnector,
+  FuelWalletConnector,
+  FuelWalletDevelopmentConnector,
+} from "@fuels/connectors";
+import { Fuel } from "fuels";
 
 const chainsArray = Object.values(chains);
 
-const fuelConnector = new Fuel({ connectors: [new FuelWalletConnector()] });
+const fuelConnector = new Fuel({
+  connectors: [
+    new FuelWalletConnector(),
+    new FuelWalletDevelopmentConnector(),
+    new FueletWalletConnector(),
+  ],
+});
 
 export const Showroom = () => {
   const [network, setNetwork] = useState<ChainDetails | null>(null);

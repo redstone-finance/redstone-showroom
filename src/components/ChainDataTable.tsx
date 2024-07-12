@@ -19,7 +19,14 @@ export const ChainDataTable = ({ walletAddress, network }: Props) => (
           />
           Your wallet
         </td>
-        <td className="py-3 px-3 text-right">{walletAddress}</td>
+        <td className="py-3 px-3 text-right underline">
+          <a
+            target="_blank"
+            href={"https://app.fuel.network/account/" + walletAddress}
+          >
+            {walletAddress}
+          </a>
+        </td>
       </tr>
       <tr>
         <td className="flex items-center gap-3 py-3 px-3">
@@ -32,14 +39,14 @@ export const ChainDataTable = ({ walletAddress, network }: Props) => (
         </td>
         <td className="py-3 px-3 text-right underline">
           <a
+            target="_blank"
             href={network.contractExplorerUrl.replace(
               "{walletAddress}",
               walletAddress
             )}
-            target="blank"
             referrerPolicy="no-referrer"
           >
-            {network.exampleContractAddress}
+            <u>{network.exampleContractAddress}</u>
           </a>
         </td>
       </tr>

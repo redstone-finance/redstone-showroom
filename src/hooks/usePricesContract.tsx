@@ -52,9 +52,7 @@ export const usePricesContract = (
           ? adapter.readPricesFromContract(paramsProvider)
           : adapter.getPricesFromPayload(paramsProvider),
         connector.getBlockNumber(),
-        fromContract
-          ? adapter.readTimestampFromContract()
-          : getPricesTimestamp(),
+        false ? adapter.readTimestampFromContract() : getPricesTimestamp(),
       ]);
 
       handlePrices(setPrices, prices);

@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { emptyPrices } from "../utils";
-import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
-import { Fuel, FuelWalletLocked } from "@fuel-wallet/sdk";
+import {
+  Account,
+  Fuel,
+  Provider,
+  Wallet,
+  WalletLocked,
+  WalletUnlocked,
+} from "fuels";
 
 export const useFuel = () => {
   const [prices, setPrices] = useState(emptyPrices);
@@ -20,7 +26,7 @@ export const useFuel = () => {
     let newWallet = undefined;
 
     try {
-      newWallet = await Wallet.fromPrivateKey(e.target.value, provider);
+      newWallet = Wallet.fromPrivateKey(e.target.value, provider);
     } catch {}
 
     if (newWallet && newWallet.address) {
@@ -54,7 +60,7 @@ export const useFuel = () => {
       return setIsConnecting(false);
     }
 
-    let newWallet: FuelWalletLocked | undefined = undefined;
+    let newWallet: Account | undefined = undefined;
 
     try {
       const account = await fuelConnector.currentAccount();
@@ -83,17 +89,22 @@ export const useFuel = () => {
 
   useEffect(() => {
     function reload() {
-      console.error("RELOAD");
-      // window.location.reload();
+      window.location.reload();
     }
 
-    fuelConnector?.on(fuelConnector.events.accounts, reload);
-    fuelConnector?.on(fuelConnector.events.currentAccount, (account) => {
-      if (account == wallet?.address.toString()) {
-        return;
+    fuelConnector?.on(fuelConnector?.events.currentConnector, reload);
+    fuelConnector?.on(fuelConnector?.events.currentNetwork, reload);
+    fuelConnector?.on(fuelConnector?.events.connection, reload);
+    fuelConnector?.on(fuelConnector?.events.accounts, reload);
+    fuelConnector?.on(
+      fuelConnector.events.currentAccount,
+      (account: string) => {
+        if (account == wallet?.address.toString()) {
+          return;
+        }
+        reload();
       }
-      reload();
-    });
+    );
     fuelConnector?.on(fuelConnector.events.networks, reload);
   }, [wallet, walletAddress]);
 
@@ -103,7 +114,7 @@ export const useFuel = () => {
     wallet,
     connectWallet,
     walletAddress,
-    hasConnector,
+    hasConnector: hasConnector ?? false,
     changePrivateKey,
   };
 };
