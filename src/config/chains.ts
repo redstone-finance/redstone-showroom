@@ -408,7 +408,8 @@ export const chains: Chains = {
     blockExplorerUrls: ["https://app.fuel.network/block/"],
     exampleContractAddress:
       "0x1830b1154e5670f13e5ff15729603bcaf8000c36dc2ca86cae02ba1b6abd2e7e",
-    contractExplorerUrl: "https://app.fuel.network/block/{walletAddress}",
+    contractExplorerUrl:
+      "https://app.fuel.network/contract/0x1830b1154e5670f13e5ff15729603bcaf8000c36dc2ca86cae02ba1b6abd2e7e",
     txExplorerUrl: "https://app.fuel.network/block/transaction/",
     logo: FuelLogo,
     type: "fuel",

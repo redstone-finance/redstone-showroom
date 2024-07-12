@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { emptyPrices } from "../utils";
 import { Provider, Wallet, WalletLocked, WalletUnlocked } from "fuels";
-import { FuelWalletLocked } from "@fuel-wallet/sdk";
+import { Fuel, FuelWalletConnector, FuelWalletLocked } from "@fuel-wallet/sdk";
 
 export const useFuel = () => {
+  const fuel = new Fuel({ connectors: [new FuelWalletConnector()] });
   const [prices, setPrices] = useState(emptyPrices);
-  const [fuel, setFuel] = useState<Window["fuel"]>();
+  // const [fuel, setFuel] = useState<Window["fuel"]>();
   const [wallet, setWallet] = useState<
     WalletLocked | WalletUnlocked | undefined
   >(undefined);
@@ -13,19 +14,18 @@ export const useFuel = () => {
   const [_, setIsConnecting] = useState(false);
 
   useEffect(() => {
-    const onFuelLoaded = () => {
-      setFuel(window.fuel);
-    };
-
-    if (window.fuel) {
-      onFuelLoaded();
-    }
-
-    document.addEventListener("FuelLoaded", onFuelLoaded);
-
-    return () => {
-      document.removeEventListener("FuelLoaded", onFuelLoaded);
-    };
+    // const onFuelLoaded = () => {
+    //   setFuel(window.fuel);
+    // };
+    //
+    // if (window.fuel) {
+    //   onFuelLoaded();
+    // }
+    // document.addEventListener("FuelLoaded", onFuelLoaded);
+    //
+    // return () => {
+    //   document.removeEventListener("FuelLoaded", onFuelLoaded);
+    // };
   }, []);
 
   const changePrivateKey = async (e: any) => {
@@ -68,7 +68,7 @@ export const useFuel = () => {
 
     try {
       const account = await fuel.currentAccount();
-      newWallet = await fuel.getWallet(account);
+      newWallet = await fuel.getWallet(account!);
     } catch (error: any) {
       console.log(error); // Mostly in case when the only one of the accounts is connected.
 
@@ -93,7 +93,7 @@ export const useFuel = () => {
 
   useEffect(() => {
     function reload() {
-      window.location.reload();
+      // window.location.reload();
     }
 
     fuel?.on(fuel.events.accounts, reload);
@@ -103,8 +103,8 @@ export const useFuel = () => {
       }
       reload();
     });
-    fuel?.on(fuel.events.network, reload);
-  }, [fuel, wallet, walletAddress]);
+    fuel?.on(fuel.events.networks, reload);
+  }, [wallet, walletAddress]);
 
   return {
     prices,
