@@ -60,7 +60,7 @@ export const usePricesFromContract = (
     const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
       dataServiceId: "redstone-rapid-demo",
       uniqueSignersCount: 1,
-      dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+      dataPackagesIds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
     });
     return await wrappedContract.getPrices();
   };

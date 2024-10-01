@@ -20,7 +20,7 @@ const provider = new providers.JsonRpcProvider(PROVIDER_RPC.rpc, {
   const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
     dataServiceId: "redstone-rapid-demo",
     uniqueSignersCount: 1,
-    dataFeeds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+    dataPackagesIds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
   });
   const tokenPrices = await wrappedContract.getPrices();
   console.log(tokenPrices);
