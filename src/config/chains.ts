@@ -29,7 +29,7 @@ import ParallelLogo from "../assets/chains/parallel.png";
 import BlastLogo from "../assets/chains/blast.png";
 import EtherlinkLogo from "../assets/chains/etherlink.png";
 import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
-import storyNetworkLogo from "../assets/chains/story-network.svg";
+import storyNetworkLogo from "../assets/chains/story-network.png";
 import cyberConnectLogo from "../assets/chains/cyber-connect.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
