@@ -643,7 +643,7 @@ export const chains: Chains = {
     blockExplorerUrls: ["https://odyssey.storyscan.xyz/"],
     exampleContractAddress: "",
     contractExplorerUrl:
-      "https://story-network.explorer.caldera.xyz/address/",
+      "https://odyssey.storyscan.xyz//address/",
     logo: storyNetworkLogo,
   },
   [7560]: {
