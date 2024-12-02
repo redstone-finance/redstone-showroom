@@ -641,9 +641,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://odyssey.storyscan.xyz/"],
-    exampleContractAddress: "",
+    exampleContractAddress: "0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     contractExplorerUrl:
-      "https://odyssey.storyscan.xyz//address/",
+      "https://odyssey.storyscan.xyz/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: storyNetworkLogo,
   },
   [7560]: {
