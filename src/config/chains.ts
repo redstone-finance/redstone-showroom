@@ -630,20 +630,20 @@ export const chains: Chains = {
       "https://explorer.zklink.io/address/0xB6cA02A43EF32504876799B6c3Af12482f29a836",
     logo: zkLinkNovaLogo,
   },
-  [1513]: {
-    chainId: utils.hexValue(1513),
-    rpcUrls: ["https://story-network.rpc.caldera.xyz/http"],
-    chainName: "Story Network",
-    label: "Story Network",
+  [1516]: {
+    chainId: utils.hexValue(1516),
+    rpcUrls: ["https://rpc.odyssey.storyrpc.io/"],
+    chainName: "Story Odyssey",
+    label: "Story Odyssey",
     nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
+      name: "IP",
+      symbol: "IP",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://story-network.explorer.caldera.xyz/"],
-    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+    blockExplorerUrls: ["https://odyssey.storyscan.xyz/"],
+    exampleContractAddress: "0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     contractExplorerUrl:
-      "https://story-network.explorer.caldera.xyz/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
+      "https://odyssey.storyscan.xyz/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: storyNetworkLogo,
   },
   [7560]: {
