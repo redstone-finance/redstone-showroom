@@ -31,6 +31,7 @@ import EtherlinkLogo from "../assets/chains/etherlink.png";
 import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
 import storyNetworkLogo from "../assets/chains/story-network.png";
 import cyberConnectLogo from "../assets/chains/cyber-connect.png";
+import soneiumLogo from "../assets/chains/soneium.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -661,5 +662,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://cyber-explorer.alt.technology/address/0x2e441adc345daeb11ff9c2cae7efd461e5525850",
     logo: cyberConnectLogo,
+  },
+  [1868]: {
+    chainId: utils.hexValue(1868),
+    rpcUrls: ["https://rpc.soneium.org/"],
+    chainName: "Soneium",
+    label: "Soneium",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://soneium.blockscout.com/"],
+    exampleContractAddress: "0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    contractExplorerUrl:
+      "https://soneium.blockscout.com/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    logo: soneiumLogo,
   },
 };
