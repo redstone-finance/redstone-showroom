@@ -711,6 +711,6 @@ export const chains: Chains = {
     exampleContractAddress: "",
     contractExplorerUrl:
       "https://explorer.sophon.xyz/address/",
-    logo: mintLogo,
+    logo: sophonLogo,
   },
 };
