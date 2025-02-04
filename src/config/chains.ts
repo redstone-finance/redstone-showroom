@@ -32,6 +32,7 @@ import zkLinkNovaLogo from "../assets/chains/zklink-nova.png";
 import storyNetworkLogo from "../assets/chains/story-network.png";
 import cyberConnectLogo from "../assets/chains/cyber-connect.png";
 import soneiumLogo from "../assets/chains/soneium.png";
+import mintLogo from "../assets/chains/mint.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -678,5 +679,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://soneium.blockscout.com/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: soneiumLogo,
+  },
+  [185]: {
+    chainId: utils.hexValue(185),
+    rpcUrls: ["https://rpc.mintchain.io/"],
+    chainName: "Mint",
+    label: "Mint",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://explorer.mintchain.io/"],
+    exampleContractAddress: "0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    contractExplorerUrl:
+      "https://explorer.mintchain.io/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    logo: mintLogo,
   },
 };
