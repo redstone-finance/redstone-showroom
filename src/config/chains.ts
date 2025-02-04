@@ -33,6 +33,7 @@ import storyNetworkLogo from "../assets/chains/story-network.png";
 import cyberConnectLogo from "../assets/chains/cyber-connect.png";
 import soneiumLogo from "../assets/chains/soneium.png";
 import mintLogo from "../assets/chains/mint.png";
+import storyLogo from "../assets/chains/story.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -695,5 +696,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.mintchain.io/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: mintLogo,
+  },
+  [1514]: {
+    chainId: utils.hexValue(1514),
+    rpcUrls: ["https://mainnet.storyrpc.io/"],
+    chainName: "Story",
+    label: "Story",
+    nativeCurrency: {
+      name: "IP",
+      symbol: "IP",
+      decimals: 18,
+    }, // TODO: update scan when public
+    blockExplorerUrls: ["https://etherscan.io/"],
+    exampleContractAddress: "0xdd87fd0fd6f68acb6897d05fcf31f3ab1165a49f",
+    contractExplorerUrl:
+      "https://etherscan.io/address/0xdd87fd0fd6f68acb6897d05fcf31f3ab1165a49f",
+    logo: storyLogo,
   },
 };
