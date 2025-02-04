@@ -708,9 +708,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://explorer.sophon.xyz/"],
-    exampleContractAddress: "",
+    exampleContractAddress: "0x5cfd4b1835be9a8FE065e1d82E42499cA79a9AeA",
     contractExplorerUrl:
-      "https://explorer.sophon.xyz/address/",
+      "https://explorer.sophon.xyz/address/0x5cfd4b1835be9a8FE065e1d82E42499cA79a9AeA",
     logo: sophonLogo,
   },
 };
