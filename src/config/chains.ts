@@ -34,6 +34,7 @@ import cyberConnectLogo from "../assets/chains/cyber-connect.png";
 import soneiumLogo from "../assets/chains/soneium.png";
 import mintLogo from "../assets/chains/mint.png";
 import sophonLogo from "../assets/chains/sophon.png";
+import redbellyLogo from "../assets/chains/redbelly.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -712,5 +713,21 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://explorer.sophon.xyz/address/0x5cfd4b1835be9a8FE065e1d82E42499cA79a9AeA",
     logo: sophonLogo,
+  },
+  [151]: {
+    chainId: utils.hexValue(151),
+    rpcUrls: ["https://governors.mainnet.redbelly.network"],
+    chainName: "Redbelly Network Mainnet",
+    label: "Redbelly Network Mainnet",
+    nativeCurrency: {
+      name: "RBNT",
+      symbol: "RBNT",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://redbelly.routescan.io/"],
+    exampleContractAddress: "0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    contractExplorerUrl:
+      "https://redbelly.routescan.io/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
+    logo: redbellyLogo,
   },
 };
