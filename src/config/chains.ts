@@ -35,6 +35,7 @@ import soneiumLogo from "../assets/chains/soneium.png";
 import mintLogo from "../assets/chains/mint.png";
 import sophonLogo from "../assets/chains/sophon.png";
 import redbellyLogo from "../assets/chains/redbelly.png";
+import xoneLogo from "../assets/chains/xone.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -730,4 +731,20 @@ export const chains: Chains = {
       "https://redbelly.routescan.io/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: redbellyLogo,
   },
+  [33772211]: {
+    chainId: utils.hexValue(33772211),
+    rpcUrls: ["https://rpc-testnet.xone.org"],
+    chainName: "Xone Testnet",
+    label: "Xone Network Testnet",
+    nativeCurrency: {
+      name: "Xone Coin",
+      symbol: "XOC",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://testnet.xscscan.com/"],
+    exampleContractAddress: "0x18582B5C7FC331712BfB95844cDE84F832BAF863",
+    contractExplorerUrl:
+      "https://testnet.xscscan.com/address/0x18582B5C7FC331712BfB95844cDE84F832BAF863",
+    logo: xoneLogo,
+  }
 };
