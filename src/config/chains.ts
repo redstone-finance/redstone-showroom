@@ -178,9 +178,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://explorer.celo.org/"],
-    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    exampleContractAddress: "0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     contractExplorerUrl:
-      "https://explorer.celo.org/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://explorer.celo.org/address/0xd75f4b5aa9480e6956f2570dd258ca716784f6e1",
     logo: CeloLogo,
   },
   [56]: {
