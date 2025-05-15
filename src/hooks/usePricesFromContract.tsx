@@ -6,6 +6,7 @@ import { ChainDetails } from "../config/chains";
 import { abi } from "../config/ShowroomContractAbi.json";
 import { usePricesData } from "./usePricesData";
 import { Prices } from "../types";
+import { getOracleRegistryState, getSignersForDataServiceId } from "@redstone-finance/sdk";
 
 export const usePricesFromContract = (
   network: ChainDetails | null,
@@ -58,9 +59,10 @@ export const usePricesFromContract = (
   ) => {
     const contract = new Contract(contractAddress, abi, signer);
     const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
-      dataServiceId: "redstone-main-demo",
-      uniqueSignersCount: 1,
+      dataServiceId: "redstone-primary-prod",
+      uniqueSignersCount: 3,
       dataPackagesIds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
+      authorizedSigners: getSignersForDataServiceId(await getOracleRegistryState(), "redstone-primary-prod"),
     });
     return await wrappedContract.getPrices();
   };
