@@ -18,7 +18,7 @@ const provider = new providers.JsonRpcProvider(PROVIDER_RPC.rpc, {
 (async () => {
   const contract = new Contract(contractAddress, abi, provider);
   const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
-    dataServiceId: "redstone-rapid-demo",
+    dataServiceId: "redstone-main-demo",
     uniqueSignersCount: 1,
     dataPackagesIds: ["BTC", "ETH", "BNB", "AR", "AVAX", "CELO"],
   });

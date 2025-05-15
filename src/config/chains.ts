@@ -35,6 +35,7 @@ import soneiumLogo from "../assets/chains/soneium.png";
 import mintLogo from "../assets/chains/mint.png";
 import sophonLogo from "../assets/chains/sophon.png";
 import redbellyLogo from "../assets/chains/redbelly.png";
+import polkadotLogo from "../assets/chains/polkadot.png";
 
 export type Chains = { [chainId in number]: ChainDetails };
 
@@ -55,6 +56,7 @@ export interface ChainDetails {
 }
 
 export const chains: Chains = {
+  // outdated contracts
   [1]: {
     chainId: utils.hexValue(1),
     rpcUrls: ["https://mainnet.infura.io/v3/"],
@@ -729,5 +731,22 @@ export const chains: Chains = {
     contractExplorerUrl:
       "https://redbelly.routescan.io/address/0xE5944d57Cfb1767c30a324F4a7541DeAcB9B3bAb",
     logo: redbellyLogo,
+  },
+  // Updated contracts
+  [420420421]: {
+    chainId: utils.hexValue(420420421),
+    rpcUrls: ["https://westend-asset-hub-eth-rpc.polkadot.io"],
+    chainName: "Westend Asset Hub",
+    label: "Westend Asset Hub",
+    nativeCurrency: {
+      name: "WND",
+      symbol: "WND",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://blockscout-asset-hub.parity-chains-scw.parity.io/"],
+    exampleContractAddress: "0xD15862FC3D5407A03B696548b6902D6464A69b8c",
+    contractExplorerUrl:
+      "https://blockscout-asset-hub.parity-chains-scw.parity.io/address/0xD15862FC3D5407A03B696548b6902D6464A69b8c?tab=txs",
+    logo: polkadotLogo,
   },
 };
